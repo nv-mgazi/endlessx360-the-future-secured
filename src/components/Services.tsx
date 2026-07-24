@@ -1,84 +1,90 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Code, Users, Smartphone, Database, Brain } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Globe, Cpu, Smartphone, Zap, Search, ShoppingCart } from "lucide-react";
+
+const services = [
+  {
+    icon: Globe,
+    title: "Web Development",
+    color: "hsl(var(--brand-purple))",
+    bg: "hsl(var(--brand-purple)/0.1)",
+    description:
+      "Custom websites and landing pages built to convert — from 5-page starters to 20-page authority sites. WordPress, React, or fully custom.",
+  },
+  {
+    icon: Cpu,
+    title: "System Development",
+    color: "hsl(var(--brand-blue))",
+    bg: "hsl(var(--brand-blue)/0.1)",
+    description:
+      "Booking engines, CRMs, dashboards, admin portals, and internal tools that automate the boring parts of your business.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile App Development",
+    color: "hsl(var(--brand-coral))",
+    bg: "hsl(var(--brand-coral)/0.12)",
+    description:
+      "iOS and Android apps for products, communities, and services — with clean UX and secure back-ends.",
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-Commerce",
+    color: "hsl(var(--brand-mint))",
+    bg: "hsl(var(--brand-mint)/0.12)",
+    description:
+      "Online stores with SA-friendly payment gateways, cart recovery, coupons, and an order dashboard you'll actually use.",
+  },
+  {
+    icon: Search,
+    title: "SEO & Google Setup",
+    color: "hsl(var(--brand-blue))",
+    bg: "hsl(var(--brand-blue)/0.1)",
+    description:
+      "On-page SEO, Google My Business, and Maps setup so local customers find you first — from day one.",
+  },
+  {
+    icon: Zap,
+    title: "Integrations & Automation",
+    color: "hsl(var(--brand-purple))",
+    bg: "hsl(var(--brand-purple)/0.1)",
+    description:
+      "WhatsApp chat, CRMs, payment gateways, booking, newsletters — connected into one smooth workflow.",
+  },
+];
 
 const Services = () => {
-  const services = [
-    {
-      icon: Shield,
-      title: "Cybersecurity Solutions",
-      description: "Advanced security systems, threat detection, and comprehensive protection for your digital assets."
-    },
-    {
-      icon: Users,
-      title: "Child Safety Tracking",
-      description: "Real-time tracking systems for schoolchildren with secure monitoring and emergency response features."
-    },
-    {
-      icon: Code,
-      title: "Custom Software Development",
-      description: "Tailored applications and platforms built with cutting-edge technologies to solve your unique challenges."
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Security",
-      description: "Secure mobile applications and monitoring systems with end-to-end encryption."
-    },
-    {
-      icon: Database,
-      title: "Data Protection",
-      description: "Enterprise-grade data security, backup solutions, and compliance management."
-    },
-    {
-      icon: Brain,
-      title: "AI-Powered Safety",
-      description: "Intelligent systems leveraging machine learning for predictive security and automated responses."
-    }
-  ];
-
   return (
-    <section className="py-24 relative">
+    <section id="services" className="py-24 relative bg-background">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Section header */}
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold">
-              <span className="gradient-text">Solutions</span> That Scale
+              What we <span className="gradient-text">build</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From protecting your children to securing your enterprise, our flexible 
-              technology adapts to your needs and grows with you.
+              Focused on the three things that actually move a business forward:
+              a great website, systems that save you time, and apps your customers love.
             </p>
           </div>
 
-          {/* Services grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <Card 
-                key={index}
-                className="bg-card/50 border-border backdrop-blur-sm hover:border-primary/50 transition-smooth group"
+            {services.map((s) => (
+              <Card
+                key={s.title}
+                className="border-border bg-card rounded-2xl shadow-soft hover:-translate-y-1 hover:shadow-playful transition-smooth"
               >
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-smooth">
-                    <service.icon className="w-6 h-6 text-primary" />
+                <CardContent className="p-6 space-y-4">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{ backgroundColor: s.bg }}
+                  >
+                    <s.icon className="w-6 h-6" style={{ color: s.color }} />
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
+                  <h3 className="text-xl font-bold">{s.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{s.description}</p>
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Expandable tech note */}
-          <div className="mt-16 p-8 rounded-xl bg-secondary/50 border border-border backdrop-blur-sm">
-            <p className="text-center text-muted-foreground">
-              <span className="text-foreground font-semibold">Built for Growth:</span> Our core technology 
-              expands from child safety into corporate security, asset tracking, fleet management, 
-              emergency response systems, and beyond.
-            </p>
           </div>
         </div>
       </div>

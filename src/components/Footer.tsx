@@ -1,38 +1,49 @@
 import { Separator } from "@/components/ui/separator";
 import Logo from "@/components/Logo";
+import { CONTACT, waLink } from "@/lib/contact";
+import { MessageCircle, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-background/50 backdrop-blur-sm">
+    <footer className="border-t border-border bg-background">
       <div className="container px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {/* Brand */}
             <div className="space-y-4">
               <Logo />
               <p className="text-sm text-muted-foreground">
-                Technology without boundaries. Building the future of cybersecurity and software solutions.
+                Custom web, system, and mobile app development for South African businesses. Once-off pricing, no monthly fees.
               </p>
             </div>
 
-            {/* Quick Links */}
             <div className="space-y-4">
-              <h4 className="font-semibold">Solutions</h4>
+              <h4 className="font-bold">Services</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="hover:text-primary transition-colors cursor-pointer">Cybersecurity</li>
-                <li className="hover:text-primary transition-colors cursor-pointer">Child Safety Tracking</li>
-                <li className="hover:text-primary transition-colors cursor-pointer">Custom Development</li>
-                <li className="hover:text-primary transition-colors cursor-pointer">AI-Powered Safety</li>
+                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Web Development</a></li>
+                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">System Development</a></li>
+                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Mobile App Development</a></li>
+                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">E-Commerce</a></li>
               </ul>
             </div>
 
-            {/* Company */}
             <div className="space-y-4">
-              <h4 className="font-semibold">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="hover:text-primary transition-colors cursor-pointer">About Us</li>
-                <li className="hover:text-primary transition-colors cursor-pointer">Our Vision</li>
-                <li className="hover:text-primary transition-colors cursor-pointer">Contact</li>
+              <h4 className="font-bold">Get in touch</h4>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li>
+                  <a href={waLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
+                    <MessageCircle className="w-4 h-4" /> {CONTACT.whatsappLabel}
+                  </a>
+                </li>
+                <li>
+                  <a href={`tel:${CONTACT.phoneRaw}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
+                    <Phone className="w-4 h-4" /> {CONTACT.phone}
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
+                    <Mail className="w-4 h-4" /> {CONTACT.email}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -40,9 +51,9 @@ const Footer = () => {
           <Separator className="my-8" />
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>© 2024 EndlessX360. All rights reserved.</p>
+            <p>© 2026 EndlessX360. All rights reserved.</p>
             <p className="text-center">
-              Where <span className="text-primary">Today</span> Meets <span className="text-primary">Tomorrow</span>
+              Made with <span className="text-[hsl(var(--brand-coral))]">♥</span> in {CONTACT.location}
             </p>
           </div>
         </div>
