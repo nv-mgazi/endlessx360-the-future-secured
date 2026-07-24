@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/Logo";
+import { waLink } from "@/lib/contact";
+
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
