@@ -2,75 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* EndlessX360 — Playful Studio palette
+   Primary: #7F0FAF (purple), Sky: #7BA4D0, Blue: #2E5E99, Navy: #0D2440
+   Accents: coral, mint, yellow for lively energy.
 */
 
 @layer base {
   :root {
-    --background: 220 30% 6%;
-    --foreground: 210 40% 98%;
+    --background: 35 100% 96%;         /* warm cream #FFF6EC */
+    --foreground: 216 66% 15%;          /* navy #0D2440 */
 
-    --card: 220 28% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 216 66% 15%;
 
-    --popover: 220 28% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 66% 15%;
 
-    --primary: 193 95% 58%;
-    --primary-foreground: 220 30% 6%;
+    --primary: 283 85% 37%;             /* #7F0FAF */
+    --primary-foreground: 35 100% 96%;
 
-    --secondary: 220 25% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 47% 65%;           /* sky #7BA4D0 */
+    --secondary-foreground: 216 66% 15%;
 
-    --muted: 220 25% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 35 40% 92%;
+    --muted-foreground: 216 30% 35%;
 
-    --accent: 193 95% 58%;
-    --accent-foreground: 220 30% 6%;
+    --accent: 340 100% 71%;             /* coral #FF6B9D */
+    --accent-foreground: 216 66% 15%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 193 95% 58%;
+    --border: 35 40% 88%;
+    --input: 35 40% 88%;
+    --ring: 283 85% 37%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(193 95% 58% / 0.2), hsl(250 95% 68% / 0.2));
-    --gradient-hero: linear-gradient(180deg, hsl(220 30% 6%), hsl(220 28% 8%));
-    --glow-primary: 0 0 40px hsl(193 95% 58% / 0.3);
-    --glow-secondary: 0 0 60px hsl(250 95% 68% / 0.2);
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Semantic playful tokens */
+    --brand-purple: 283 85% 37%;
+    --brand-sky: 210 47% 65%;
+    --brand-blue: 214 55% 39%;
+    --brand-navy: 216 66% 15%;
+    --brand-coral: 340 100% 71%;
+    --brand-mint: 142 71% 55%;
+    --brand-yellow: 48 100% 62%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-coral)));
+    --gradient-sunny: linear-gradient(135deg, hsl(var(--brand-yellow)), hsl(var(--brand-coral)));
+    --gradient-sky: linear-gradient(135deg, hsl(var(--brand-sky)), hsl(var(--brand-blue)));
+    --gradient-hero: radial-gradient(ellipse at top left, hsl(var(--brand-purple) / 0.18), transparent 55%),
+                     radial-gradient(ellipse at top right, hsl(var(--brand-yellow) / 0.25), transparent 50%),
+                     radial-gradient(ellipse at bottom, hsl(var(--brand-sky) / 0.25), transparent 60%),
+                     hsl(var(--background));
+
+    --shadow-playful: 0 20px 45px -20px hsl(var(--brand-purple) / 0.45);
+    --shadow-soft: 0 10px 30px -15px hsl(var(--brand-navy) / 0.25);
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; font-feature-settings: "ss01","cv11"; }
+  html { scroll-behavior: smooth; }
 }
 
 @layer utilities {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[hsl(var(--brand-purple))] via-[hsl(var(--brand-coral))] to-[hsl(var(--brand-yellow))] bg-clip-text text-transparent;
   }
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-sunny { background-image: var(--gradient-sunny); }
+  .bg-gradient-sky { background-image: var(--gradient-sky); }
+  .bg-gradient-hero { background-image: var(--gradient-hero); }
+  .shadow-playful { box-shadow: var(--shadow-playful); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .transition-smooth { transition: var(--transition-smooth); }
 
-  .glow-text {
-    text-shadow: var(--glow-primary);
-  }
-
-  .transition-smooth {
-    transition: var(--transition-smooth);
-  }
+  /* Playful floating blob */
+  @keyframes float-slow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
+  .animate-float { animation: float-slow 6s ease-in-out infinite; }
 }
