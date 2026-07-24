@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import Logo from "@/components/Logo";
 
 const Footer = () => {
   return (
