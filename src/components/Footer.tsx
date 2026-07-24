@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Brand */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold gradient-text">EndlessX360</h3>
+              <Logo />
               <p className="text-sm text-muted-foreground">
                 Technology without boundaries. Building the future of cybersecurity and software solutions.
               </p>
