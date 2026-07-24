@@ -60,11 +60,16 @@ const Header = () => {
               </Link>
             ))}
             <Button
+              asChild
               size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-primary"
+              className="rounded-full bg-[hsl(var(--brand-purple))] hover:bg-[hsl(var(--brand-purple)/0.9)] text-white shadow-playful"
             >
-              Get Started
+              <a href={waLink("Hi! I'd like a free quote.")} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-4 h-4 mr-1.5" />
+                Get a Quote
+              </a>
             </Button>
+
           </div>
 
           {/* Mobile Menu Button */}
@@ -100,12 +105,17 @@ const Header = () => {
             ))}
             <div className="pt-2">
               <Button
+                asChild
                 size="sm"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="w-full rounded-full bg-[hsl(var(--brand-purple))] hover:bg-[hsl(var(--brand-purple)/0.9)] text-white"
               >
-                Get Started
+                <a href={waLink("Hi! I'd like a free quote.")} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-4 h-4 mr-1.5" />
+                  Get a Quote
+                </a>
               </Button>
             </div>
+
           </div>
         )}
       </nav>
