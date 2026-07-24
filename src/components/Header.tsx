@@ -37,8 +37,8 @@ const Header = () => {
       <nav className="container px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold gradient-text">EndlessX360</h1>
+          <Link to="/" className="flex items-center">
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
