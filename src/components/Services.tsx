@@ -62,8 +62,8 @@ const Services = () => {
               What we <span className="gradient-text">build</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Focused on the three things that actually move a business forward:
-              a great website, systems that save you time, and apps your customers love.
+              Three things, done properly: websites that convert, systems that save you
+              time, and mobile apps your customers keep coming back to.
             </p>
           </div>
 
