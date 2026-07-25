@@ -25,14 +25,13 @@ const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
-            Websites that <span className="gradient-text">work while</span>
-            <br />
-            you sleep.
+            Websites and apps that <span className="gradient-text">earn their keep</span>.
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Custom web, system, and mobile app development — built to convert,
-            priced for growing South African businesses, delivered without the fluff.
+            EndlessX360 builds websites, business systems, and mobile apps for South
+            African businesses — clean design, honest pricing, and a real person on the
+            other end of the chat.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
@@ -63,7 +62,7 @@ const Hero = () => {
             {[
               { k: "Once-off", v: "No monthly fees" },
               { k: "24 hrs", v: "Quote response" },
-              { k: "10+ yrs", v: "Dev experience" },
+              { k: "5+ yrs", v: "Dev experience" },
             ].map((s) => (
               <div key={s.k} className="rounded-2xl bg-white/70 backdrop-blur border border-border p-5 shadow-soft">
                 <div className="text-2xl md:text-3xl font-bold text-[hsl(var(--brand-purple))]">{s.k}</div>

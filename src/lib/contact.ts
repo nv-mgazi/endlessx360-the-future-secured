@@ -3,8 +3,10 @@ export const CONTACT = {
   phoneRaw: "+27790267179",
   whatsapp: "https://wa.me/27790267179",
   whatsappLabel: "wa.me/27790267179",
-  email: "hello@endlessx360.com",
-  location: "South Africa",
+  email: "ntandoyenkosivezokuhle@gmail.com",
+  emailLabel: "ntandoyenkosivezokuhle@gmail.com",
+  location: "Durban, South Africa",
+  address: "477 Anton Lembede St, Durban 4001",
   brand: "EndlessX360",
 };
 
