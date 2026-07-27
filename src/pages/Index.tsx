@@ -1,22 +1,24 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Vision from "@/components/Vision";
 import Services from "@/components/Services";
 import Pricing from "@/components/Pricing";
+import Vision from "@/components/Vision";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div id="top" className="min-h-screen bg-background scroll-smooth">
       <Header />
-      <Hero />
-      <Vision />
-      <Services />
-      <Pricing />
-      <About />
-      <Contact />
+      <main>
+        <Hero />
+        <Services />
+        <Pricing />
+        <Vision />
+        <About />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
