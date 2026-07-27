@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Cpu, Smartphone, Zap, Search, ShoppingCart } from "lucide-react";
+import { Globe, Cpu, Smartphone, Search, ShoppingCart, LifeBuoy } from "lucide-react";
 
 const services = [
   {
@@ -8,7 +8,7 @@ const services = [
     color: "hsl(var(--brand-purple))",
     bg: "hsl(var(--brand-purple)/0.1)",
     description:
-      "Custom websites and landing pages built to convert — from 5-page starters to 20-page authority sites. WordPress, React, or fully custom.",
+      "Business websites and landing pages built around one goal: turning visitors into enquiries. From a tight 5-page site to a 20-page authority build.",
   },
   {
     icon: Cpu,
@@ -16,7 +16,7 @@ const services = [
     color: "hsl(var(--brand-blue))",
     bg: "hsl(var(--brand-blue)/0.1)",
     description:
-      "Booking engines, CRMs, dashboards, admin portals, and internal tools that automate the boring parts of your business.",
+      "Booking engines, CRMs, dashboards and admin portals that replace the spreadsheets and manual admin your team is stuck with.",
   },
   {
     icon: Smartphone,
@@ -24,7 +24,7 @@ const services = [
     color: "hsl(var(--brand-coral))",
     bg: "hsl(var(--brand-coral)/0.12)",
     description:
-      "iOS and Android apps for products, communities, and services — with clean UX and secure back-ends.",
+      "Android and iOS apps for products, services and communities — clean interfaces, secure back-ends, and a build you can extend later.",
   },
   {
     icon: ShoppingCart,
@@ -32,29 +32,29 @@ const services = [
     color: "hsl(var(--brand-mint))",
     bg: "hsl(var(--brand-mint)/0.12)",
     description:
-      "Online stores with SA-friendly payment gateways, cart recovery, coupons, and an order dashboard you'll actually use.",
+      "Online stores with local payment gateways, abandoned-cart recovery, discount rules and an order dashboard that makes sense.",
   },
   {
     icon: Search,
-    title: "SEO & Google Setup",
+    title: "SEO & Google Presence",
     color: "hsl(var(--brand-blue))",
     bg: "hsl(var(--brand-blue)/0.1)",
     description:
-      "On-page SEO, Google My Business, and Maps setup so local customers find you first — from day one.",
+      "On-page SEO, Google Business Profile and Maps set up properly from launch, so nearby customers find you before your competitors.",
   },
   {
-    icon: Zap,
-    title: "Integrations & Automation",
+    icon: LifeBuoy,
+    title: "Support & Maintenance",
     color: "hsl(var(--brand-purple))",
     bg: "hsl(var(--brand-purple)/0.1)",
     description:
-      "WhatsApp chat, CRMs, payment gateways, booking, newsletters — connected into one smooth workflow.",
+      "Optional care plans for updates, backups, security patches and small changes — added only if you want your site looked after long term.",
   },
 ];
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 relative bg-background">
+    <section id="services" className="py-24 relative bg-background scroll-mt-24">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16">
@@ -62,8 +62,8 @@ const Services = () => {
               What we <span className="gradient-text">build</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Three things, done properly: websites that convert, systems that save you
-              time, and mobile apps your customers keep coming back to.
+              Software for South African businesses — websites that bring in work, systems
+              that cut admin, and apps people keep on their home screen.
             </p>
           </div>
 
