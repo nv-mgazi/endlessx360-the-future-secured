@@ -1,45 +1,44 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Rocket, Heart, Wrench } from "lucide-react";
+import { Rocket, MessagesSquare, Layers } from "lucide-react";
 
 const values = [
   {
     icon: Rocket,
-    title: "Built to Launch",
+    title: "Shipped, not promised",
     color: "hsl(var(--brand-purple))",
     bg: "hsl(var(--brand-purple)/0.1)",
     description:
-      "We focus on shipping fast — real websites and apps live in weeks, not months, without cutting corners on quality.",
+      "Scoped in days, built in weeks. You see progress as it happens instead of waiting months for a first look.",
   },
   {
-    icon: Heart,
-    title: "Friendly & Personal",
+    icon: MessagesSquare,
+    title: "One point of contact",
     color: "hsl(var(--brand-coral))",
     bg: "hsl(var(--brand-coral)/0.12)",
     description:
-      "You talk directly to the person building your product. No account managers, no jargon, no ghosting.",
+      "You speak directly to the developer building your project. Plain answers, honest timelines, no account-manager layer.",
   },
   {
-    icon: Wrench,
-    title: "Made to Scale",
+    icon: Layers,
+    title: "Yours to grow",
     color: "hsl(var(--brand-blue))",
     bg: "hsl(var(--brand-blue)/0.1)",
     description:
-      "Start small, grow big. Every site is built on solid foundations you can extend into a full platform later.",
+      "You own the code, content and accounts. Every build is structured so new features can be added without starting over.",
   },
 ];
 
 const Vision = () => {
   return (
-    <section className="py-24 relative bg-[hsl(var(--muted))]">
+    <section id="approach" className="py-24 relative bg-[hsl(var(--muted))] scroll-mt-24">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold">
-              Why <span className="gradient-text">EndlessX360</span>?
+              How we <span className="gradient-text">work</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A modern studio for South African businesses that want a beautiful web
-              presence — without the enterprise price tag.
+              Clear scope, fixed project price, and a build you fully control once it launches.
             </p>
           </div>
 
