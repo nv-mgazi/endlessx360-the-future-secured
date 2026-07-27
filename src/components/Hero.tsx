@@ -134,11 +134,12 @@ const Hero = () => {
               {/* floating price sticker */}
               <div className="absolute -top-4 -right-4 rotate-[8deg] rounded-2xl bg-[hsl(var(--brand-yellow))] px-4 py-3 shadow-playful border-2 border-[hsl(var(--brand-navy))] animate-float">
                 <div className="text-[10px] font-bold uppercase tracking-widest text-[hsl(var(--brand-navy))]">
-                  Once-off
+                  Fixed price
                 </div>
                 <div className="text-lg font-black text-[hsl(var(--brand-navy))] leading-none">
-                  No monthly fees
+                  Quoted upfront
                 </div>
+
               </div>
 
               {/* floating chat sticker */}
@@ -156,7 +157,7 @@ const Hero = () => {
         {/* stats strip */}
         <div className="grid grid-cols-3 gap-4 md:gap-6 pt-20 max-w-4xl mx-auto">
           {[
-            { k: "Once-off", v: "No monthly fees" },
+            { k: "Fixed price", v: "Quoted before we start" },
             { k: "24 hrs", v: "Quote response" },
             { k: "5+ yrs", v: "Dev experience" },
           ].map((s) => (
