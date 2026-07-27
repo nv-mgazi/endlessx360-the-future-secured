@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, MessageCircle, Star } from "lucide-react";
+import { Check, Star } from "lucide-react";
 import { waLink } from "@/lib/contact";
 
 const tiers = [
@@ -8,13 +8,13 @@ const tiers = [
     name: "Small Business",
     sub: "5–9 Page Website",
     price: "R5,590",
-    tag: "Once-off · No monthly fees",
+    tag: "Fixed project price",
     color: "hsl(var(--brand-sky))",
     features: [
-      "5–9 Page WordPress website",
+      "5–9 page WordPress website",
       "Mobile-responsive design",
       "WhatsApp chat integration",
-      "Basic SEO + Google My Business",
+      "Basic SEO + Google Business Profile",
       "Contact form + social integration",
       "7 stock images included",
     ],
@@ -23,13 +23,13 @@ const tiers = [
     name: "Most Popular",
     sub: "9–12 Page Website",
     price: "R8,590",
-    tag: "Best value · Once-off",
+    tag: "Best value for growing teams",
     color: "hsl(var(--brand-purple))",
     popular: true,
     features: [
-      "9–12 Page custom website",
+      "9–12 page custom website",
       "Custom booking & contact forms",
-      "Standard SEO + Google My Business",
+      "Standard SEO + Google Business Profile",
       "Newsletter integration",
       "2 custom functionalities",
       "WhatsApp + socials · 15 images",
@@ -39,12 +39,12 @@ const tiers = [
     name: "Enterprise",
     sub: "12–20 Page Website",
     price: "R16,900",
-    tag: "Authority-level · Once-off",
+    tag: "For established brands",
     color: "hsl(var(--brand-blue))",
     features: [
-      "12–20 Page custom website",
+      "12–20 page custom website",
       "Advanced on-page SEO",
-      "API integrations (Payments, CRM)",
+      "API integrations (payments, CRM)",
       "WhatsApp + Facebook chat",
       "2 custom functionalities",
       "Newsletter + booking forms",
@@ -54,10 +54,10 @@ const tiers = [
     name: "Online Store",
     sub: "E-Commerce Website",
     price: "R7,580",
-    tag: "Sell 24/7 · Once-off",
+    tag: "Sell around the clock",
     color: "hsl(var(--brand-coral))",
     features: [
-      "10 Pages + 20 product pages",
+      "10 pages + 20 product pages",
       "Secure SA payment gateways",
       "Cart recovery + auto invoicing",
       "Coupons & discount rules",
@@ -69,19 +69,20 @@ const tiers = [
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-24 relative bg-[hsl(var(--muted))]">
+    <section id="pricing" className="py-24 relative bg-[hsl(var(--muted))] scroll-mt-24">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[hsl(var(--brand-yellow)/0.35)] border border-[hsl(var(--brand-yellow))]">
               <Star className="w-4 h-4 text-[hsl(var(--brand-navy))]" />
-              <span className="text-sm font-semibold text-[hsl(var(--brand-navy))]">2026 Pricing · South Africa</span>
+              <span className="text-sm font-semibold text-[hsl(var(--brand-navy))]">2026 pricing · South Africa</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold">
-              Simple, <span className="gradient-text">once-off</span> pricing
+              Clear pricing, <span className="gradient-text">quoted upfront</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              No monthly subscriptions. No surprises. Pay once, own your site, grow when you're ready.
+              Every project is quoted as a fixed price before work starts. Below are the
+              starting points most businesses build from.
             </p>
           </div>
 
@@ -130,8 +131,7 @@ const Pricing = () => {
                     style={{ backgroundColor: t.color, color: "white" }}
                   >
                     <a href={waLink(`Hi! I'm interested in the ${t.sub} package.`)} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      Get a free quote
+                      Request a quote
                     </a>
                   </Button>
                 </CardContent>
@@ -139,8 +139,9 @@ const Pricing = () => {
             ))}
           </div>
 
-          <p className="text-center text-sm text-muted-foreground mt-8">
-            Not sure which package? <a href={waLink("Hi! I'm not sure which package suits my business — can you help?")} target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--brand-purple))] font-semibold underline">Chat on WhatsApp</a> and we'll recommend the right fit.
+          <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
+            Hosting, domains and optional care plans (updates, backups and small changes)
+            are quoted separately so you only pay for what you actually need.
           </p>
         </div>
       </div>

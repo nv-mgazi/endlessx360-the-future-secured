@@ -45,9 +45,9 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              EndlessX360 builds websites, business systems, and mobile apps for
-              South African businesses — clean design, honest pricing, and a real
-              person on the other end of the chat.
+              EndlessX360 designs and builds websites, business systems and mobile apps for
+              South African businesses — scoped clearly, priced upfront, and handed over
+              ready to bring in work.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-2">
@@ -56,9 +56,9 @@ const Hero = () => {
                 size="lg"
                 className="bg-[hsl(var(--brand-purple))] hover:bg-[hsl(var(--brand-purple)/0.92)] text-white shadow-playful rounded-full px-8 h-14 text-base group"
               >
-                <a href={waLink("Hi! I'd like a free quote for a website.")} target="_blank" rel="noopener noreferrer">
+                <a href={waLink("Hi! I'd like a quote for a project.")} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-5 w-5" />
-                  Chat on WhatsApp
+                  Request a quote
                 </a>
               </Button>
               <Button
@@ -67,8 +67,8 @@ const Hero = () => {
                 variant="outline"
                 className="rounded-full px-8 h-14 text-base border-2 border-[hsl(var(--brand-navy))] bg-white hover:bg-[hsl(var(--brand-yellow)/0.25)] group"
               >
-                <a href="#pricing">
-                  See Pricing
+                <a href="#services">
+                  See what we build
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
@@ -76,13 +76,14 @@ const Hero = () => {
 
             {/* trust row */}
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start pt-2 text-sm text-muted-foreground">
-              {["No monthly fees", "Quote in 24 hrs", "5+ yrs experience"].map((t) => (
+              {["Fixed project pricing", "Quoted in 24 hrs", "5+ yrs experience"].map((t) => (
                 <div key={t} className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-[hsl(var(--brand-purple))]" />
                   <span className="font-medium text-foreground/80">{t}</span>
                 </div>
               ))}
             </div>
+
           </div>
 
           {/* RIGHT: hero visual */}
@@ -133,11 +134,12 @@ const Hero = () => {
               {/* floating price sticker */}
               <div className="absolute -top-4 -right-4 rotate-[8deg] rounded-2xl bg-[hsl(var(--brand-yellow))] px-4 py-3 shadow-playful border-2 border-[hsl(var(--brand-navy))] animate-float">
                 <div className="text-[10px] font-bold uppercase tracking-widest text-[hsl(var(--brand-navy))]">
-                  Once-off
+                  Fixed price
                 </div>
                 <div className="text-lg font-black text-[hsl(var(--brand-navy))] leading-none">
-                  No monthly fees
+                  Quoted upfront
                 </div>
+
               </div>
 
               {/* floating chat sticker */}
@@ -155,7 +157,7 @@ const Hero = () => {
         {/* stats strip */}
         <div className="grid grid-cols-3 gap-4 md:gap-6 pt-20 max-w-4xl mx-auto">
           {[
-            { k: "Once-off", v: "No monthly fees" },
+            { k: "Fixed price", v: "Quoted before we start" },
             { k: "24 hrs", v: "Quote response" },
             { k: "5+ yrs", v: "Dev experience" },
           ].map((s) => (

@@ -12,17 +12,19 @@ const Footer = () => {
             <div className="space-y-4">
               <Logo />
               <p className="text-sm text-muted-foreground">
-                Custom web, system, and mobile app development for South African businesses. Once-off pricing, no monthly fees.
+                Web, system and mobile app development for South African businesses.
+                Fixed project pricing, quoted upfront.
               </p>
             </div>
 
             <div className="space-y-4">
               <h4 className="font-bold">Services</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Web Development</a></li>
-                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">System Development</a></li>
-                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Mobile App Development</a></li>
-                <li><a href="/services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">E-Commerce</a></li>
+                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Web Development</a></li>
+                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">System Development</a></li>
+                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Mobile App Development</a></li>
+                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">E-Commerce</a></li>
+                <li><a href="#pricing" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Pricing</a></li>
               </ul>
             </div>
 
@@ -31,7 +33,7 @@ const Footer = () => {
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>
                   <a href={waLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
-                    <MessageCircle className="w-4 h-4" /> {CONTACT.whatsappLabel}
+                    <MessageCircle className="w-4 h-4" /> {CONTACT.phone}
                   </a>
                 </li>
                 <li>
@@ -40,8 +42,8 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
-                    <Mail className="w-4 h-4" /> {CONTACT.email}
+                  <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors break-all">
+                    <Mail className="w-4 h-4 flex-shrink-0" /> {CONTACT.email}
                   </a>
                 </li>
               </ul>
@@ -52,9 +54,7 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>© 2026 EndlessX360. All rights reserved.</p>
-            <p className="text-center">
-              Made with <span className="text-[hsl(var(--brand-coral))]">♥</span> in {CONTACT.location}
-            </p>
+            <p className="text-center">{CONTACT.location}</p>
           </div>
         </div>
       </div>
