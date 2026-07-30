@@ -12,19 +12,21 @@ const Footer = () => {
             <div className="space-y-4">
               <Logo />
               <p className="text-sm text-muted-foreground">
-                Web, system and mobile app development for South African businesses.
-                Fixed project pricing, quoted upfront.
+                Web, system and mobile app development in Durban, serving businesses
+                across KwaZulu-Natal and South Africa. Fixed project pricing, quoted upfront.
               </p>
             </div>
 
             <div className="space-y-4">
               <h4 className="font-bold">Services</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Web Development</a></li>
-                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">System Development</a></li>
-                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Mobile App Development</a></li>
-                <li><a href="#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">E-Commerce</a></li>
-                <li><a href="#pricing" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Pricing</a></li>
+                <li><a href="/#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Web Development</a></li>
+                <li><a href="/#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">System Development</a></li>
+                <li><a href="/#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Mobile App Development</a></li>
+                <li><a href="/#services" className="hover:text-[hsl(var(--brand-purple))] transition-colors">E-Commerce</a></li>
+                <li><a href="/#work" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Our work</a></li>
+                <li><a href="/insights" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Insights</a></li>
+                <li><a href="/#pricing" className="hover:text-[hsl(var(--brand-purple))] transition-colors">Pricing</a></li>
               </ul>
             </div>
 
