@@ -6,11 +6,12 @@ import Logo from "@/components/Logo";
 import { waLink } from "@/lib/contact";
 
 const navItems = [
-  { name: "Services", href: "#services" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Approach", href: "#approach" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Services", href: "/#services" },
+  { name: "Work", href: "/#work" },
+  { name: "Pricing", href: "/#pricing" },
+  { name: "Insights", href: "/insights" },
+  { name: "About", href: "/#about" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const Header = () => {
@@ -34,11 +35,11 @@ const Header = () => {
     >
       <nav className="container px-4 py-4">
         <div className="flex items-center justify-between">
-          <a href="#top" className="flex items-center" aria-label="EndlessX360 home">
+          <a href="/" className="flex items-center" aria-label="EndlessX360 home">
             <Logo />
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
             {navItems.map((item) => (
               <a
                 key={item.href}
