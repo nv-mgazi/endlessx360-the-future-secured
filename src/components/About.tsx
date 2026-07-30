@@ -54,9 +54,11 @@ const About = () => {
                 <h3 className="text-2xl font-bold">Local, and easy to reach</h3>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Based in Durban and working with clients across South Africa. Quotes are
-                usually back with you the same day.
+                Based at 477 Anton Lembede Street in Durban, working with businesses in
+                Umhlanga, Pinetown, Pietermaritzburg and remotely across South Africa.
+                Quotes are usually back with you the same day.
               </p>
+
             </div>
 
             <div className="flex flex-wrap gap-3 pt-4 justify-center">
