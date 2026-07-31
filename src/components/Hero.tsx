@@ -45,10 +45,11 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              EndlessX360 designs and builds websites, business systems and mobile apps for
-              South African businesses — scoped clearly, priced upfront, and handed over
-              ready to bring in work.
+              EndlessX360 builds websites, business systems and mobile apps for South
+              African businesses. You get the scope in writing, the price before we start,
+              and a finished product you own.
             </p>
+
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-2">
               <Button
@@ -157,10 +158,11 @@ const Hero = () => {
         {/* stats strip */}
         <div className="grid grid-cols-3 gap-4 md:gap-6 pt-20 max-w-4xl mx-auto">
           {[
-            { k: "Fixed price", v: "Quoted before we start" },
-            { k: "24 hrs", v: "Quote response" },
-            { k: "5+ yrs", v: "Dev experience" },
+            { k: "5 platforms", v: "Built and in daily use" },
+            { k: "24 hrs", v: "Quote turnaround" },
+            { k: "5+ yrs", v: "Development experience" },
           ].map((s) => (
+
             <div key={s.k} className="rounded-2xl bg-white/75 backdrop-blur border border-white p-4 md:p-5 shadow-soft text-center md:text-left">
               <div className="text-2xl md:text-3xl font-bold text-[hsl(var(--brand-purple))]">{s.k}</div>
               <div className="text-xs md:text-sm text-muted-foreground">{s.v}</div>

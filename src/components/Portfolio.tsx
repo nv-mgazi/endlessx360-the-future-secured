@@ -19,9 +19,10 @@ const Portfolio = () => {
               Projects we've <span className="gradient-text">shipped</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real platforms in real use — donation systems, operations dashboards and
-              funding portals. Click any screen to view it full size.
+              Donation platforms, procurement systems, a school safety tracker and business
+              websites — all built, handed over and in use. Click any screen to view it full size.
             </p>
+
           </div>
 
           <div className="space-y-14">
