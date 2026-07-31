@@ -60,12 +60,13 @@ const Services = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold">
-              What we <span className="gradient-text">build</span>
+              What you'll <span className="gradient-text">walk away with</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Software for South African businesses — websites that bring in work, systems
-              that cut admin, and apps people keep on their home screen.
+              Software built for South African businesses — a site that brings in work, a
+              system that takes admin off your desk, and an app people keep on their phone.
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
