@@ -5,16 +5,16 @@ import { waLink } from "@/lib/contact";
 
 const tiers = [
   {
-    name: "Small Business",
+    name: "Essential",
     sub: "5–9 Page Website",
     price: "R5,590",
-    tag: "Fixed project price",
+    tag: "Your investment, agreed upfront",
     color: "hsl(var(--brand-sky))",
     features: [
-      "5–9 page WordPress website",
+      "5–9 page website, built for enquiries",
       "Mobile-responsive design",
       "WhatsApp chat integration",
-      "Basic SEO + Google Business Profile",
+      "Essential SEO + Google Business Profile",
       "Contact form + social integration",
       "7 stock images included",
     ],
@@ -23,15 +23,15 @@ const tiers = [
     name: "Most Popular",
     sub: "9–12 Page Website",
     price: "R8,590",
-    tag: "Best value for growing teams",
+    tag: "Where most growing teams land",
     color: "hsl(var(--brand-purple))",
     popular: true,
     features: [
       "9–12 page custom website",
       "Custom booking & contact forms",
-      "Standard SEO + Google Business Profile",
+      "Customized SEO + Google Business Profile",
       "Newsletter integration",
-      "2 custom functionalities",
+      "2 customized functions built for you",
       "WhatsApp + socials · 15 images",
     ],
   },
@@ -46,7 +46,7 @@ const tiers = [
       "Advanced on-page SEO",
       "API integrations (payments, CRM)",
       "WhatsApp + Facebook chat",
-      "2 custom functionalities",
+      "2 customized functions built for you",
       "Newsletter + booking forms",
     ],
   },
@@ -54,7 +54,7 @@ const tiers = [
     name: "Online Store",
     sub: "E-Commerce Website",
     price: "R7,580",
-    tag: "Sell around the clock",
+    tag: "You sell around the clock",
     color: "hsl(var(--brand-coral))",
     features: [
       "10 pages + 20 product pages",
@@ -75,14 +75,14 @@ const Pricing = () => {
           <div className="text-center space-y-4 mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[hsl(var(--brand-yellow)/0.35)] border border-[hsl(var(--brand-yellow))]">
               <Star className="w-4 h-4 text-[hsl(var(--brand-navy))]" />
-              <span className="text-sm font-semibold text-[hsl(var(--brand-navy))]">2026 pricing · South Africa</span>
+              <span className="text-sm font-semibold text-[hsl(var(--brand-navy))]">2026 investment guide · South Africa</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold">
-              Clear pricing, <span className="gradient-text">quoted upfront</span>
+              Your investment, <span className="gradient-text">known upfront</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Every project is quoted as a fixed price before work starts. Below are the
-              starting points most businesses build from.
+              You'll know exactly what your project takes before a single line is written.
+              These are the starting points most businesses build from.
             </p>
           </div>
 
@@ -141,7 +141,7 @@ const Pricing = () => {
 
           <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
             Hosting, domains and optional care plans (updates, backups and small changes)
-            are quoted separately so you only pay for what you actually need.
+            are quoted separately, so you only ever invest in what you actually need.
           </p>
         </div>
       </div>

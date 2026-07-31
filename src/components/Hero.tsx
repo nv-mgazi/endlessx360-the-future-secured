@@ -40,15 +40,16 @@ const Hero = () => {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight">
-              Websites that <br className="hidden md:block" />
-              <span className="gradient-text">earn their keep</span>.
+              A website that <br className="hidden md:block" />
+              <span className="gradient-text">brings you work</span>.
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              EndlessX360 builds websites, business systems and mobile apps for South
-              African businesses. You get the scope in writing, the price before we start,
-              and a finished product you own.
+              You get 5+ years of hard-won development insight working on your website,
+              business system or mobile app. You'll know the scope and the investment
+              before anything starts — and you own everything at the end.
             </p>
+
 
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-2">
@@ -77,7 +78,7 @@ const Hero = () => {
 
             {/* trust row */}
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start pt-2 text-sm text-muted-foreground">
-              {["Fixed project pricing", "Quoted in 24 hrs", "5+ yrs experience"].map((t) => (
+              {["Your investment agreed upfront", "Quoted inside 24 hrs", "5+ yrs of insight on your side"].map((t) => (
                 <div key={t} className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-[hsl(var(--brand-purple))]" />
                   <span className="font-medium text-foreground/80">{t}</span>
@@ -158,10 +159,11 @@ const Hero = () => {
         {/* stats strip */}
         <div className="grid grid-cols-3 gap-4 md:gap-6 pt-20 max-w-4xl mx-auto">
           {[
-            { k: "5 platforms", v: "Built and in daily use" },
-            { k: "24 hrs", v: "Quote turnaround" },
-            { k: "5+ yrs", v: "Development experience" },
+            { k: "5 platforms", v: "Live and used every day" },
+            { k: "24 hrs", v: "Your quote, in writing" },
+            { k: "5+ yrs", v: "Of insight working for you" },
           ].map((s) => (
+
 
             <div key={s.k} className="rounded-2xl bg-white/75 backdrop-blur border border-white p-4 md:p-5 shadow-soft text-center md:text-left">
               <div className="text-2xl md:text-3xl font-bold text-[hsl(var(--brand-purple))]">{s.k}</div>

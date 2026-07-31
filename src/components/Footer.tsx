@@ -1,7 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import Logo from "@/components/Logo";
-import { CONTACT, waLink } from "@/lib/contact";
+import { CONTACT, waLink, mailtoHref } from "@/lib/contact";
 import { MessageCircle, Phone, Mail } from "lucide-react";
+
 
 const Footer = () => {
   return (
@@ -12,10 +13,12 @@ const Footer = () => {
             <div className="space-y-4">
               <Logo />
               <p className="text-sm text-muted-foreground">
-                Web, system and mobile app development in Durban, serving businesses
-                across KwaZulu-Natal and South Africa. Fixed project pricing, quoted upfront.
+                You get websites, business systems and mobile apps built in Durban for
+                businesses across KwaZulu-Natal and South Africa — scoped in writing, with
+                your investment agreed upfront.
               </p>
             </div>
+
 
             <div className="space-y-4">
               <h4 className="font-bold">Services</h4>
@@ -35,19 +38,20 @@ const Footer = () => {
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>
                   <a href={waLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
-                    <MessageCircle className="w-4 h-4" /> {CONTACT.phone}
+                    <MessageCircle className="w-4 h-4" /> WhatsApp · {CONTACT.phone}
                   </a>
                 </li>
                 <li>
                   <a href={`tel:${CONTACT.phoneRaw}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
-                    <Phone className="w-4 h-4" /> {CONTACT.phone}
+                    <Phone className="w-4 h-4" /> Call · {CONTACT.phone}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors break-all">
-                    <Mail className="w-4 h-4 flex-shrink-0" /> {CONTACT.email}
+                  <a href={mailtoHref("Project enquiry")} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
+                    <Mail className="w-4 h-4 flex-shrink-0" /> Email us
                   </a>
                 </li>
+
               </ul>
             </div>
           </div>

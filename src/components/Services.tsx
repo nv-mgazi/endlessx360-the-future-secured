@@ -8,7 +8,7 @@ const services = [
     color: "hsl(var(--brand-purple))",
     bg: "hsl(var(--brand-purple)/0.1)",
     description:
-      "Business websites and landing pages built around one goal: turning visitors into enquiries. From a tight 5-page site to a 20-page authority build.",
+      "You'll be able to turn visitors into real enquiries — from a tight essential site to a 20-page build that makes you the obvious choice in your market.",
   },
   {
     icon: Cpu,
@@ -16,7 +16,7 @@ const services = [
     color: "hsl(var(--brand-blue))",
     bg: "hsl(var(--brand-blue)/0.1)",
     description:
-      "Booking engines, CRMs, dashboards and admin portals that replace the spreadsheets and manual admin your team is stuck with.",
+      "You'll be able to drop the spreadsheets and manual admin — bookings, customer records, dashboards and staff portals customized to how you actually work.",
   },
   {
     icon: Smartphone,
@@ -24,7 +24,7 @@ const services = [
     color: "hsl(var(--brand-coral))",
     bg: "hsl(var(--brand-coral)/0.12)",
     description:
-      "Android and iOS apps for products, services and communities — clean interfaces, secure back-ends, and a build you can extend later.",
+      "You'll be able to put your business on your customers' home screen — Android and iOS, clean interfaces, secure back-ends, and room to grow later.",
   },
   {
     icon: ShoppingCart,
@@ -32,7 +32,7 @@ const services = [
     color: "hsl(var(--brand-mint))",
     bg: "hsl(var(--brand-mint)/0.12)",
     description:
-      "Online stores with local payment gateways, abandoned-cart recovery, discount rules and an order dashboard that makes sense.",
+      "You'll be able to sell while you sleep — local payment gateways, recovered abandoned carts, your own discount rules and an order view that makes sense.",
   },
   {
     icon: Search,
@@ -40,17 +40,18 @@ const services = [
     color: "hsl(var(--brand-blue))",
     bg: "hsl(var(--brand-blue)/0.1)",
     description:
-      "On-page SEO, Google Business Profile and Maps set up properly from launch, so nearby customers find you before your competitors.",
+      "You'll be able to get found before your competitors — on-page SEO, Google Business Profile and Maps set up properly from day one.",
   },
   {
     icon: LifeBuoy,
-    title: "Support & Maintenance",
+    title: "Care & Peace of Mind",
     color: "hsl(var(--brand-purple))",
     bg: "hsl(var(--brand-purple)/0.1)",
     description:
-      "Optional care plans for updates, backups, security patches and small changes — added only if you want your site looked after long term.",
+      "You'll feel the difference of never worrying about updates, backups, security patches or small changes — added only if you want your build looked after long term.",
   },
 ];
+
 
 const Services = () => {
   return (
@@ -59,12 +60,13 @@ const Services = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold">
-              What we <span className="gradient-text">build</span>
+              What you'll <span className="gradient-text">walk away with</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Software for South African businesses — websites that bring in work, systems
-              that cut admin, and apps people keep on their home screen.
+              Software built for South African businesses — a site that brings in work, a
+              system that takes admin off your desk, and an app people keep on their phone.
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
