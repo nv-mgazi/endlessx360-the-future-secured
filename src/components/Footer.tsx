@@ -1,7 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import Logo from "@/components/Logo";
-import { CONTACT, waLink } from "@/lib/contact";
+import { CONTACT, waLink, mailtoHref } from "@/lib/contact";
 import { MessageCircle, Phone, Mail } from "lucide-react";
+
 
 const Footer = () => {
   return (
