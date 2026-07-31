@@ -21,10 +21,10 @@ const Contact = () => {
           <Card className="rounded-3xl border-2 border-[hsl(var(--brand-purple)/0.2)] shadow-playful overflow-hidden">
             <div className="grid md:grid-cols-2">
               <div className="p-8 md:p-10 space-y-6 bg-gradient-primary text-white">
-                <h3 className="text-2xl font-bold">Contact details</h3>
+                <h3 className="text-2xl font-bold">Reach us directly</h3>
                 <p className="text-white/90 leading-relaxed">
-                  Pick whichever suits you. Messages are answered by the person who'll be
-                  doing the work.
+                  Pick whichever suits you. You speak to the person who'll be doing the
+                  work — no queue, no call centre.
                 </p>
 
                 <div className="space-y-4">
@@ -51,23 +51,28 @@ const Contact = () => {
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="font-semibold">Phone</div>
-                      <div className="text-sm text-white/80">{CONTACT.phone}</div>
+                      <div className="font-semibold">Call</div>
+                      <div className="text-sm text-white/80">
+                        {CONTACT.phone} · same number on WhatsApp
+                      </div>
                     </div>
                   </a>
 
                   <a
-                    href={`mailto:${CONTACT.email}`}
+                    href={mailtoHref("Project enquiry")}
                     className="flex items-center gap-4 p-4 rounded-2xl bg-white/15 hover:bg-white/25 transition-smooth backdrop-blur"
                   >
                     <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="font-semibold">Email</div>
-                      <div className="text-sm text-white/80 break-all">{CONTACT.email}</div>
+                      <div className="font-semibold">Email us</div>
+                      <div className="text-sm text-white/80">
+                        Opens in Gmail, Outlook or your mail app
+                      </div>
                     </div>
                   </a>
+
 
                   <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur">
                     <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center">
