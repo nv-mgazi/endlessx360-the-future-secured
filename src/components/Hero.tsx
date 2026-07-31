@@ -40,15 +40,16 @@ const Hero = () => {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight">
-              Websites that <br className="hidden md:block" />
-              <span className="gradient-text">earn their keep</span>.
+              A website that <br className="hidden md:block" />
+              <span className="gradient-text">brings you work</span>.
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              EndlessX360 builds websites, business systems and mobile apps for South
-              African businesses. You get the scope in writing, the price before we start,
-              and a finished product you own.
+              You get 5+ years of hard-won development insight working on your website,
+              business system or mobile app. You'll know the scope and the investment
+              before anything starts — and you own everything at the end.
             </p>
+
 
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-2">
