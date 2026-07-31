@@ -78,7 +78,7 @@ const Hero = () => {
 
             {/* trust row */}
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start pt-2 text-sm text-muted-foreground">
-              {["Fixed project pricing", "Quoted in 24 hrs", "5+ yrs experience"].map((t) => (
+              {["Your investment agreed upfront", "Quoted inside 24 hrs", "5+ yrs of insight on your side"].map((t) => (
                 <div key={t} className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-[hsl(var(--brand-purple))]" />
                   <span className="font-medium text-foreground/80">{t}</span>
