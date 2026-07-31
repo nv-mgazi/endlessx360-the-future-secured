@@ -11,9 +11,10 @@ const About = () => {
               About <span className="gradient-text">EndlessX360</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A Durban-based software studio building websites, business systems and mobile
-              apps, with 5+ years of development work behind every project.
+              A Durban software studio where you get 5+ years of hard-won development
+              insight working on your website, business system or mobile app.
             </p>
+
           </div>
 
           <div className="space-y-10">
