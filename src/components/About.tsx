@@ -27,10 +27,11 @@ const About = () => {
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Most businesses have had one of two experiences: overpaying for a template
-                nobody maintains, or waiting months for a project that never launches.
-                EndlessX360 works the other way — a clear scope, a fixed project price, and
-                a finished product handed over to you.
+                nobody maintains, or waiting months for a project that never launches. Here
+                you get the opposite — a clear scope, your investment agreed before work
+                starts, and a finished product handed to you.
               </p>
+
             </div>
 
             <div className="space-y-4">
