@@ -59,13 +59,14 @@ const About = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Based at 477 Anton Lembede Street in Durban, working with businesses in
                 Umhlanga, Pinetown, Pietermaritzburg and remotely across South Africa.
-                Quotes are usually back with you the same day.
+                You'll usually have your quote back the same day.
               </p>
 
             </div>
 
             <div className="flex flex-wrap gap-3 pt-4 justify-center">
-              {["Fixed project pricing", "Same-day quotes", "Mobile-first", "SEO-ready", "SA payment gateways"].map((t) => (
+              {["Investment agreed upfront", "Same-day quotes", "Mobile-first", "SEO-ready", "SA payment gateways"].map((t) => (
+
                 <Badge key={t} variant="outline" className="px-4 py-2 text-sm border-[hsl(var(--brand-purple)/0.3)] bg-[hsl(var(--brand-purple)/0.05)] text-[hsl(var(--brand-purple))]">
                   {t}
                 </Badge>
