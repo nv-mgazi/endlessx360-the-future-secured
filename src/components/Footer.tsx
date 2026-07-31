@@ -38,19 +38,20 @@ const Footer = () => {
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>
                   <a href={waLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
-                    <MessageCircle className="w-4 h-4" /> {CONTACT.phone}
+                    <MessageCircle className="w-4 h-4" /> WhatsApp · {CONTACT.phone}
                   </a>
                 </li>
                 <li>
                   <a href={`tel:${CONTACT.phoneRaw}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
-                    <Phone className="w-4 h-4" /> {CONTACT.phone}
+                    <Phone className="w-4 h-4" /> Call · {CONTACT.phone}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors break-all">
-                    <Mail className="w-4 h-4 flex-shrink-0" /> {CONTACT.email}
+                  <a href={mailtoHref("Project enquiry")} className="flex items-center gap-2 hover:text-[hsl(var(--brand-purple))] transition-colors">
+                    <Mail className="w-4 h-4 flex-shrink-0" /> Email us
                   </a>
                 </li>
+
               </ul>
             </div>
           </div>
