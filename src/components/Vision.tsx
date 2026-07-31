@@ -36,11 +36,13 @@ const Vision = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold">
-              How we <span className="gradient-text">work</span>
+              How you'll <span className="gradient-text">be looked after</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Clear scope, fixed project price, and a build you fully control once it launches.
+              A clear scope, your investment agreed upfront, and a build you fully control
+              the day it launches.
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
