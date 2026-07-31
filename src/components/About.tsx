@@ -39,13 +39,14 @@ const About = () => {
                 <div className="w-10 h-10 rounded-xl bg-[hsl(var(--brand-purple)/0.15)] flex items-center justify-center">
                   <GraduationCap className="w-5 h-5 text-[hsl(var(--brand-purple))]" />
                 </div>
-                <h3 className="text-2xl font-bold">Real experience behind the work</h3>
+                <h3 className="text-2xl font-bold">Experience working for you</h3>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                A BICT Honours from the Durban University of Technology and 5+ years across
-                web development, business systems and mobile apps — including agency
-                projects and production platforms still in daily use.
+                You get a BICT Honours from the Durban University of Technology and 5+
+                years across web, business systems and mobile apps behind your project —
+                including agency work and platforms still running every day.
               </p>
+
             </div>
 
             <div className="space-y-4">
