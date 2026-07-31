@@ -159,10 +159,11 @@ const Hero = () => {
         {/* stats strip */}
         <div className="grid grid-cols-3 gap-4 md:gap-6 pt-20 max-w-4xl mx-auto">
           {[
-            { k: "5 platforms", v: "Built and in daily use" },
-            { k: "24 hrs", v: "Quote turnaround" },
-            { k: "5+ yrs", v: "Development experience" },
+            { k: "5 platforms", v: "Live and used every day" },
+            { k: "24 hrs", v: "Your quote, in writing" },
+            { k: "5+ yrs", v: "Of insight working for you" },
           ].map((s) => (
+
 
             <div key={s.k} className="rounded-2xl bg-white/75 backdrop-blur border border-white p-4 md:p-5 shadow-soft text-center md:text-left">
               <div className="text-2xl md:text-3xl font-bold text-[hsl(var(--brand-purple))]">{s.k}</div>
