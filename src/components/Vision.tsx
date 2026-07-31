@@ -8,15 +8,15 @@ const values = [
     color: "hsl(var(--brand-purple))",
     bg: "hsl(var(--brand-purple)/0.1)",
     description:
-      "Scoped in days, built in weeks. You see progress as it happens instead of waiting months for a first look.",
+      "Scoped in days, built in weeks. You'll see it come together as it happens instead of waiting months for a first look.",
   },
   {
     icon: MessagesSquare,
-    title: "One point of contact",
+    title: "One person, straight answers",
     color: "hsl(var(--brand-coral))",
     bg: "hsl(var(--brand-coral)/0.12)",
     description:
-      "You speak directly to the developer building your project. Plain answers, honest timelines, no account-manager layer.",
+      "You speak directly to the developer building your project. Plain answers, honest timelines, nobody in between.",
   },
   {
     icon: Layers,
@@ -24,9 +24,10 @@ const values = [
     color: "hsl(var(--brand-blue))",
     bg: "hsl(var(--brand-blue)/0.1)",
     description:
-      "You own the code, content and accounts. Every build is structured so new features can be added without starting over.",
+      "You own the code, the content and the accounts. Every build is structured so you'll be able to add more later without starting over.",
   },
 ];
+
 
 const Vision = () => {
   return (
