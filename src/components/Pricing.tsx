@@ -81,7 +81,7 @@ const Pricing = () => {
               Your investment, <span className="gradient-text">known upfront</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              You'll know exactly what your project costs before a single line is written.
+              You'll know exactly what your project takes before a single line is written.
               These are the starting points most businesses build from.
             </p>
           </div>

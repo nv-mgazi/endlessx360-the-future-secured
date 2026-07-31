@@ -23,7 +23,7 @@ const InsightsPage = () => (
               Insights & <span className="gradient-text">case notes</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Writing on web and system development for South African businesses — costs,
+              Writing on web and system development for South African businesses — investment,
               trade-offs and what we've learned shipping real platforms from Durban.
             </p>
           </div>
