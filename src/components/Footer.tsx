@@ -13,10 +13,12 @@ const Footer = () => {
             <div className="space-y-4">
               <Logo />
               <p className="text-sm text-muted-foreground">
-                Web, system and mobile app development in Durban, serving businesses
-                across KwaZulu-Natal and South Africa. Fixed project pricing, quoted upfront.
+                You get websites, business systems and mobile apps built in Durban for
+                businesses across KwaZulu-Natal and South Africa — scoped in writing, with
+                your investment agreed upfront.
               </p>
             </div>
+
 
             <div className="space-y-4">
               <h4 className="font-bold">Services</h4>
