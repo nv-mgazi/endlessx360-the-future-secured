@@ -45,10 +45,11 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              EndlessX360 designs and builds websites, business systems and mobile apps for
-              South African businesses — scoped clearly, priced upfront, and handed over
-              ready to bring in work.
+              EndlessX360 builds websites, business systems and mobile apps for South
+              African businesses. You get the scope in writing, the price before we start,
+              and a finished product you own.
             </p>
+
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-2">
               <Button
