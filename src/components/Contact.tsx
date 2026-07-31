@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
-import { CONTACT, waLink } from "@/lib/contact";
+import { CONTACT, waLink, mailtoHref } from "@/lib/contact";
 
 const Contact = () => {
   return (
