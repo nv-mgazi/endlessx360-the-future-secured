@@ -8,6 +8,11 @@ import yui1 from "@/assets/portfolio/yui-1.jpg.asset.json";
 import yui2 from "@/assets/portfolio/yui-2.jpg.asset.json";
 import yui3 from "@/assets/portfolio/yui-3.jpg.asset.json";
 import yui4 from "@/assets/portfolio/yui-4.jpg.asset.json";
+import sos1 from "@/assets/portfolio/sos-1.jpg.asset.json";
+import sos2 from "@/assets/portfolio/sos-2.jpg.asset.json";
+import sos3 from "@/assets/portfolio/sos-3.jpg.asset.json";
+import shandu1 from "@/assets/portfolio/shandu-1.jpg.asset.json";
+import shandu2 from "@/assets/portfolio/shandu-2.jpg.asset.json";
 
 export interface ProjectShot {
   url: string;
@@ -70,6 +75,35 @@ export const projects: Project[] = [
       { url: yui2.url, caption: "Engagement insights and reporting charts" },
       { url: yui3.url, caption: "Student dashboard — applications and progress" },
       { url: yui4.url, caption: "Donor dashboard — history, matches and certificates" },
+    ],
+  },
+  {
+    id: "safety-over-sight",
+    client: "Safety Over Sight",
+    category: "School safety & attendance system",
+    year: "2026",
+    summary:
+      "A QR-based check-in system for schools: learners scan at gate checkpoints and parents are notified when a child does not arrive.",
+    stack: ["System development", "QR check-in", "Parent notifications"],
+    accent: "hsl(var(--brand-blue))",
+    shots: [
+      { url: sos1.url, caption: "Public site explaining tracking, alerts and data handling" },
+      { url: sos2.url, caption: "Parent register with search and per-learner views" },
+      { url: sos3.url, caption: "Checkpoint management with scan windows" },
+    ],
+  },
+  {
+    id: "shandu360",
+    client: "Shandu360",
+    category: "Services company website",
+    year: "2025",
+    summary:
+      "A booking-focused site for a landscaping, cleaning and logistics company, with service pages, enquiries and a mapped office location.",
+    stack: ["Web design", "Enquiry forms", "Google Maps"],
+    accent: "hsl(var(--brand-coral))",
+    shots: [
+      { url: shandu1.url, caption: "Home page and service entry points" },
+      { url: shandu2.url, caption: "Contact page with map and enquiry form" },
     ],
   },
 ];
