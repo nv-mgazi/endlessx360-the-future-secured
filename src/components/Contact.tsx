@@ -5,22 +5,24 @@ import { CONTACT, waLink, mailtoHref } from "@/lib/contact";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 relative bg-background scroll-mt-24">
+    <section id="contact" className="py-28 md:py-36 relative bg-gradient-hero scroll-mt-24">
       <div className="container px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center space-y-4 mb-14">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Start your <span className="gradient-text">project</span>
+          <div className="mb-14">
+            <div className="eyebrow">Contact</div>
+            <h2 className="display mt-5 text-[clamp(2rem,5.5vw,4rem)]">
+              You know my work — let's build yours
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Tell us what you need in a sentence or two — you'll have a scoped quote back
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+              Tell me what you need in a sentence or two — you'll have a scoped quote back
               within 24 hours.
             </p>
           </div>
 
-          <Card className="rounded-3xl border-2 border-[hsl(var(--brand-purple)/0.2)] shadow-playful overflow-hidden">
+          <Card className="rounded-[2rem] border border-border shadow-playful overflow-hidden">
             <div className="grid md:grid-cols-2">
-              <div className="p-8 md:p-10 space-y-6 bg-gradient-primary text-white">
+              <div className="p-8 md:p-10 space-y-6 bg-foreground text-background">
+
                 <h3 className="text-2xl font-bold">Reach us directly</h3>
                 <p className="text-white/90 leading-relaxed">
                   Pick whichever suits you. You speak to the person who'll be doing the
