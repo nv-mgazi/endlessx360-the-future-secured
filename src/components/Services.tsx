@@ -1,91 +1,73 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Cpu, Smartphone, Search, ShoppingCart, LifeBuoy } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const services = [
   {
-    icon: Globe,
-    title: "Web Development",
-    color: "hsl(var(--brand-purple))",
-    bg: "hsl(var(--brand-purple)/0.1)",
+    n: "01",
+    title: "Websites & Landing Pages",
     description:
-      "You'll be able to turn visitors into real enquiries — from a tight essential site to a 20-page build that makes you the obvious choice in your market.",
+      "You'll be able to turn visitors into real enquiries — from a tight essential site to a full build that makes you the obvious choice in your market.",
   },
   {
-    icon: Cpu,
-    title: "System Development",
-    color: "hsl(var(--brand-blue))",
-    bg: "hsl(var(--brand-blue)/0.1)",
+    n: "02",
+    title: "Business Systems",
     description:
       "You'll be able to drop the spreadsheets and manual admin — bookings, customer records, dashboards and staff portals customized to how you actually work.",
   },
   {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    color: "hsl(var(--brand-coral))",
-    bg: "hsl(var(--brand-coral)/0.12)",
+    n: "03",
+    title: "Mobile Applications",
     description:
-      "You'll be able to put your business on your customers' home screen — Android and iOS, clean interfaces, secure back-ends, and room to grow later.",
+      "You'll be able to put your business on your customers' home screen — Android and iOS, clean interfaces, secure back-ends, room to grow later.",
   },
   {
-    icon: ShoppingCart,
+    n: "04",
     title: "E-Commerce",
-    color: "hsl(var(--brand-mint))",
-    bg: "hsl(var(--brand-mint)/0.12)",
     description:
-      "You'll be able to sell while you sleep — local payment gateways, recovered abandoned carts, your own discount rules and an order view that makes sense.",
+      "You'll be able to sell while you sleep — local payment gateways, recovered carts, your own discount rules and an order view that makes sense.",
   },
   {
-    icon: Search,
+    n: "05",
     title: "SEO & Google Presence",
-    color: "hsl(var(--brand-blue))",
-    bg: "hsl(var(--brand-blue)/0.1)",
     description:
       "You'll be able to get found before your competitors — on-page SEO, Google Business Profile and Maps set up properly from day one.",
   },
   {
-    icon: LifeBuoy,
+    n: "06",
     title: "Care & Peace of Mind",
-    color: "hsl(var(--brand-purple))",
-    bg: "hsl(var(--brand-purple)/0.1)",
     description:
-      "You'll feel the difference of never worrying about updates, backups, security patches or small changes — added only if you want your build looked after long term.",
+      "You'll feel the difference of never worrying about updates, backups or security patches — added only if you want your build looked after long term.",
   },
 ];
 
-
 const Services = () => {
   return (
-    <section id="services" className="py-24 relative bg-background scroll-mt-24">
+    <section id="services" className="py-28 md:py-36 bg-background scroll-mt-24">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              What you'll <span className="gradient-text">walk away with</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Software built for South African businesses — a site that brings in work, a
-              system that takes admin off your desk, and an app people keep on their phone.
-            </p>
+          <div className="eyebrow">Capabilities</div>
+          <h2 className="display mt-5 text-[clamp(2rem,5.5vw,4rem)] max-w-3xl">
+            What you'll walk away with
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+            Software built for South African businesses — a site that brings in work, a
+            system that takes admin off your desk, and an app people keep on their phone.
+          </p>
 
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-16 border-t border-border">
             {services.map((s) => (
-              <Card
-                key={s.title}
-                className="border-border bg-card rounded-2xl shadow-soft hover:-translate-y-1 hover:shadow-playful transition-smooth"
+              <div
+                key={s.n}
+                className="group grid md:grid-cols-[5rem_1fr_1.1fr_2.5rem] items-start gap-y-3 gap-x-6 border-b border-border py-8 md:py-10 transition-smooth hover:bg-secondary/50 md:px-4 md:-mx-4 rounded-2xl"
               >
-                <CardContent className="p-6 space-y-4">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: s.bg }}
-                  >
-                    <s.icon className="w-6 h-6" style={{ color: s.color }} />
-                  </div>
-                  <h3 className="text-xl font-bold">{s.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{s.description}</p>
-                </CardContent>
-              </Card>
+                <div className="eyebrow pt-1.5">{s.n}</div>
+                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                  {s.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed md:pt-1">
+                  {s.description}
+                </p>
+                <ArrowUpRight className="hidden md:block w-6 h-6 text-muted-foreground opacity-0 -translate-x-1 transition-smooth group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-[hsl(var(--brand-indigo))] justify-self-end mt-1" />
+              </div>
             ))}
           </div>
         </div>
