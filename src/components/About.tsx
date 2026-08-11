@@ -1,77 +1,52 @@
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, MapPin, Lightbulb } from "lucide-react";
+
+const blocks = [
+  {
+    n: "Why this exists",
+    body:
+      "Most businesses have had one of two experiences: overpaying for a template nobody maintains, or waiting months for a project that never launches. Here you get the opposite — a clear scope, your investment agreed before work starts, and a finished product handed to you.",
+  },
+  {
+    n: "Experience working for you",
+    body:
+      "You get a BICT Honours from the Durban University of Technology and 5+ years across web, business systems and mobile apps behind your project — including agency work and platforms still running every day.",
+  },
+  {
+    n: "Local, and easy to reach",
+    body:
+      "Based at 477 Anton Lembede Street in Durban, working with businesses in Umhlanga, Pinetown, Pietermaritzburg and remotely across South Africa. You'll usually have your quote back the same day.",
+  },
+];
 
 const About = () => {
   return (
-    <section id="about" className="py-24 relative bg-background scroll-mt-24">
+    <section id="about" className="py-28 md:py-36 relative bg-background scroll-mt-24">
       <div className="container px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              About <span className="gradient-text">EndlessX360</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A Durban software studio where you get 5+ years of hard-won development
-              insight working on your website, business system or mobile app.
-            </p>
+        <div className="max-w-6xl mx-auto">
+          <div className="eyebrow">Studio</div>
+          <h2 className="display mt-5 text-[clamp(2rem,5.5vw,4rem)] max-w-3xl">
+            A Durban studio, one set of hands on your build
+          </h2>
 
+          <div className="mt-16 grid md:grid-cols-3 gap-x-10 gap-y-12 border-t border-border pt-12">
+            {blocks.map((b) => (
+              <div key={b.n} className="space-y-4">
+                <h3 className="text-xl font-semibold tracking-tight">{b.n}</h3>
+                <p className="text-muted-foreground leading-relaxed">{b.body}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="space-y-10">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[hsl(var(--brand-yellow)/0.35)] flex items-center justify-center">
-                  <Lightbulb className="w-5 h-5 text-[hsl(var(--brand-navy))]" />
-                </div>
-                <h3 className="text-2xl font-bold">Why we exist</h3>
-              </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Most businesses have had one of two experiences: overpaying for a template
-                nobody maintains, or waiting months for a project that never launches. Here
-                you get the opposite — a clear scope, your investment agreed before work
-                starts, and a finished product handed to you.
-              </p>
-
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[hsl(var(--brand-purple)/0.15)] flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-[hsl(var(--brand-purple))]" />
-                </div>
-                <h3 className="text-2xl font-bold">Experience working for you</h3>
-              </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                You get a BICT Honours from the Durban University of Technology and 5+
-                years across web, business systems and mobile apps behind your project —
-                including agency work and platforms still running every day.
-              </p>
-
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[hsl(var(--brand-coral)/0.15)] flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-[hsl(var(--brand-coral))]" />
-                </div>
-                <h3 className="text-2xl font-bold">Local, and easy to reach</h3>
-              </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Based at 477 Anton Lembede Street in Durban, working with businesses in
-                Umhlanga, Pinetown, Pietermaritzburg and remotely across South Africa.
-                You'll usually have your quote back the same day.
-              </p>
-
-            </div>
-
-            <div className="flex flex-wrap gap-3 pt-4 justify-center">
-              {["Investment agreed upfront", "Same-day quotes", "Mobile-first", "SEO-ready", "SA payment gateways"].map((t) => (
-
-                <Badge key={t} variant="outline" className="px-4 py-2 text-sm border-[hsl(var(--brand-purple)/0.3)] bg-[hsl(var(--brand-purple)/0.05)] text-[hsl(var(--brand-purple))]">
-                  {t}
-                </Badge>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-2.5 pt-12">
+            {["Investment agreed upfront", "Same-day quotes", "Mobile-first", "SEO-ready", "SA payment gateways"].map((t) => (
+              <Badge
+                key={t}
+                variant="outline"
+                className="rounded-full px-4 py-2 text-sm font-normal border-border bg-secondary/60 text-foreground/80"
+              >
+                {t}
+              </Badge>
+            ))}
           </div>
         </div>
       </div>

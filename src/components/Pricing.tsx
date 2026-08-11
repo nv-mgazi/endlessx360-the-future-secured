@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Star } from "lucide-react";
+import { Check } from "lucide-react";
 import { waLink } from "@/lib/contact";
 
 const tiers = [
@@ -69,66 +69,77 @@ const tiers = [
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-24 relative bg-[hsl(var(--muted))] scroll-mt-24">
+    <section id="pricing" className="py-28 md:py-36 relative bg-background scroll-mt-24">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-4 mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[hsl(var(--brand-yellow)/0.35)] border border-[hsl(var(--brand-yellow))]">
-              <Star className="w-4 h-4 text-[hsl(var(--brand-navy))]" />
-              <span className="text-sm font-semibold text-[hsl(var(--brand-navy))]">2026 investment guide · South Africa</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Your investment, <span className="gradient-text">known upfront</span>
+          <div className="mb-16">
+            <div className="eyebrow">2026 investment guide · South Africa</div>
+            <h2 className="display mt-5 text-[clamp(2rem,5.5vw,4rem)] max-w-3xl">
+              Your investment, known upfront
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
               You'll know exactly what your project takes before a single line is written.
               These are the starting points most businesses build from.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {tiers.map((t) => (
               <Card
                 key={t.name}
-                className={`relative rounded-2xl border-2 bg-card shadow-soft hover:-translate-y-1 hover:shadow-playful transition-smooth ${
-                  t.popular ? "border-[hsl(var(--brand-purple))] lg:scale-105" : "border-border"
+                className={`relative rounded-3xl border bg-card shadow-soft transition-smooth hover:-translate-y-1 hover:shadow-playful ${
+                  t.popular
+                    ? "border-foreground/80 bg-foreground text-background"
+                    : "border-border"
                 }`}
               >
-                {t.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[hsl(var(--brand-yellow))] text-[hsl(var(--brand-navy))] text-xs font-bold px-3 py-1 rounded-full shadow-soft">
-                    ★ POPULAR
-                  </div>
-                )}
-                <CardContent className="p-6 space-y-5">
+                <CardContent className="p-7 space-y-6">
                   <div className="space-y-1">
-                    <div className="text-xs font-bold uppercase tracking-wider" style={{ color: t.color }}>
+                    <div
+                      className={`text-[0.7rem] font-semibold uppercase tracking-[0.18em] ${
+                        t.popular ? "text-background/60" : "text-muted-foreground"
+                      }`}
+                    >
                       {t.name}
                     </div>
-                    <div className="text-lg font-bold text-foreground">{t.sub}</div>
+                    <div className="text-lg font-semibold tracking-tight">{t.sub}</div>
                   </div>
 
                   <div className="space-y-1">
-                    <div className="text-3xl font-bold text-[hsl(var(--brand-purple))]">
-                      From {t.price}
+                    <div className="display text-3xl">From {t.price}</div>
+                    <div
+                      className={`text-xs ${
+                        t.popular ? "text-background/60" : "text-muted-foreground"
+                      }`}
+                    >
+                      {t.tag}
                     </div>
-                    <div className="text-xs text-muted-foreground">{t.tag}</div>
                   </div>
 
-                  <div className="h-px bg-border" />
+                  <div className={`h-px ${t.popular ? "bg-background/20" : "bg-border"}`} />
 
                   <ul className="space-y-2.5">
                     {t.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: t.color }} />
-                        <span className="text-foreground/85">{f}</span>
+                      <li key={f} className="flex items-start gap-2.5 text-sm">
+                        <Check
+                          className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                            t.popular ? "text-[hsl(var(--brand-accent))]" : "text-[hsl(var(--brand-indigo))]"
+                          }`}
+                        />
+                        <span className={t.popular ? "text-background/85" : "text-foreground/85"}>
+                          {f}
+                        </span>
                       </li>
                     ))}
                   </ul>
 
                   <Button
                     asChild
-                    className="w-full rounded-full"
-                    style={{ backgroundColor: t.color, color: "white" }}
+                    className={`w-full rounded-full ${
+                      t.popular
+                        ? "bg-background text-foreground hover:bg-background/90"
+                        : "bg-foreground text-background hover:bg-[hsl(var(--brand-indigo))]"
+                    }`}
                   >
                     <a href={waLink(`Hi! I'm interested in the ${t.sub} package.`)} target="_blank" rel="noopener noreferrer">
                       Request a quote
@@ -138,6 +149,7 @@ const Pricing = () => {
               </Card>
             ))}
           </div>
+
 
           <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
             Hosting, domains and optional care plans (updates, backups and small changes)

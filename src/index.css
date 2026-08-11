@@ -2,75 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* EndlessX360 — Playful Studio palette
-   Primary: #7F0FAF (purple), Sky: #7BA4D0, Blue: #2E5E99, Navy: #0D2440
-   Accents: coral, mint, yellow for lively energy.
+/* EndlessX360 — Editorial Studio system
+   Warm cream canvas, one electric indigo accent, a peach horizon.
+   Restraint over decoration: big type, generous air, quiet surfaces.
 */
 
 @layer base {
   :root {
-    --background: 35 100% 96%;         /* warm cream #FFF6EC */
-    --foreground: 216 66% 15%;          /* navy #0D2440 */
+    --background: 35 45% 97%;           /* warm cream */
+    --foreground: 250 30% 10%;          /* ink */
 
     --card: 0 0% 100%;
-    --card-foreground: 216 66% 15%;
+    --card-foreground: 250 30% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 216 66% 15%;
+    --popover-foreground: 250 30% 10%;
 
-    --primary: 283 85% 37%;             /* #7F0FAF */
-    --primary-foreground: 35 100% 96%;
+    --primary: 242 82% 54%;             /* electric indigo */
+    --primary-foreground: 35 45% 97%;
 
-    --secondary: 210 47% 65%;           /* sky #7BA4D0 */
-    --secondary-foreground: 216 66% 15%;
+    --secondary: 24 60% 92%;            /* soft peach */
+    --secondary-foreground: 250 30% 10%;
 
-    --muted: 35 40% 92%;
-    --muted-foreground: 216 30% 35%;
+    --muted: 30 25% 93%;
+    --muted-foreground: 250 8% 40%;
 
-    --accent: 340 100% 71%;             /* coral #FF6B9D */
-    --accent-foreground: 216 66% 15%;
+    --accent: 14 88% 62%;               /* warm coral */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 40% 88%;
-    --input: 35 40% 88%;
-    --ring: 283 85% 37%;
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 242 82% 54%;
 
-    --radius: 1rem;
+    --radius: 1.1rem;
 
-    /* Semantic playful tokens */
-    --brand-purple: 283 85% 37%;
-    --brand-sky: 210 47% 65%;
-    --brand-blue: 214 55% 39%;
-    --brand-navy: 216 66% 15%;
-    --brand-coral: 340 100% 71%;
-    --brand-mint: 142 71% 55%;
-    --brand-yellow: 48 100% 62%;
+    /* Brand tokens */
+    --brand-cream: 35 45% 97%;
+    --brand-ink: 250 30% 10%;
+    --brand-indigo: 242 82% 54%;
+    --brand-accent: 14 88% 62%;
+    --brand-peach: 20 80% 88%;
+    --brand-sand: 32 55% 90%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-coral)));
-    --gradient-sunny: linear-gradient(135deg, hsl(var(--brand-yellow)), hsl(var(--brand-coral)));
-    --gradient-sky: linear-gradient(135deg, hsl(var(--brand-sky)), hsl(var(--brand-blue)));
-    --gradient-hero: radial-gradient(ellipse at top left, hsl(var(--brand-purple) / 0.18), transparent 55%),
-                     radial-gradient(ellipse at top right, hsl(var(--brand-yellow) / 0.25), transparent 50%),
-                     radial-gradient(ellipse at bottom, hsl(var(--brand-sky) / 0.25), transparent 60%),
-                     hsl(var(--background));
+    /* Legacy aliases kept so existing sections stay in-system */
+    --brand-purple: 242 82% 54%;
+    --brand-sky: 232 40% 70%;
+    --brand-blue: 242 60% 42%;
+    --brand-navy: 250 30% 10%;
+    --brand-coral: 14 88% 62%;
+    --brand-mint: 168 45% 45%;
+    --brand-yellow: 32 90% 62%;
 
-    --shadow-playful: 0 20px 45px -20px hsl(var(--brand-purple) / 0.45);
-    --shadow-soft: 0 10px 30px -15px hsl(var(--brand-navy) / 0.25);
-    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(120deg, hsl(var(--brand-indigo)), hsl(var(--brand-accent)));
+    --gradient-sunny: linear-gradient(120deg, hsl(var(--brand-yellow)), hsl(var(--brand-accent)));
+    --gradient-sky: linear-gradient(120deg, hsl(var(--brand-indigo)), hsl(var(--brand-sky)));
+    --gradient-hero:
+      radial-gradient(1100px 600px at 50% 115%, hsl(var(--brand-peach) / 0.95), transparent 70%),
+      radial-gradient(700px 420px at 85% 8%, hsl(var(--brand-sand) / 0.7), transparent 70%),
+      hsl(var(--background));
+
+    --shadow-playful: 0 30px 60px -32px hsl(var(--brand-ink) / 0.35);
+    --shadow-soft: 0 12px 34px -22px hsl(var(--brand-ink) / 0.28);
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
 @layer base {
   * { @apply border-border; }
-  body { @apply bg-background text-foreground; font-feature-settings: "ss01","cv11"; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01","cv11";
+  }
   html { scroll-behavior: smooth; }
+  ::selection { background: hsl(var(--brand-indigo)); color: hsl(var(--brand-cream)); }
 }
 
 @layer utilities {
   .gradient-text {
-    @apply bg-gradient-to-r from-[hsl(var(--brand-purple))] via-[hsl(var(--brand-coral))] to-[hsl(var(--brand-yellow))] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[hsl(var(--brand-indigo))] to-[hsl(var(--brand-accent))] bg-clip-text text-transparent;
   }
   .bg-gradient-primary { background-image: var(--gradient-primary); }
   .bg-gradient-sunny { background-image: var(--gradient-sunny); }
@@ -80,7 +92,22 @@
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .transition-smooth { transition: var(--transition-smooth); }
 
-  /* Playful floating blob */
+  /* Editorial display type */
+  .display {
+    @apply font-semibold tracking-[-0.035em] leading-[0.95];
+  }
+  .eyebrow {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground;
+  }
+  .rule { @apply h-px w-full bg-border; }
+
   @keyframes float-slow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
-  .animate-float { animation: float-slow 6s ease-in-out infinite; }
+  .animate-float { animation: float-slow 7s ease-in-out infinite; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+  .animate-rise { animation: rise 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float, .animate-rise { animation: none !important; }
+  }
 }

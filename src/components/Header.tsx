@@ -11,7 +11,6 @@ const navItems = [
   { name: "Pricing", href: "/#pricing" },
   { name: "Insights", href: "/insights" },
   { name: "About", href: "/#about" },
-  { name: "Contact", href: "/#contact" },
 ];
 
 const Header = () => {
@@ -19,43 +18,52 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-smooth",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-lg"
-          : "bg-transparent"
-      )}
-    >
-      <nav className="container px-4 py-4">
-        <div className="flex items-center justify-between">
-          <a href="/" className="flex items-center" aria-label="EndlessX360 home">
-            <Logo />
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <nav className="container px-4 pt-4">
+        <div
+          className={cn(
+            "flex items-center justify-between rounded-full px-3 py-2 transition-smooth",
+            isScrolled
+              ? "bg-background/75 backdrop-blur-xl border border-border shadow-soft"
+              : "bg-transparent border border-transparent"
+          )}
+        >
+          <a href="/" className="flex items-center pl-1" aria-label="EndlessX360 home">
+            <Logo size="h-8" />
           </a>
 
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-smooth hover:bg-secondary hover:text-foreground"
               >
                 {item.name}
               </a>
             ))}
+          </div>
+
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href="/#contact"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-smooth hover:text-foreground"
+            >
+              Contact
+            </a>
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-[hsl(var(--brand-purple))] hover:bg-[hsl(var(--brand-purple)/0.9)] text-white shadow-playful"
+              className="rounded-full bg-foreground text-background hover:bg-[hsl(var(--brand-indigo))] h-9 px-5"
             >
               <a href={waLink("Hi! I'd like a quote for a project.")} target="_blank" rel="noopener noreferrer">
-                Get a quote
+                Start a project
               </a>
             </Button>
           </div>
@@ -65,33 +73,30 @@ const Header = () => {
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden pt-4 pb-2 space-y-2">
-            {navItems.map((item) => (
+          <div className="md:hidden mt-2 rounded-3xl border border-border bg-background/95 backdrop-blur-xl p-3 shadow-soft space-y-1">
+            {[...navItems, { name: "Contact", href: "/#contact" }].map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-2 px-4 rounded-lg text-muted-foreground hover:bg-secondary transition-colors"
+                className="block rounded-2xl px-4 py-2.5 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
               >
                 {item.name}
               </a>
             ))}
-            <div className="pt-2">
-              <Button
-                asChild
-                size="sm"
-                className="w-full rounded-full bg-[hsl(var(--brand-purple))] hover:bg-[hsl(var(--brand-purple)/0.9)] text-white"
-              >
-                <a href={waLink("Hi! I'd like a quote for a project.")} target="_blank" rel="noopener noreferrer">
-                  Get a quote
-                </a>
-              </Button>
-            </div>
+            <Button
+              asChild
+              className="w-full rounded-full bg-foreground text-background hover:bg-[hsl(var(--brand-indigo))]"
+            >
+              <a href={waLink("Hi! I'd like a quote for a project.")} target="_blank" rel="noopener noreferrer">
+                Start a project
+              </a>
+            </Button>
           </div>
         )}
       </nav>

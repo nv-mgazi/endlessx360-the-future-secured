@@ -8,22 +8,20 @@ const Portfolio = () => {
   const [active, setActive] = useState<ProjectShot | null>(null);
 
   return (
-    <section id="work" className="py-24 relative bg-background scroll-mt-24">
+    <section id="work" className="py-28 md:py-36 relative bg-secondary/40 scroll-mt-24">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-4 mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[hsl(var(--brand-purple)/0.08)] border border-[hsl(var(--brand-purple)/0.25)]">
-              <span className="text-sm font-semibold text-[hsl(var(--brand-purple))]">Selected work</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Projects we've <span className="gradient-text">shipped</span>
+          <div className="mb-16">
+            <div className="eyebrow">Selected work</div>
+            <h2 className="display mt-5 text-[clamp(2rem,5.5vw,4rem)] max-w-3xl">
+              Built, handed over, in daily use
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
               Donation platforms, procurement systems, a school safety tracker and business
-              websites — all built, handed over and in use. Click any screen to view it full size.
+              websites. Click any screen to view it full size.
             </p>
-
           </div>
+
 
           <div className="space-y-14">
             {projects.map((p) => (
