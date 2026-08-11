@@ -23,8 +23,8 @@ const Contact = () => {
             <div className="grid md:grid-cols-2">
               <div className="p-8 md:p-10 space-y-6 bg-foreground text-background">
 
-                <h3 className="text-2xl font-bold">Reach us directly</h3>
-                <p className="text-white/90 leading-relaxed">
+                <h3 className="text-2xl font-semibold tracking-tight">Reach us directly</h3>
+                <p className="text-background/80 leading-relaxed">
                   Pick whichever suits you. You speak to the person who'll be doing the
                   work — no queue, no call centre.
                 </p>
@@ -34,27 +34,27 @@ const Contact = () => {
                     href={waLink("Hi! I'd like to discuss a project.")}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-white/15 hover:bg-white/25 transition-smooth backdrop-blur"
+                    className="flex items-center gap-4 p-4 rounded-2xl bg-background/10 hover:bg-background/20 transition-smooth backdrop-blur"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-[hsl(var(--brand-yellow))] flex items-center justify-center">
-                      <MessageCircle className="w-5 h-5 text-[hsl(var(--brand-navy))]" />
+                    <div className="w-11 h-11 rounded-xl bg-[hsl(var(--brand-accent))] flex items-center justify-center">
+                      <MessageCircle className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <div className="font-semibold">WhatsApp</div>
-                      <div className="text-sm text-white/80">{CONTACT.phone}</div>
+                      <div className="text-sm text-background/70">{CONTACT.phone}</div>
                     </div>
                   </a>
 
                   <a
                     href={`tel:${CONTACT.phoneRaw}`}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-white/15 hover:bg-white/25 transition-smooth backdrop-blur"
+                    className="flex items-center gap-4 p-4 rounded-2xl bg-background/10 hover:bg-background/20 transition-smooth backdrop-blur"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center">
+                    <div className="w-11 h-11 rounded-xl bg-background/15 flex items-center justify-center">
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="font-semibold">Call</div>
-                      <div className="text-sm text-white/80">
+                      <div className="text-sm text-background/70">
                         {CONTACT.phone} · same number on WhatsApp
                       </div>
                     </div>
@@ -62,34 +62,34 @@ const Contact = () => {
 
                   <a
                     href={mailtoHref("Project enquiry")}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-white/15 hover:bg-white/25 transition-smooth backdrop-blur"
+                    className="flex items-center gap-4 p-4 rounded-2xl bg-background/10 hover:bg-background/20 transition-smooth backdrop-blur"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center">
+                    <div className="w-11 h-11 rounded-xl bg-background/15 flex items-center justify-center">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="font-semibold">Email us</div>
-                      <div className="text-sm text-white/80">
+                      <div className="text-sm text-background/70">
                         Opens in Gmail, Outlook or your mail app
                       </div>
                     </div>
                   </a>
 
 
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur">
-                    <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center">
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-background/5 backdrop-blur">
+                    <div className="w-11 h-11 rounded-xl bg-background/15 flex items-center justify-center">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="font-semibold">Based in</div>
-                      <div className="text-sm text-white/80">{CONTACT.location}</div>
+                      <div className="text-sm text-background/70">{CONTACT.location}</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <CardContent className="p-8 md:p-10 space-y-6 bg-card">
-                <h3 className="text-2xl font-bold">What happens next</h3>
+                <h3 className="text-2xl font-semibold tracking-tight">What happens next</h3>
                 <ol className="space-y-5">
                   {[
                     { n: "1", t: "You send the brief", d: "A short message about your business and what the project needs to do." },
@@ -99,7 +99,7 @@ const Contact = () => {
                   ].map((s) => (
 
                     <li key={s.n} className="flex gap-4">
-                      <div className="w-9 h-9 rounded-full bg-[hsl(var(--brand-yellow))] text-[hsl(var(--brand-navy))] font-bold flex items-center justify-center flex-shrink-0">
+                      <div className="w-9 h-9 rounded-full bg-secondary text-foreground font-semibold flex items-center justify-center flex-shrink-0">
                         {s.n}
                       </div>
                       <div>
@@ -113,7 +113,7 @@ const Contact = () => {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full rounded-full bg-[hsl(var(--brand-purple))] hover:bg-[hsl(var(--brand-purple)/0.9)] text-white shadow-playful"
+                  className="w-full rounded-full bg-foreground text-background hover:bg-[hsl(var(--brand-indigo))]"
                 >
                   <a href={waLink("Hi! I'd like a quote for a project.")} target="_blank" rel="noopener noreferrer">
                     Request a quote
