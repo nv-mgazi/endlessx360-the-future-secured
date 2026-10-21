@@ -2,83 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* EndlessX360 — Editorial Studio system
-   Warm cream canvas, one electric indigo accent, a peach horizon.
-   Restraint over decoration: big type, generous air, quiet surfaces.
-*/
+/* EndlessX360 — Midnight Tech system (site-wide). */
 
 @layer base {
   :root {
-    --background: 35 45% 97%;           /* warm cream */
-    --foreground: 250 30% 10%;          /* ink */
-
-    --card: 0 0% 100%;
-    --card-foreground: 250 30% 10%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 250 30% 10%;
-
-    --primary: 242 82% 54%;             /* electric indigo */
-    --primary-foreground: 35 45% 97%;
-
-    --secondary: 24 60% 92%;            /* soft peach */
-    --secondary-foreground: 250 30% 10%;
-
-    --muted: 30 25% 93%;
-    --muted-foreground: 250 8% 40%;
-
-    --accent: 14 88% 62%;               /* warm coral */
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 30 20% 88%;
-    --input: 30 20% 88%;
-    --ring: 242 82% 54%;
-
-    --radius: 1.1rem;
-
-    /* Brand tokens */
-    --brand-cream: 35 45% 97%;
-    --brand-ink: 250 30% 10%;
-    --brand-indigo: 242 82% 54%;
-    --brand-accent: 14 88% 62%;
-    --brand-peach: 20 80% 88%;
-    --brand-sand: 32 55% 90%;
-
-    /* Legacy aliases kept so existing sections stay in-system */
-    --brand-purple: 242 82% 54%;
-    --brand-sky: 232 40% 70%;
-    --brand-blue: 242 60% 42%;
-    --brand-navy: 250 30% 10%;
-    --brand-coral: 14 88% 62%;
-    --brand-mint: 168 45% 45%;
-    --brand-yellow: 32 90% 62%;
-
-    --gradient-primary: linear-gradient(120deg, hsl(var(--brand-indigo)), hsl(var(--brand-accent)));
-    --gradient-sunny: linear-gradient(120deg, hsl(var(--brand-yellow)), hsl(var(--brand-accent)));
-    --gradient-sky: linear-gradient(120deg, hsl(var(--brand-indigo)), hsl(var(--brand-sky)));
-    --gradient-hero:
-      radial-gradient(1100px 600px at 50% 115%, hsl(var(--brand-peach) / 0.95), transparent 70%),
-      radial-gradient(700px 420px at 85% 8%, hsl(var(--brand-sand) / 0.7), transparent 70%),
-      hsl(var(--background));
-
-    --shadow-playful: 0 30px 60px -32px hsl(var(--brand-ink) / 0.35);
-    --shadow-soft: 0 12px 34px -22px hsl(var(--brand-ink) / 0.28);
-    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-
-    /* Midnight Tech tokens (Phase 1 — scoped via .midnight) */
+    /* Midnight Tech palette */
     --mn-bg: 226 51% 8%;        /* #0A0F1F */
     --mn-deep: 214 62% 8%;      /* #081322 */
     --mn-blue: 215 100% 50%;    /* #006BFF */
     --mn-cyan: 191 100% 50%;    /* #00D1FF */
     --mn-violet: 267 100% 62%;  /* #8A3DFF */
-    --mn-silver: 215 25% 86%;
-    --mn-lavender: 255 100% 86%;
+    --mn-silver: 213 25% 73%;   /* #A9B8CB */
     --mn-warm: 20 100% 72%;     /* #FF9F6E */
-    --mn-text: 220 40% 97%;
-    --mn-muted: 220 18% 72%;
+    --mn-text: 217 50% 97%;     /* #F3F6FB */
+    --mn-muted: 215 20% 74%;
+
+    /* shadcn semantic tokens mapped to the palette */
+    --background: var(--mn-bg);
+    --foreground: var(--mn-text);
+    --card: var(--mn-deep);
+    --card-foreground: var(--mn-text);
+    --popover: var(--mn-deep);
+    --popover-foreground: var(--mn-text);
+    --primary: var(--mn-blue);
+    --primary-foreground: var(--mn-text);
+    --secondary: 220 40% 14%;
+    --secondary-foreground: var(--mn-text);
+    --muted: 220 40% 14%;
+    --muted-foreground: var(--mn-muted);
+    --accent: var(--mn-cyan);
+    --accent-foreground: var(--mn-bg);
+    --destructive: 0 72% 56%;
+    --destructive-foreground: var(--mn-text);
+    --border: 220 30% 20%;
+    --input: 220 30% 22%;
+    --ring: var(--mn-cyan);
+    --radius: 1rem;
+
+    --transition-smooth: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
@@ -87,20 +48,30 @@
   .mn-hero-bg { background: hsl(var(--mn-bg)); }
   .mn-hero-shade {
     background:
-      linear-gradient(90deg, hsl(var(--mn-bg) / 0.92) 0%, hsl(var(--mn-bg) / 0.55) 45%, transparent 75%),
+      linear-gradient(90deg, hsl(var(--mn-bg) / 0.92) 0%, hsl(var(--mn-bg) / 0.5) 45%, transparent 75%),
       linear-gradient(180deg, transparent 70%, hsl(var(--mn-bg)) 100%);
   }
   .mn-hero-vignette {
-    background: radial-gradient(60% 60% at 36% 50%, transparent 30%, hsl(var(--mn-bg) / 0.75) 100%);
+    background: radial-gradient(70% 70% at 50% 50%, hsl(var(--mn-bg) / 0.2) 20%, hsl(var(--mn-bg) / 0.85) 100%);
   }
   .mn-frame {
     border: 1px solid hsl(var(--mn-text) / 0.1);
     box-shadow: 0 40px 80px -40px hsl(var(--mn-blue) / 0.45), inset 0 1px 0 hsl(0 0% 100% / 0.08);
     background: hsl(var(--mn-deep));
   }
-  .mn-focus-bg {
+  .mn-section-tech {
     background:
       radial-gradient(800px 500px at 15% 0%, hsl(var(--mn-blue) / 0.10), transparent 70%),
+      hsl(var(--mn-bg));
+  }
+  .mn-section-innov {
+    background:
+      radial-gradient(900px 600px at 85% 20%, hsl(var(--mn-violet) / 0.08), transparent 70%),
+      linear-gradient(180deg, hsl(var(--mn-bg)), hsl(var(--mn-deep)));
+  }
+  .mn-section-contact {
+    background:
+      radial-gradient(700px 420px at 50% 0%, hsl(var(--mn-blue) / 0.12), transparent 70%),
       hsl(var(--mn-bg));
   }
   .mn-glass {
@@ -113,6 +84,10 @@
     @apply text-[0.72rem] font-semibold uppercase tracking-[0.24em];
     color: hsl(var(--mn-cyan));
   }
+  .mn-h2 {
+    @apply font-semibold tracking-[-0.035em] leading-[1.02] text-[clamp(2.2rem,5vw,4rem)];
+    color: hsl(var(--mn-text));
+  }
   .mn-gradient-text {
     background: linear-gradient(100deg, hsl(var(--mn-cyan)), hsl(var(--mn-blue)) 65%, hsl(var(--mn-violet)));
     -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -124,6 +99,7 @@
     transition: var(--transition-smooth);
   }
   .mn-btn-primary:hover { filter: brightness(1.12); }
+  .mn-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
   .mn-btn-ghost {
     color: hsl(var(--mn-text));
     border: 1px solid hsl(var(--mn-text) / 0.18);
@@ -131,6 +107,17 @@
     transition: var(--transition-smooth);
   }
   .mn-btn-ghost:hover { background: hsl(var(--mn-text) / 0.1); }
+  .mn-input {
+    @apply w-full rounded-xl px-4 py-3 text-base outline-none;
+    color: hsl(var(--mn-text));
+    background: hsl(var(--mn-text) / 0.04);
+    border: 1px solid hsl(var(--mn-text) / 0.14);
+    transition: var(--transition-smooth);
+  }
+  .mn-input::placeholder { color: hsl(var(--mn-muted) / 0.6); }
+  .mn-input:focus { border-color: hsl(var(--mn-cyan) / 0.7); box-shadow: 0 0 0 3px hsl(var(--mn-cyan) / 0.15); }
+  .mn-input[aria-invalid="true"] { border-color: hsl(var(--destructive)); }
+  .mn-input option { background: hsl(var(--mn-deep)); }
   .midnight a:focus-visible, .midnight button:focus-visible {
     outline: 2px solid hsl(var(--mn-cyan)); outline-offset: 3px;
   }
@@ -143,37 +130,17 @@
     font-feature-settings: "ss01","cv11";
   }
   html { scroll-behavior: smooth; }
-  ::selection { background: hsl(var(--brand-indigo)); color: hsl(var(--brand-cream)); }
+  ::selection { background: hsl(var(--mn-blue)); color: hsl(var(--mn-text)); }
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-[hsl(var(--brand-indigo))] to-[hsl(var(--brand-accent))] bg-clip-text text-transparent;
-  }
-  .bg-gradient-primary { background-image: var(--gradient-primary); }
-  .bg-gradient-sunny { background-image: var(--gradient-sunny); }
-  .bg-gradient-sky { background-image: var(--gradient-sky); }
-  .bg-gradient-hero { background-image: var(--gradient-hero); }
-  .shadow-playful { box-shadow: var(--shadow-playful); }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
   .transition-smooth { transition: var(--transition-smooth); }
-
-  /* Editorial display type */
-  .display {
-    @apply font-semibold tracking-[-0.035em] leading-[0.95];
-  }
-  .eyebrow {
-    @apply text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground;
-  }
-  .rule { @apply h-px w-full bg-border; }
-
-  @keyframes float-slow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
-  .animate-float { animation: float-slow 7s ease-in-out infinite; }
 
   @keyframes rise { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
   .animate-rise { animation: rise 0.7s cubic-bezier(0.22,1,0.36,1) both; }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-float, .animate-rise { animation: none !important; }
+    html { scroll-behavior: auto; }
+    .animate-rise { animation: none !important; }
   }
 }
