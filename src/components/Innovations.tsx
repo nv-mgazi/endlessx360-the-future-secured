@@ -83,7 +83,7 @@ const Innovations = () => {
           </p>
         </div>
 
-        <div className="innovation-track mt-16 md:mt-24 lg:grid lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:pb-[12svh]">
+        <div className="innovation-track mt-16 md:mt-24 lg:grid lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           {/* sticky product visual (desktop) */}
           <div className="hidden lg:block">
             <div className="innovation-visual sticky top-28 h-[calc(100svh-9rem)] max-h-[640px]">
@@ -122,7 +122,7 @@ const Innovations = () => {
           </div>
 
           {/* product narratives */}
-          <div>
+          <div className="lg:pb-[max(35svh,240px)]">
             {products.map((p, i) => (
               <article
                 key={p.name}
