@@ -54,23 +54,22 @@ const Contact = () => {
               <li>
                 <a href={waLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
                   <MessageCircle className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
-                  <span><span className="block font-medium">WhatsApp</span><span className="text-sm text-[hsl(var(--mn-muted))]">{CONTACT.phone}</span></span>
+                  <span><span className="block font-medium">WhatsApp</span><span className="text-sm text-[hsl(var(--mn-muted))]">Open WhatsApp</span></span>
                 </a>
               </li>
               <li>
                 <a href={`tel:${CONTACT.phoneRaw}`} className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
                   <Phone className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
-                  <span><span className="block font-medium">Call</span><span className="text-sm text-[hsl(var(--mn-muted))]">{CONTACT.phone}</span></span>
+                  <span><span className="block font-medium">Call</span><span className="text-sm text-[hsl(var(--mn-muted))]">Start a call</span></span>
                 </a>
               </li>
               <li>
                 <a href={mailtoHref("Enquiry")} className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
                   <Mail className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
-                  <span><span className="block font-medium">Email</span><span className="text-sm text-[hsl(var(--mn-muted))]">Opens your email app</span></span>
+                  <span><span className="block font-medium">Email</span><span className="text-sm text-[hsl(var(--mn-muted))]">Compose a message</span></span>
                 </a>
               </li>
             </ul>
-            <p className="mt-6 text-sm text-[hsl(var(--mn-muted))]">{CONTACT.location}</p>
           </div>
 
           <form onSubmit={onSubmit} noValidate className="rounded-[2rem] border mn-glass p-6 md:p-10 space-y-6" aria-label="Enquiry form">
