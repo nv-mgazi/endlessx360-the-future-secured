@@ -39,26 +39,39 @@ const Innovations = () => {
   const refs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.i));
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px" }
-    );
-    refs.current.forEach((el) => el && io.observe(el));
-    return () => io.disconnect();
+    // Select the narrative nearest the reading line, independent of observer
+    // callback ordering, including reverse scroll and jumps through anchors.
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.5;
+      let closest = 0;
+      let distance = Infinity;
+      refs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const next = Math.abs(rect.top + rect.height / 2 - line);
+        if (next < distance) { distance = next; closest = i; }
+      });
+      setActive(closest);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    const observer = new ResizeObserver(schedule);
+    refs.current.forEach((el) => { if (el) observer.observe(el); });
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
   }, []);
 
   return (
-    <section id="innovations" className="midnight relative scroll-mt-20 py-24 md:py-32 mn-section-innov overflow-hidden" aria-labelledby="innov-title">
+    <section id="innovations" className="midnight relative scroll-mt-20 py-24 md:py-32 mn-section-innov" aria-labelledby="innov-title">
       {/* shifting ambient light */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-1/4 h-[600px] w-[600px] rounded-full blur-[140px] opacity-25 transition-colors duration-1000"
-        style={{ background: `hsl(${products[active].glow})` }}
-      />
       <div className="container relative px-5">
         <div className="max-w-3xl">
           <div className="mn-eyebrow">Innovations</div>
@@ -70,10 +83,10 @@ const Innovations = () => {
           </p>
         </div>
 
-        <div className="mt-16 md:mt-24 lg:grid lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+        <div className="innovation-track mt-16 md:mt-24 lg:grid lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           {/* sticky product visual (desktop) */}
           <div className="hidden lg:block">
-            <div className="sticky top-28 h-[calc(100vh-9rem)] max-h-[640px]">
+            <div className="innovation-visual sticky top-28 h-[calc(100svh-9rem)] max-h-[640px]">
               <div className="relative h-full overflow-hidden rounded-[2rem] mn-frame">
                 {products.map((p, i) => (
                   <img
@@ -83,8 +96,11 @@ const Innovations = () => {
                     width={1536}
                     height={1024}
                     loading="lazy"
+                    decoding="async"
+                    aria-hidden={i !== active}
+                    data-product-image={i}
                     className={cn(
-                      "absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                      "innovation-image absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:transform-none",
                       i === active ? "opacity-100 scale-100" : "opacity-0 scale-[1.06]"
                     )}
                   />
@@ -98,20 +114,23 @@ const Innovations = () => {
                     0{active + 1} / 0{products.length}
                   </span>
                 </div>
+                <div className="absolute inset-x-6 top-6 flex gap-2" aria-hidden="true">
+                  {products.map((p, i) => <span key={p.name} className={cn("innovation-step h-0.5 flex-1 transition-colors duration-700 motion-reduce:transition-none", i === active && "is-active")} />)}
+                </div>
               </div>
             </div>
           </div>
 
           {/* product narratives */}
-          <div>
+          <div className="lg:pb-[max(35svh,240px)]">
             {products.map((p, i) => (
               <article
                 key={p.name}
                 ref={(el) => (refs.current[i] = el)}
                 data-i={i}
                 className={cn(
-                  "lg:min-h-[78vh] flex flex-col justify-center py-10 lg:py-0 border-t border-[hsl(var(--mn-text)/0.08)] lg:border-0 transition-opacity duration-700",
-                  i === active ? "lg:opacity-100" : "lg:opacity-35"
+                  "innovation-narrative lg:min-h-[max(78svh,560px)] flex flex-col justify-center py-10 lg:py-12 border-t border-[hsl(var(--mn-text)/0.08)] lg:border-0 transition-opacity duration-700 motion-reduce:transition-none",
+                  i === active ? "lg:opacity-100" : "lg:opacity-70"
                 )}
               >
                 <div className="lg:hidden overflow-hidden rounded-[1.5rem] mn-frame mb-8">

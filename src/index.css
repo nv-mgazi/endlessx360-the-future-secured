@@ -107,6 +107,26 @@
     transition: var(--transition-smooth);
   }
   .mn-btn-ghost:hover { background: hsl(var(--mn-text) / 0.1); }
+  .mn-nav-contact {
+    color: hsl(var(--mn-text));
+    border: 1px solid hsl(var(--mn-cyan) / 0.45);
+    background: hsl(var(--mn-cyan) / 0.06);
+    box-shadow: inset 0 1px 0 hsl(var(--mn-text) / 0.08);
+    transition: background 220ms, border-color 220ms, box-shadow 220ms;
+  }
+  .mn-nav-contact:hover, .mn-nav-contact[aria-current="true"] {
+    background: hsl(var(--mn-cyan) / 0.13);
+    border-color: hsl(var(--mn-cyan) / 0.8);
+    box-shadow: inset 0 1px 0 hsl(var(--mn-text) / 0.12);
+  }
+  .innovation-step { background: hsl(var(--mn-text) / 0.3); }
+  .innovation-step.is-active { background: hsl(var(--mn-cyan)); }
+  @media (min-width: 1024px) and (max-height: 800px) {
+    .innovation-track .innovation-visual { height: calc(100svh - 14rem); }
+  }
+  .pv-light-sweep {
+    background: linear-gradient(105deg, transparent 25%, hsl(var(--mn-cyan) / 0.07) 45%, hsl(var(--mn-text) / 0.04) 50%, transparent 70%);
+  }
   .mn-input {
     @apply w-full rounded-xl px-4 py-3 text-base outline-none;
     color: hsl(var(--mn-text));
@@ -142,5 +162,6 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .animate-rise { animation: none !important; }
+    .pv-light-sweep { display: none; }
   }
 }

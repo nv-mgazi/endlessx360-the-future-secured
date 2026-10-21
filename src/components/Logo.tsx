@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import iconColor from "@/assets/brand/EndlessX360_icon_full_color.svg";
 import iconWhite from "@/assets/brand/EndlessX360_icon_white.svg";
+import heroMark from "@/assets/brand/logo-color-mark.png";
 import colorFull from "@/assets/brand/logo-color-full.png";
 import whiteFull from "@/assets/brand/logo-white-full.png";
 
@@ -10,6 +11,11 @@ export const LOGO = { iconColor, iconWhite, colorFull, whiteFull };
 /** Large full-colour approved standalone icon (hero centrepiece). */
 export const BrandMark = ({ className }: { className?: string }) => (
   <img src={LOGO.iconColor} alt="EndlessX360" width={1254} height={725} className={className} decoding="async" />
+);
+
+/** Original processed hero artwork — keep its pixels and proportions unchanged. */
+export const HeroBrandMark = ({ className }: { className?: string }) => (
+  <img src={heroMark} alt="EndlessX360" width={1200} height={346} className={className} decoding="async" />
 );
 
 interface LogoProps {

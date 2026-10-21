@@ -88,7 +88,7 @@ const Header = () => {
           <a
             href="#contact"
             aria-current={active === "contact" ? "true" : undefined}
-            className="hidden md:inline-flex h-10 items-center rounded-full px-6 text-sm font-semibold mn-btn-primary"
+            className="hidden md:inline-flex h-10 items-center rounded-full px-6 text-sm font-semibold mn-nav-contact"
           >
             Contact
           </a>
