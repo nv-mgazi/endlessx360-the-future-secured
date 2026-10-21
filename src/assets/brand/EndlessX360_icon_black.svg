@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1254 725" width="1254" height="725" role="img" aria-label="EndlessX360 approved infinity E X brand icon, black version">
+<defs>
+  <!-- Traced from the approved pure-white EndlessX360 icon silhouette. -->
+    <path id="main" d="M45 457 L53 477 L76 520 L98 550 L113 567 L131 585 L162 610 L182 623 L219 642 L252 654 L275 660 L319 666 L362 666 L397 662 L430 655 L461 645 L511 622 L540 605 L589 570 L621 544 L1055 161 L1184 45 L1200 29 L1078 29 L1046 32 L1024 36 L997 44 L963 60 L946 71 L930 84 L721 281 L535 449 L479 497 L441 522 L413 536 L382 547 L351 552 L325 552 L296 547 L260 533 L240 521 L219 504 L193 476 L176 450 L161 414 L154 382 L152 353 L154 322 L161 288 L169 265 L187 233 L202 213 L218 196 L236 180 L258 164 L288 148 L321 138 L336 136 L372 136 L394 139 L422 146 L445 155 L465 165 L508 194 L554 235 L645 326 L707 271 L742 237 L655 149 L607 107 L559 73 L509 47 L473 34 L450 28 L424 23 L397 20 L356 20 L334 22 L300 28 L268 37 L227 54 L205 66 L180 82 L153 103 L118 137 L106 151 L83 182 L68 207 L55 233 L41 271 L33 304 L29 334 L28 368 L31 401 L36 427 Z"/>
+    <path id="leg" d="M759 443 L806 499 L864 562 L909 602 L945 626 L981 643 L1002 650 L1040 658 L1076 661 L1163 661 L1157 653 L862 356 L858 355 Z"/>
+    <path id="etop" d="M209 339 L402 339 L419 336 L431 331 L442 323 L516 250 L301 251 L291 256 Z"/>
+    <path id="ebottom" d="M209 376 L283 453 L297 461 L476 461 L410 392 L399 383 L387 378 L377 376 Z"/>
+  <linearGradient id="colorMain" x1="2%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#0ADFFD"/>
+    <stop offset="23%" stop-color="#187FFF"/>
+    <stop offset="51%" stop-color="#2446D4"/>
+    <stop offset="72%" stop-color="#8543EE"/>
+    <stop offset="90%" stop-color="#C559DF"/>
+    <stop offset="100%" stop-color="#F29A69"/>
+  </linearGradient>
+  <linearGradient id="colorBack" x1="10%" y1="0%" x2="95%" y2="100%">
+    <stop offset="0%" stop-color="#4E32DB"/>
+    <stop offset="42%" stop-color="#824DEA"/>
+    <stop offset="73%" stop-color="#F26EAA"/>
+    <stop offset="100%" stop-color="#FFAF56"/>
+  </linearGradient>
+  <linearGradient id="colorE" x1="0%" y1="0%" x2="90%" y2="100%">
+    <stop offset="0%" stop-color="#D0ADFF"/>
+    <stop offset="30%" stop-color="#8065FF"/>
+    <stop offset="73%" stop-color="#513ADC"/>
+    <stop offset="100%" stop-color="#F18EEC"/>
+  </linearGradient>
+  <linearGradient id="chromeMain" x1="3%" y1="0%" x2="89%" y2="100%">
+    <stop offset="0%" stop-color="#566277"/>
+    <stop offset="15%" stop-color="#FFFFFF"/>
+    <stop offset="29%" stop-color="#B4C0CF"/>
+    <stop offset="50%" stop-color="#485467"/>
+    <stop offset="65%" stop-color="#F8FBFF"/>
+    <stop offset="82%" stop-color="#8492A5"/>
+    <stop offset="100%" stop-color="#E5ECF4"/>
+  </linearGradient>
+  <linearGradient id="chromeBack" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#353F4F"/>
+    <stop offset="35%" stop-color="#F6FAFF"/>
+    <stop offset="64%" stop-color="#8796A8"/>
+    <stop offset="100%" stop-color="#F4F8FF"/>
+  </linearGradient>
+  <linearGradient id="topSheen" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".42"/>
+    <stop offset="36%" stop-color="#FFFFFF" stop-opacity=".12"/>
+    <stop offset="63%" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#070D3A" stop-opacity=".16"/>
+  </linearGradient>
+  <clipPath id="silhouette">
+    <use href="#main"/><use href="#leg"/><use href="#etop"/><use href="#ebottom"/>
+  </clipPath>
+</defs>
+<g fill="#050505"><use href="#leg"/><use href="#main"/><use href="#etop"/><use href="#ebottom"/></g>
+</svg>

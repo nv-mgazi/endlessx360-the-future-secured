@@ -1,14 +1,15 @@
 import { cn } from "@/lib/utils";
-import colorMark from "@/assets/brand/logo-color-mark.png";
+import iconColor from "@/assets/brand/EndlessX360_icon_full_color.svg";
+import iconWhite from "@/assets/brand/EndlessX360_icon_white.svg";
 import colorFull from "@/assets/brand/logo-color-full.png";
 import whiteFull from "@/assets/brand/logo-white-full.png";
 
 /** Approved EndlessX360 logo files — used as supplied, never redrawn. */
-export const LOGO = { colorMark: colorMark, colorFull: colorFull, whiteFull: whiteFull };
+export const LOGO = { iconColor, iconWhite, colorFull, whiteFull };
 
-/** Large full-colour approved mark (hero centrepiece). */
+/** Large full-colour approved standalone icon (hero centrepiece). */
 export const BrandMark = ({ className }: { className?: string }) => (
-  <img src={LOGO.colorMark} alt="EndlessX360" width={1200} height={346} className={className} decoding="async" />
+  <img src={LOGO.iconColor} alt="EndlessX360" width={1254} height={725} className={className} decoding="async" />
 );
 
 interface LogoProps {
@@ -17,10 +18,9 @@ interface LogoProps {
   size?: string;
   /** "dark" = white logo for dark surfaces */
   tone?: "dark" | "light";
-  showWordmark?: boolean;
 }
 
-const Logo = ({ className, size = "h-7", tone = "light" }: LogoProps) => (
+const Logo = ({ className, size = "h-7", tone = "dark" }: LogoProps) => (
   <img
     src={tone === "dark" ? LOGO.whiteFull : LOGO.colorFull}
     alt="EndlessX360"

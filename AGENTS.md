@@ -1,3 +1,5 @@
-- Redesigned (Midnight Tech) sections are scoped under the `.midnight` class with `--mn-*` tokens; legacy sections keep the old :root tokens until their phase. Why: staged redesign without breaking untouched sections.
-- The brand logo is only rendered from the approved uploaded image files via Logo.tsx (`BrandMark` for the large colour mark, `Logo` for wordmarks). Why: the approved artwork must never be redrawn.
-- Scroll storytelling uses GSAP ScrollTrigger inside gsap.context + matchMedia (pin on desktop, simple reveal on touch, none on reduced motion). Why: native scroll, clean teardown.
+- The whole site uses the Midnight Tech `--mn-*` tokens; shadcn semantic tokens in :root are mapped onto them. Why: one consistent dark identity, no legacy cream styles.
+- The brand logo is only rendered from the approved uploaded files via Logo.tsx (`BrandMark` = full-colour standalone icon SVG, `Logo` = full-name wordmark PNG). Why: the approved artwork must never be redrawn.
+- Homepage is one scrolling page with anchors #home, #technology, #innovations, #perspective, #contact; only /privacy is a separate page. Why: continuous experience, no unnecessary pages.
+- Scroll storytelling uses GSAP ScrollTrigger inside gsap.context + matchMedia (pin only for the desktop hero composition; reveals elsewhere; none on reduced motion). Innovations uses CSS sticky + IntersectionObserver, not a pin. Why: native scroll, reliable anchors, clean teardown.
+- The contact form validates in `src/lib/enquiry.ts` and hands off to the visitor's email app (mailto); it never claims delivery. Why: no backend in V1, so no false success states.
