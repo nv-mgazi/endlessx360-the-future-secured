@@ -114,11 +114,11 @@
     color: hsl(var(--mn-cyan));
   }
   .mn-gradient-text {
-    background: linear-gradient(100deg, hsl(var(--mn-blue)), hsl(var(--mn-cyan)) 50%, hsl(var(--mn-violet)));
+    background: linear-gradient(100deg, hsl(var(--mn-cyan)), hsl(var(--mn-blue)) 65%, hsl(var(--mn-violet)));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .mn-btn-primary {
-    background: linear-gradient(110deg, hsl(var(--mn-blue)), hsl(var(--mn-violet)));
+    background: linear-gradient(110deg, hsl(var(--mn-blue)), hsl(215 100% 42%));
     color: hsl(var(--mn-text));
     box-shadow: 0 12px 30px -12px hsl(var(--mn-blue) / 0.7), inset 0 1px 0 hsl(0 0% 100% / 0.2);
     transition: var(--transition-smooth);

@@ -169,8 +169,8 @@ const Hero = () => {
           </div>
 
           <div className="hero-mark relative flex items-center justify-center">
-            <div className="absolute inset-0 m-auto h-1/2 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.18)] blur-[100px]" aria-hidden="true" />
-            <BrandMark className="relative w-full max-w-[560px] h-auto drop-shadow-[0_30px_60px_hsl(var(--mn-blue)/0.35)] py-10 px-6" />
+            <div className="absolute inset-0 m-auto h-1/3 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.14)] blur-[90px]" aria-hidden="true" />
+            <BrandMark className="relative w-full max-w-[580px] h-auto saturate-[0.92] drop-shadow-[0_24px_50px_hsl(var(--mn-deep)/0.8)] py-10 px-4" />
           </div>
         </div>
 
