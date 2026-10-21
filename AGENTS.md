@@ -1,0 +1,3 @@
+- Redesigned (Midnight Tech) sections are scoped under the `.midnight` class with `--mn-*` tokens; legacy sections keep the old :root tokens until their phase. Why: staged redesign without breaking untouched sections.
+- Brand icon is only rendered via `BrandMark` in Logo.tsx using the fixed approved paths. Why: the geometry is approved and must not drift.
+- Scroll storytelling uses GSAP ScrollTrigger inside gsap.context + matchMedia (pin on desktop, simple reveal on touch, none on reduced motion). Why: native scroll, clean teardown.
