@@ -2,12 +2,16 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { BrandMark } from "@/components/Logo";
+import { HeroBrandMark } from "@/components/Logo";
 import earth from "@/assets/hero-earth.jpg";
 import imgSoftware from "@/assets/focus-software.jpg";
 import imgAi from "@/assets/focus-ai.jpg";
 import imgSecurity from "@/assets/focus-security.jpg";
 import imgEmerging from "@/assets/focus-emerging.jpg";
+import detailSoftware from "@/assets/technology-software-detail.jpg";
+import detailAi from "@/assets/technology-ai-detail.jpg";
+import detailSecurity from "@/assets/technology-security-detail.jpg";
+import detailEmerging from "@/assets/technology-emerging-detail.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,24 +19,32 @@ const areas = [
   {
     key: "Software",
     img: imgSoftware,
+    detail: detailSoftware,
+    alt: "Software development workstation with code and application architecture displays",
     title: "Software & Digital Development",
     body: "Applications, websites, digital platforms and systems designed around practical needs.",
   },
   {
     key: "Artificial Intelligence",
     img: imgAi,
+    detail: detailAi,
+    alt: "AI accelerator and memory modules inside a high-performance computing server",
     title: "Artificial Intelligence",
     body: "AI-assisted applications, intelligent systems and experiences that enhance productivity, interaction and decision-making.",
   },
   {
     key: "Security",
     img: imgSecurity,
+    detail: detailSecurity,
+    alt: "Network security appliance with fibre connections and status indicators",
     title: "Security & Protection",
     body: "Security-focused software, digital protection and technologies supporting safer, more dependable systems.",
   },
   {
     key: "Emerging Technology",
     img: imgEmerging,
+    detail: detailEmerging,
+    alt: "Connected sensor and edge-computing prototypes on a research laboratory bench",
     title: "Emerging Technologies",
     body: "Exploration of connected systems, IoT, automation and other developing technological possibilities.",
   },
@@ -50,11 +62,14 @@ const Hero = () => {
   const root = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    const element = root.current;
+    if (!element) return;
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
-        const mark = root.current!.querySelector<HTMLElement>(".hero-mark")!;
+        const mark = element.querySelector<HTMLElement>(".hero-mark");
+        if (!mark) return;
         // distance from the mark's resting centre to the viewport centre
         const toCentre = () => {
           gsap.set(mark, { clearProps: "x" });
@@ -92,9 +107,10 @@ const Hero = () => {
           .to(mark, { autoAlpha: 0, scale: 0.5, duration: 0.5 }, "<")
           .to(".hero-earth", { autoAlpha: 0.15, duration: 0.5 }, "<");
 
-        const imgs = root.current!.querySelectorAll("img");
+        const imgs = element.querySelectorAll("img");
         const refresh = () => ScrollTrigger.refresh();
         imgs.forEach((i) => !i.complete && i.addEventListener("load", refresh, { once: true }));
+        return () => imgs.forEach((i) => i.removeEventListener("load", refresh));
       });
 
       mm.add("(max-width: 1023px) and (prefers-reduced-motion: no-preference)", () => {
@@ -170,7 +186,7 @@ const Hero = () => {
 
           <div className="hero-mark relative z-20 flex items-center justify-center order-first lg:order-none">
             <div className="absolute inset-0 m-auto h-1/2 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.18)] blur-[90px]" aria-hidden="true" />
-            <BrandMark className="relative w-[70%] max-w-[300px] lg:w-full lg:max-w-[520px] h-auto drop-shadow-[0_24px_50px_hsl(var(--mn-deep)/0.9)] lg:py-10 lg:px-6" />
+            <HeroBrandMark className="relative w-[85%] max-w-[380px] lg:w-full lg:max-w-[560px] h-auto drop-shadow-[0_24px_50px_hsl(var(--mn-deep)/0.9)] lg:py-10 lg:px-6" />
           </div>
         </div>
 
@@ -212,7 +228,7 @@ const Hero = () => {
                 className={`focus-row grid items-center gap-8 md:gap-14 lg:grid-cols-[1.15fr_1fr] ${i % 2 ? "lg:grid-cols-[1fr_1.15fr] lg:[&>*:first-child]:order-2" : ""}`}
               >
                 <div className="focus-media relative overflow-hidden rounded-[1.75rem] mn-frame">
-                  <img src={a.img} alt={`${a.title} visual`} width={1024} height={768} loading="lazy" className="aspect-[16/11] w-full scale-[1.14] object-cover" />
+                  <img src={a.detail} alt={a.alt} width={1344} height={1024} loading="lazy" decoding="async" className="aspect-[16/11] w-full scale-[1.14] object-cover" />
                 </div>
                 <div className="max-w-xl">
                   <span className="text-sm font-medium tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1} / 04</span>
