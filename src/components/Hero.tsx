@@ -1,44 +1,53 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDown, ArrowRight, Code2, Sparkles, ShieldCheck, Radio } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { BrandMark } from "@/components/Logo";
+import earth from "@/assets/hero-earth.jpg";
+import imgSoftware from "@/assets/focus-software.jpg";
+import imgAi from "@/assets/focus-ai.jpg";
+import imgSecurity from "@/assets/focus-security.jpg";
+import imgEmerging from "@/assets/focus-emerging.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const areas = [
   {
     key: "Software",
-    icon: Code2,
+    img: imgSoftware,
     title: "Software & Digital Development",
     body: "Applications, platforms and business systems engineered to be fast, dependable and built around the people who use them.",
+    points: ["Websites & web platforms", "Business systems", "Mobile apps"],
   },
   {
     key: "Artificial Intelligence",
-    icon: Sparkles,
+    img: imgAi,
     title: "Artificial Intelligence",
     body: "AI-assisted systems and intelligent experiences that help teams work smarter and give users more useful answers.",
+    points: ["Intelligent assistants", "Smarter workflows", "Data-informed features"],
   },
   {
     key: "Security",
-    icon: ShieldCheck,
+    img: imgSecurity,
     title: "Security & Protection",
     body: "Security-minded digital solutions, with protection considered from the first line of code rather than added at the end.",
+    points: ["Secure by design", "Protected data", "Careful access control"],
   },
   {
     key: "Emerging Technology",
-    icon: Radio,
+    img: imgEmerging,
     title: "Emerging Technologies",
     body: "Ongoing exploration of IoT and connected systems — research and experimentation shaping where we go next.",
+    points: ["IoT research", "Connected systems", "Experimentation"],
   },
 ];
 
-/* panel anchor positions inside the desktop scene (percent of stage) */
+/* visual tile anchors inside the desktop scene */
 const panelPos = [
-  { left: "6%", top: "18%" },
-  { left: "68%", top: "14%" },
-  { left: "4%", top: "66%" },
-  { left: "66%", top: "68%" },
+  { left: "5%", top: "13%" },
+  { right: "5%", top: "11%" },
+  { left: "7%", bottom: "11%" },
+  { right: "6%", bottom: "13%" },
 ];
 
 const Hero = () => {
@@ -48,37 +57,46 @@ const Hero = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop: pinned, scrubbed story (native scroll, no hijacking)
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
-        gsap.set(".story-panel", { autoAlpha: 0, y: 30 });
+        gsap.set(".story-panel", { autoAlpha: 0, y: 40, scale: 0.92 });
         gsap.set(".story-line", { strokeDashoffset: 1 });
         const tl = gsap.timeline({
           defaults: { ease: "none" },
           scrollTrigger: {
             trigger: ".hero-stage",
             start: "top top",
-            end: "+=120%",
-            scrub: 0.6,
+            end: "+=140%",
+            scrub: 0.7,
             pin: true,
             anticipatePin: 1,
           },
         });
-        tl.to(".hero-copy", { y: -90, autoAlpha: 0, duration: 0.45 }, 0)
-          .to(".hero-mark", { xPercent: -62, scale: 0.62, duration: 0.6 }, 0)
-          .to(".hero-orbits", { autoAlpha: 0.35, scale: 1.15, duration: 0.6 }, 0)
-          .to(".story-line", { strokeDashoffset: 0, duration: 0.35, stagger: 0.04 }, 0.35)
-          .to(".story-panel", { autoAlpha: 1, y: 0, duration: 0.3, stagger: 0.07 }, 0.45);
+        tl.to(".hero-copy", { y: -90, autoAlpha: 0, duration: 0.4 }, 0)
+          .to(".hero-mark", { xPercent: -58, scale: 0.6, duration: 0.6 }, 0)
+          .to(".hero-earth", { scale: 1.18, yPercent: -6, autoAlpha: 0.55, duration: 0.9 }, 0)
+          .to(".hero-vignette", { autoAlpha: 1, duration: 0.6 }, 0.1)
+          .to(".story-line", { strokeDashoffset: 0, duration: 0.3, stagger: 0.05 }, 0.35)
+          .to(".story-panel", { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, stagger: 0.08 }, 0.45);
       });
 
-      // Touch / smaller screens: simple progressive reveal, no pinning
       mm.add("(max-width: 1023px) and (prefers-reduced-motion: no-preference)", () => {
-        gsap.utils.toArray<HTMLElement>(".focus-card").forEach((el) => {
+        gsap.utils.toArray<HTMLElement>(".focus-row").forEach((el) => {
           gsap.from(el, {
             autoAlpha: 0,
             y: 28,
             duration: 0.7,
             ease: "power2.out",
             scrollTrigger: { trigger: el, start: "top 88%", once: true },
+          });
+        });
+      });
+
+      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+        gsap.utils.toArray<HTMLElement>(".focus-media img").forEach((el) => {
+          gsap.fromTo(el, { yPercent: -6 }, {
+            yPercent: 6,
+            ease: "none",
+            scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
           });
         });
       });
@@ -90,38 +108,30 @@ const Hero = () => {
     <div ref={root} className="midnight">
       {/* HERO */}
       <section className="hero-stage relative min-h-[100svh] overflow-hidden mn-hero-bg" aria-labelledby="hero-title">
-        {/* background light traces */}
-        <svg
-          className="hero-orbits pointer-events-none absolute right-[-18%] top-1/2 -translate-y-1/2 w-[110vw] max-w-[1400px] lg:w-[80vw] opacity-60"
-          viewBox="0 0 1000 1000"
-          aria-hidden="true"
-        >
-          <defs>
-            <linearGradient id="orbit-g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="hsl(var(--mn-cyan))" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="hsl(var(--mn-violet))" stopOpacity="0.05" />
-            </linearGradient>
-          </defs>
-          <ellipse cx="500" cy="500" rx="460" ry="180" fill="none" stroke="url(#orbit-g)" strokeWidth="1" transform="rotate(-18 500 500)" />
-          <ellipse cx="500" cy="500" rx="380" ry="380" fill="none" stroke="hsl(var(--mn-text) / 0.06)" strokeWidth="1" />
-          <ellipse cx="500" cy="500" rx="300" ry="120" fill="none" stroke="url(#orbit-g)" strokeWidth="1" transform="rotate(24 500 500)" />
-        </svg>
+        {/* cinematic Earth backdrop */}
+        <div className="hero-earth pointer-events-none absolute inset-0 origin-[70%_80%]" aria-hidden="true">
+          <img
+            src={earth}
+            alt=""
+            width={1920}
+            height={1088}
+            fetchPriority="high"
+            className="h-full w-full object-cover object-[70%_center] opacity-80"
+          />
+        </div>
+        <div className="pointer-events-none absolute inset-0 mn-hero-shade" aria-hidden="true" />
+        <div className="hero-vignette pointer-events-none absolute inset-0 mn-hero-vignette opacity-0" aria-hidden="true" />
 
         {/* connection lines (desktop story) */}
         <svg className="pointer-events-none absolute inset-0 hidden lg:block w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          {[
-            "M50 50 L22 26",
-            "M50 50 L78 22",
-            "M50 50 L20 72",
-            "M50 50 L78 74",
-          ].map((d) => (
+          {["M36 50 L20 28", "M36 50 L78 24", "M36 50 L22 74", "M36 50 L76 76"].map((d) => (
             <path
               key={d}
               d={d}
               pathLength={1}
               className="story-line"
               fill="none"
-              stroke="hsl(var(--mn-cyan) / 0.45)"
+              stroke="hsl(var(--mn-cyan) / 0.35)"
               strokeWidth="0.12"
               vectorEffect="non-scaling-stroke"
               style={{ strokeDasharray: 1, strokeDashoffset: 0 }}
@@ -159,28 +169,29 @@ const Hero = () => {
           </div>
 
           <div className="hero-mark relative flex items-center justify-center">
-            <div className="absolute inset-[8%] rounded-[2.5rem] mn-glass border opacity-70" aria-hidden="true" />
-            <div className="absolute inset-0 m-auto h-2/3 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.22)] blur-[90px]" aria-hidden="true" />
+            <div className="absolute inset-0 m-auto h-1/2 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.18)] blur-[100px]" aria-hidden="true" />
             <BrandMark className="relative w-full max-w-[560px] h-auto drop-shadow-[0_30px_60px_hsl(var(--mn-blue)/0.35)] py-10 px-6" />
           </div>
         </div>
 
-        {/* glass panels revealed during the desktop story */}
+        {/* visual introduction tiles (desktop story) */}
         <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
           {areas.map((a, i) => (
-            <div
+            <figure
               key={a.key}
-              className="story-panel absolute mn-glass border rounded-2xl px-5 py-4 flex items-center gap-3 opacity-0"
+              className="story-panel absolute w-[clamp(200px,17vw,270px)] overflow-hidden rounded-2xl mn-frame opacity-0"
               style={panelPos[i]}
             >
-              <a.icon className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
-              <span className="text-[hsl(var(--mn-text))] font-semibold">{a.key}</span>
-            </div>
+              <img src={a.img} alt="" width={1024} height={768} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              <figcaption className="absolute inset-x-0 bottom-0 px-4 py-3 text-sm font-medium text-[hsl(var(--mn-text))] bg-gradient-to-t from-[hsl(var(--mn-bg)/0.9)] to-transparent">
+                {a.key}
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>
 
-      {/* FOCUS */}
+      {/* FOCUS — editorial detail */}
       <section id="focus" className="relative scroll-mt-24 py-24 md:py-32 mn-focus-bg" aria-labelledby="focus-title">
         <div className="container px-5">
           <div className="max-w-3xl">
@@ -193,17 +204,36 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="mt-14 grid sm:grid-cols-2 gap-4 md:gap-5">
+          <div className="mt-16 md:mt-24 space-y-20 md:space-y-32">
             {areas.map((a, i) => (
-              <article key={a.key} className="focus-card group relative rounded-3xl border mn-glass p-7 md:p-9 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
-                <div className="flex items-center justify-between">
-                  <div className="h-12 w-12 rounded-2xl flex items-center justify-center bg-[hsl(var(--mn-blue)/0.14)] border border-[hsl(var(--mn-cyan)/0.25)]">
-                    <a.icon className="h-6 w-6 text-[hsl(var(--mn-cyan))]" />
-                  </div>
-                  <span className="text-sm font-medium tabular-nums text-[hsl(var(--mn-muted))]">0{i + 1}</span>
+              <article
+                key={a.key}
+                className={`focus-row grid items-center gap-8 md:gap-14 lg:grid-cols-2 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
+              >
+                <div className="focus-media relative overflow-hidden rounded-[1.75rem] mn-frame">
+                  <img
+                    src={a.img}
+                    alt={`${a.title} visual`}
+                    width={1024}
+                    height={768}
+                    loading="lazy"
+                    className="aspect-[4/3] w-full scale-[1.14] object-cover"
+                  />
                 </div>
-                <h3 className="mt-8 text-2xl font-semibold tracking-tight text-[hsl(var(--mn-text))]">{a.title}</h3>
-                <p className="mt-3 leading-relaxed text-[hsl(var(--mn-muted))]">{a.body}</p>
+                <div className="max-w-xl">
+                  <span className="text-sm font-medium tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1}</span>
+                  <h3 className="mt-4 text-[clamp(1.8rem,3vw,2.6rem)] font-semibold tracking-tight leading-tight text-[hsl(var(--mn-text))]">
+                    {a.title}
+                  </h3>
+                  <p className="mt-5 text-lg leading-relaxed text-[hsl(var(--mn-muted))]">{a.body}</p>
+                  <ul className="mt-8 border-t border-[hsl(var(--mn-text)/0.1)]">
+                    {a.points.map((p) => (
+                      <li key={p} className="border-b border-[hsl(var(--mn-text)/0.1)] py-3 text-[hsl(var(--mn-silver))]">
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             ))}
           </div>
