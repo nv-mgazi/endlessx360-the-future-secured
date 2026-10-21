@@ -122,7 +122,7 @@
   .innovation-step { background: hsl(var(--mn-text) / 0.3); }
   .innovation-step.is-active { background: hsl(var(--mn-cyan)); }
   @media (min-width: 1024px) and (max-height: 800px) {
-    .innovation-visual { height: calc(100svh - 14rem); }
+    .innovation-track .innovation-visual { height: calc(100svh - 14rem); }
   }
   .pv-light-sweep {
     background: linear-gradient(105deg, transparent 25%, hsl(var(--mn-cyan) / 0.07) 45%, hsl(var(--mn-text) / 0.04) 50%, transparent 70%);
