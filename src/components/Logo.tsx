@@ -24,15 +24,15 @@ export const BrandMark = ({ className, title = "EndlessX360" }: { className?: st
         </linearGradient>
         <linearGradient id={`l${id}`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor={c("--mn-violet")} />
-          <stop offset="55%" stopColor={c("--mn-magenta")} />
-          <stop offset="100%" stopColor={c("--mn-warm")} />
+          <stop offset="60%" stopColor={c("--mn-blue")} />
+          <stop offset="100%" stopColor={c("--mn-cyan")} />
         </linearGradient>
         <linearGradient id={`e${id}`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={c("--mn-lavender")} />
-          <stop offset="100%" stopColor={c("--mn-violet")} />
+          <stop offset="0%" stopColor={c("--mn-silver")} />
+          <stop offset="100%" stopColor={c("--mn-cyan")} />
         </linearGradient>
         <linearGradient id={`s${id}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="hsl(0 0% 100%)" stopOpacity="0.32" />
+          <stop offset="0%" stopColor="hsl(0 0% 100%)" stopOpacity="0.22" />
           <stop offset="45%" stopColor="hsl(0 0% 100%)" stopOpacity="0.04" />
           <stop offset="100%" stopColor="hsl(0 0% 100%)" stopOpacity="0" />
         </linearGradient>
