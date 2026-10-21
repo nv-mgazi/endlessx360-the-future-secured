@@ -1,14 +1,14 @@
 import { cn } from "@/lib/utils";
-import colorMark from "@/assets/brand/logo-color-mark.png.asset.json";
-import colorFull from "@/assets/brand/logo-color-full.png.asset.json";
-import whiteFull from "@/assets/brand/logo-white-full.png.asset.json";
+import colorMark from "@/assets/brand/logo-color-mark.png";
+import colorFull from "@/assets/brand/logo-color-full.png";
+import whiteFull from "@/assets/brand/logo-white-full.png";
 
 /** Approved EndlessX360 logo files — used as supplied, never redrawn. */
-export const LOGO = { colorMark: colorMark.url, colorFull: colorFull.url, whiteFull: whiteFull.url };
+export const LOGO = { colorMark: colorMark, colorFull: colorFull, whiteFull: whiteFull };
 
 /** Large full-colour approved mark (hero centrepiece). */
 export const BrandMark = ({ className }: { className?: string }) => (
-  <img src={LOGO.colorMark} alt="EndlessX360" width={1826} height={526} className={className} decoding="async" />
+  <img src={LOGO.colorMark} alt="EndlessX360" width={1200} height={346} className={className} decoding="async" />
 );
 
 interface LogoProps {
