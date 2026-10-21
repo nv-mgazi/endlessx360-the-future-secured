@@ -137,7 +137,7 @@ const Hero = () => {
       {/* HOME */}
       <section id="home" className="hero-stage relative min-h-[100svh] overflow-hidden mn-hero-bg" aria-labelledby="hero-title">
         <div className="hero-earth pointer-events-none absolute inset-0 origin-[70%_80%]" aria-hidden="true">
-          <img src={earth} alt="" width={1920} height={1088} fetchPriority="high" className="h-full w-full object-cover object-[70%_center] opacity-80" />
+          <img src={earth} alt="" width={1920} height={1088} {...{ fetchpriority: "high" }} className="h-full w-full object-cover object-[70%_center] opacity-80" />
         </div>
         <div className="pointer-events-none absolute inset-0 mn-hero-shade" aria-hidden="true" />
         <div className="hero-vignette pointer-events-none absolute inset-0 mn-hero-vignette opacity-0" aria-hidden="true" />
