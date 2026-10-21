@@ -1,0 +1,5 @@
+- [ ] Restore the exact previous hero logo, preserving navbar artwork.
+- [ ] Add four distinct Technology detail images, preserving hero quadrants.
+- [ ] Repair Innovations sticky reading phases and two-way activation.
+- [ ] Refine Perspective storytelling and navbar Contact styling.
+- [ ] Verify desktop, short desktop, mobile, reduced motion, and existing contact navigation.
