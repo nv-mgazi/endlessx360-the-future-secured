@@ -1,127 +1,123 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
-import { CONTACT, waLink, mailtoHref } from "@/lib/contact";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { CONTACT, mailtoHref, waLink } from "@/lib/contact";
+import { validateEnquiry, type Enquiry, type EnquiryErrors } from "@/lib/enquiry";
+
+const TOPICS = ["General Enquiry", "Collaboration", "Products", "Technology Development"];
 
 const Contact = () => {
+  const [values, setValues] = useState<Enquiry>({ name: "", email: "", topic: TOPICS[0], message: "" });
+  const [errors, setErrors] = useState<EnquiryErrors>({});
+  const [opened, setOpened] = useState(false);
+  const [trap, setTrap] = useState("");
+
+  const set = (k: keyof Enquiry) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setValues((v) => ({ ...v, [k]: e.target.value }));
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (trap) return; // bot filled the hidden field
+    const errs = validateEnquiry(values);
+    setErrors(errs);
+    if (Object.keys(errs).length) {
+      document.getElementById(`f-${Object.keys(errs)[0]}`)?.focus();
+      return;
+    }
+    const body = `${values.message.trim()}\n\n— ${values.name.trim()}\n${values.email.trim()}`;
+    window.location.href = mailtoHref(`${values.topic} — ${values.name.trim()}`, body);
+    setOpened(true);
+  };
+
+  const field = (k: keyof Enquiry) => ({
+    id: `f-${k}`,
+    "aria-invalid": errors[k] ? true : undefined,
+    "aria-describedby": errors[k] ? `e-${k}` : undefined,
+  });
+  const err = (k: keyof Enquiry) =>
+    errors[k] && <p id={`e-${k}`} className="mt-2 text-sm text-[hsl(var(--destructive))]">{errors[k]}</p>;
+
   return (
-    <section id="contact" className="py-28 md:py-36 relative bg-gradient-hero scroll-mt-24">
-      <div className="container px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-14">
-            <div className="eyebrow">Contact</div>
-            <h2 className="display mt-5 text-[clamp(2rem,5.5vw,4rem)]">
-              You know my work — let's build yours
+    <section id="contact" className="midnight relative scroll-mt-20 py-24 md:py-32 mn-section-contact" aria-labelledby="contact-title">
+      <div className="container px-5">
+        <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+          <div>
+            <div className="mn-eyebrow">Contact</div>
+            <h2 id="contact-title" className="mt-5 mn-h2">
+              Let's <span className="mn-gradient-text">Connect.</span>
             </h2>
-            <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-              Tell me what you need in a sentence or two — you'll have a scoped quote back
-              within 24 hours.
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-[hsl(var(--mn-muted))]">
+              Have an idea, question or opportunity to explore? We'd be glad to hear from you.
             </p>
+
+            <ul className="mt-12 space-y-3 max-w-md">
+              <li>
+                <a href={waLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
+                  <MessageCircle className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
+                  <span><span className="block font-medium">WhatsApp</span><span className="text-sm text-[hsl(var(--mn-muted))]">{CONTACT.phone}</span></span>
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${CONTACT.phoneRaw}`} className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
+                  <Phone className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
+                  <span><span className="block font-medium">Call</span><span className="text-sm text-[hsl(var(--mn-muted))]">{CONTACT.phone}</span></span>
+                </a>
+              </li>
+              <li>
+                <a href={mailtoHref("Enquiry")} className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
+                  <Mail className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
+                  <span><span className="block font-medium">Email</span><span className="text-sm text-[hsl(var(--mn-muted))]">Opens your email app</span></span>
+                </a>
+              </li>
+            </ul>
+            <p className="mt-6 text-sm text-[hsl(var(--mn-muted))]">{CONTACT.location}</p>
           </div>
 
-          <Card className="rounded-[2rem] border border-border shadow-playful overflow-hidden">
-            <div className="grid md:grid-cols-2">
-              <div className="p-8 md:p-10 space-y-6 bg-foreground text-background">
-
-                <h3 className="text-2xl font-semibold tracking-tight">Reach us directly</h3>
-                <p className="text-background/80 leading-relaxed">
-                  Pick whichever suits you. You speak to the person who'll be doing the
-                  work — no queue, no call centre.
-                </p>
-
-                <div className="space-y-4">
-                  <a
-                    href={waLink("Hi! I'd like to discuss a project.")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-background/10 hover:bg-background/20 transition-smooth backdrop-blur"
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-[hsl(var(--brand-accent))] flex items-center justify-center">
-                      <MessageCircle className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">WhatsApp</div>
-                      <div className="text-sm text-background/70">{CONTACT.phone}</div>
-                    </div>
-                  </a>
-
-                  <a
-                    href={`tel:${CONTACT.phoneRaw}`}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-background/10 hover:bg-background/20 transition-smooth backdrop-blur"
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-background/15 flex items-center justify-center">
-                      <Phone className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">Call</div>
-                      <div className="text-sm text-background/70">
-                        {CONTACT.phone} · same number on WhatsApp
-                      </div>
-                    </div>
-                  </a>
-
-                  <a
-                    href={mailtoHref("Project enquiry")}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-background/10 hover:bg-background/20 transition-smooth backdrop-blur"
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-background/15 flex items-center justify-center">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">Email us</div>
-                      <div className="text-sm text-background/70">
-                        Opens in Gmail, Outlook or your mail app
-                      </div>
-                    </div>
-                  </a>
-
-
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-background/5 backdrop-blur">
-                    <div className="w-11 h-11 rounded-xl bg-background/15 flex items-center justify-center">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">Based in</div>
-                      <div className="text-sm text-background/70">{CONTACT.location}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <CardContent className="p-8 md:p-10 space-y-6 bg-card">
-                <h3 className="text-2xl font-semibold tracking-tight">What happens next</h3>
-                <ol className="space-y-5">
-                  {[
-                    { n: "1", t: "You send the brief", d: "A short message about your business and what the project needs to do." },
-                    { n: "2", t: "You get a scoping conversation", d: "A quick chat to pin down goals, what you'll need, and timing." },
-                    { n: "3", t: "You get the investment in writing", d: "An itemised, fixed quote within 24 hours — nothing owed either way." },
-                    { n: "4", t: "You'll be able to watch it take shape", d: "Regular check-ins, then handover with everything in your name." },
-                  ].map((s) => (
-
-                    <li key={s.n} className="flex gap-4">
-                      <div className="w-9 h-9 rounded-full bg-secondary text-foreground font-semibold flex items-center justify-center flex-shrink-0">
-                        {s.n}
-                      </div>
-                      <div>
-                        <div className="font-semibold">{s.t}</div>
-                        <div className="text-sm text-muted-foreground">{s.d}</div>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full rounded-full bg-foreground text-background hover:bg-[hsl(var(--brand-indigo))]"
-                >
-                  <a href={waLink("Hi! I'd like a quote for a project.")} target="_blank" rel="noopener noreferrer">
-                    Request a quote
-                  </a>
-                </Button>
-              </CardContent>
+          <form onSubmit={onSubmit} noValidate className="rounded-[2rem] border mn-glass p-6 md:p-10 space-y-6" aria-label="Enquiry form">
+            <div className="hidden" aria-hidden="true">
+              <label>Leave empty<input tabIndex={-1} autoComplete="off" value={trap} onChange={(e) => setTrap(e.target.value)} /></label>
             </div>
-          </Card>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label htmlFor="f-name" className="mb-2 block text-sm font-medium">Name</label>
+                <input {...field("name")} className="mn-input" autoComplete="name" maxLength={100} value={values.name} onChange={set("name")} />
+                {err("name")}
+              </div>
+              <div>
+                <label htmlFor="f-email" className="mb-2 block text-sm font-medium">Email address</label>
+                <input {...field("email")} type="email" className="mn-input" autoComplete="email" maxLength={255} value={values.email} onChange={set("email")} />
+                {err("email")}
+              </div>
+            </div>
+            <div>
+              <label htmlFor="f-topic" className="mb-2 block text-sm font-medium">Enquiry type <span className="text-[hsl(var(--mn-muted))]">(optional)</span></label>
+              <select {...field("topic")} className="mn-input" value={values.topic} onChange={set("topic")}>
+                {TOPICS.map((t) => <option key={t}>{t}</option>)}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="f-message" className="mb-2 block text-sm font-medium">Message</label>
+              <textarea {...field("message")} rows={5} className="mn-input resize-y" maxLength={2000} value={values.message} onChange={set("message")} />
+              {err("message")}
+            </div>
+
+            <button type="submit" className="inline-flex h-13 w-full sm:w-auto items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold mn-btn-primary">
+              Prepare email <Send className="h-4 w-4" />
+            </button>
+
+            <div aria-live="polite">
+              {opened && (
+                <p className="rounded-xl border border-[hsl(var(--mn-cyan)/0.3)] bg-[hsl(var(--mn-cyan)/0.06)] p-4 text-sm leading-relaxed">
+                  Your email app should now be open with your message ready. Press <strong>send</strong> there to
+                  deliver it. Nothing opened? Use WhatsApp or call instead.
+                </p>
+              )}
+            </div>
+            <p className="text-xs leading-relaxed text-[hsl(var(--mn-muted))]">
+              Your message is sent from your own email app; this website does not store it. See our{" "}
+              <Link to="/privacy" className="underline underline-offset-2 hover:text-[hsl(var(--mn-text))]">privacy notice</Link>.
+            </p>
+          </form>
         </div>
       </div>
     </section>
