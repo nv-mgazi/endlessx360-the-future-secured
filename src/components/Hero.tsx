@@ -16,38 +16,34 @@ const areas = [
     key: "Software",
     img: imgSoftware,
     title: "Software & Digital Development",
-    body: "Applications, platforms and business systems engineered to be fast, dependable and built around the people who use them.",
-    points: ["Websites & web platforms", "Business systems", "Mobile apps"],
+    body: "Applications, websites, digital platforms and systems designed around practical needs.",
   },
   {
     key: "Artificial Intelligence",
     img: imgAi,
     title: "Artificial Intelligence",
-    body: "AI-assisted systems and intelligent experiences that help teams work smarter and give users more useful answers.",
-    points: ["Intelligent assistants", "Smarter workflows", "Data-informed features"],
+    body: "AI-assisted applications, intelligent systems and experiences that enhance productivity, interaction and decision-making.",
   },
   {
     key: "Security",
     img: imgSecurity,
     title: "Security & Protection",
-    body: "Security-minded digital solutions, with protection considered from the first line of code rather than added at the end.",
-    points: ["Secure by design", "Protected data", "Careful access control"],
+    body: "Security-focused software, digital protection and technologies supporting safer, more dependable systems.",
   },
   {
     key: "Emerging Technology",
     img: imgEmerging,
     title: "Emerging Technologies",
-    body: "Ongoing exploration of IoT and connected systems — research and experimentation shaping where we go next.",
-    points: ["IoT research", "Connected systems", "Experimentation"],
+    body: "Exploration of connected systems, IoT, automation and other developing technological possibilities.",
   },
 ];
 
-/* visual tile anchors inside the desktop scene */
-const panelPos = [
-  { left: "5%", top: "13%" },
-  { right: "5%", top: "11%" },
-  { left: "7%", bottom: "11%" },
-  { right: "6%", bottom: "13%" },
+/* quadrant anchors for the enlarged composition (desktop) */
+const panelPos: React.CSSProperties[] = [
+  { left: "3.5vw", top: "13vh", transformOrigin: "100% 100%" },
+  { right: "3.5vw", top: "13vh", transformOrigin: "0% 100%" },
+  { left: "3.5vw", bottom: "6vh", transformOrigin: "100% 0%" },
+  { right: "3.5vw", bottom: "6vh", transformOrigin: "0% 0%" },
 ];
 
 const Hero = () => {
@@ -58,40 +54,72 @@ const Hero = () => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
-        gsap.set(".story-panel", { autoAlpha: 0, y: 40, scale: 0.92 });
-        gsap.set(".story-line", { strokeDashoffset: 1 });
+        const mark = root.current!.querySelector<HTMLElement>(".hero-mark")!;
+        // distance from the mark's resting centre to the viewport centre
+        const toCentre = () => {
+          gsap.set(mark, { clearProps: "x" });
+          const r = mark.getBoundingClientRect();
+          return window.innerWidth / 2 - (r.left + r.width / 2);
+        };
+
+        gsap.set(".story-panel", { autoAlpha: 0, scale: 0.42 });
         const tl = gsap.timeline({
           defaults: { ease: "none" },
           scrollTrigger: {
             trigger: ".hero-stage",
             start: "top top",
-            end: "+=140%",
-            scrub: 0.7,
+            end: "+=280%",
+            scrub: 0.8,
             pin: true,
             anticipatePin: 1,
+            invalidateOnRefresh: true,
           },
         });
-        tl.to(".hero-copy", { y: -90, autoAlpha: 0, duration: 0.4 }, 0)
-          .to(".hero-mark", { xPercent: -58, scale: 0.6, duration: 0.6 }, 0)
-          .to(".hero-earth", { scale: 1.18, yPercent: -6, autoAlpha: 0.55, duration: 0.9 }, 0)
-          .to(".hero-vignette", { autoAlpha: 1, duration: 0.6 }, 0.1)
-          .to(".story-line", { strokeDashoffset: 0, duration: 0.3, stagger: 0.05 }, 0.35)
-          .to(".story-panel", { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, stagger: 0.08 }, 0.45);
+        // Stage A — headline leaves, symbol moves to centre
+        tl.to(".hero-copy", { y: -80, autoAlpha: 0, duration: 0.5 }, 0)
+          .to(mark, { x: toCentre, scale: 0.62, duration: 0.8, ease: "power1.inOut" }, 0)
+          .to(".hero-earth", { scale: 1.2, yPercent: -5, autoAlpha: 0.45, duration: 1.4 }, 0)
+          .to(".hero-vignette", { autoAlpha: 1, duration: 0.8 }, 0.2)
+          // Stage B — panels arrive one after another
+          .to(".story-panel", { autoAlpha: 1, duration: 0.35, stagger: 0.15 }, 0.7)
+          // Stage C — panels expand into the quadrants
+          .to(".story-panel", { scale: 1, duration: 0.9, stagger: 0.08, ease: "power1.out" }, 0.9)
+          .to(".story-caption", { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.08 }, 1.6)
+          // Stage D — hold the composition
+          .to({}, { duration: 0.6 })
+          // Stage E — hand over to Technology
+          .to(".story-panel", { autoAlpha: 0, y: -40, duration: 0.5, stagger: 0.04 }, ">")
+          .to(mark, { autoAlpha: 0, scale: 0.5, duration: 0.5 }, "<")
+          .to(".hero-earth", { autoAlpha: 0.15, duration: 0.5 }, "<");
+
+        const imgs = root.current!.querySelectorAll("img");
+        const refresh = () => ScrollTrigger.refresh();
+        imgs.forEach((i) => !i.complete && i.addEventListener("load", refresh, { once: true }));
       });
 
       mm.add("(max-width: 1023px) and (prefers-reduced-motion: no-preference)", () => {
-        gsap.utils.toArray<HTMLElement>(".focus-row").forEach((el) => {
+        gsap.utils.toArray<HTMLElement>(".m-reveal").forEach((el) => {
           gsap.from(el, {
             autoAlpha: 0,
             y: 28,
             duration: 0.7,
             ease: "power2.out",
-            scrollTrigger: { trigger: el, start: "top 88%", once: true },
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
           });
         });
       });
 
-      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.utils.toArray<HTMLElement>(".focus-row").forEach((el) => {
+          gsap.from(el.children, {
+            autoAlpha: 0,
+            y: 40,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 82%", once: true },
+          });
+        });
         gsap.utils.toArray<HTMLElement>(".focus-media img").forEach((el) => {
           gsap.fromTo(el, { yPercent: -6 }, {
             yPercent: 6,
@@ -106,40 +134,15 @@ const Hero = () => {
 
   return (
     <div ref={root} className="midnight">
-      {/* HERO */}
-      <section className="hero-stage relative min-h-[100svh] overflow-hidden mn-hero-bg" aria-labelledby="hero-title">
-        {/* cinematic Earth backdrop */}
+      {/* HOME */}
+      <section id="home" className="hero-stage relative min-h-[100svh] overflow-hidden mn-hero-bg" aria-labelledby="hero-title">
         <div className="hero-earth pointer-events-none absolute inset-0 origin-[70%_80%]" aria-hidden="true">
-          <img
-            src={earth}
-            alt=""
-            width={1920}
-            height={1088}
-            fetchPriority="high"
-            className="h-full w-full object-cover object-[70%_center] opacity-80"
-          />
+          <img src={earth} alt="" width={1920} height={1088} fetchPriority="high" className="h-full w-full object-cover object-[70%_center] opacity-80" />
         </div>
         <div className="pointer-events-none absolute inset-0 mn-hero-shade" aria-hidden="true" />
         <div className="hero-vignette pointer-events-none absolute inset-0 mn-hero-vignette opacity-0" aria-hidden="true" />
 
-        {/* connection lines (desktop story) */}
-        <svg className="pointer-events-none absolute inset-0 hidden lg:block w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          {["M36 50 L20 28", "M36 50 L78 24", "M36 50 L22 74", "M36 50 L76 76"].map((d) => (
-            <path
-              key={d}
-              d={d}
-              pathLength={1}
-              className="story-line"
-              fill="none"
-              stroke="hsl(var(--mn-cyan) / 0.35)"
-              strokeWidth="0.12"
-              vectorEffect="non-scaling-stroke"
-              style={{ strokeDasharray: 1, strokeDashoffset: 0 }}
-            />
-          ))}
-        </svg>
-
-        <div className="container relative z-10 px-5 min-h-[100svh] grid lg:grid-cols-[1.05fr_1fr] items-center gap-10 pt-32 pb-16 lg:py-0">
+        <div className="container relative z-10 px-5 min-h-[100svh] grid lg:grid-cols-[1.05fr_1fr] items-center gap-6 pt-32 pb-16 lg:py-0">
           <div className="hero-copy max-w-2xl">
             <div className="mn-eyebrow animate-rise">Technology · Intelligence · Innovation</div>
             <h1
@@ -149,41 +152,39 @@ const Hero = () => {
             >
               Building Technology for <span className="mn-gradient-text">What's Next.</span>
             </h1>
-            <p
-              className="mt-7 max-w-xl text-lg md:text-xl leading-relaxed text-[hsl(var(--mn-muted))] animate-rise"
-              style={{ animationDelay: "160ms" }}
-            >
+            <p className="mt-7 max-w-xl text-lg md:text-xl leading-relaxed text-[hsl(var(--mn-muted))] animate-rise" style={{ animationDelay: "160ms" }}>
               EndlessX360 develops software, digital platforms and intelligent technology
               solutions designed to solve real challenges and create new possibilities.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-3 animate-rise" style={{ animationDelay: "240ms" }}>
-              <a href="#focus" className="group inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-semibold mn-btn-primary">
-                Explore our focus
+              <a href="#technology" className="group inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-semibold mn-btn-primary">
+                Explore Technology
                 <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-0.5" />
               </a>
               <a href="#contact" className="group inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-semibold mn-btn-ghost">
-                Get in touch
+                Get in Touch
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
           </div>
 
-          <div className="hero-mark relative flex items-center justify-center">
-            <div className="absolute inset-0 m-auto h-1/3 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.14)] blur-[90px]" aria-hidden="true" />
-            <BrandMark className="relative w-full max-w-[580px] h-auto saturate-[0.92] drop-shadow-[0_24px_50px_hsl(var(--mn-deep)/0.8)] py-10 px-4" />
+          <div className="hero-mark relative z-20 flex items-center justify-center order-first lg:order-none">
+            <div className="absolute inset-0 m-auto h-1/2 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.18)] blur-[90px]" aria-hidden="true" />
+            <BrandMark className="relative w-[70%] max-w-[300px] lg:w-full lg:max-w-[520px] h-auto drop-shadow-[0_24px_50px_hsl(var(--mn-deep)/0.9)] lg:py-10 lg:px-6" />
           </div>
         </div>
 
-        {/* visual introduction tiles (desktop story) */}
+        {/* four focus visuals — enlarged composition (desktop) */}
         <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
           {areas.map((a, i) => (
             <figure
               key={a.key}
-              className="story-panel absolute w-[clamp(200px,17vw,270px)] overflow-hidden rounded-2xl mn-frame opacity-0"
-              style={panelPos[i]}
+              className="story-panel absolute overflow-hidden rounded-[1.5rem] mn-frame opacity-0"
+              style={{ ...panelPos[i], width: "min(30vw, 58vh, 580px)" }}
             >
-              <img src={a.img} alt="" width={1024} height={768} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-              <figcaption className="absolute inset-x-0 bottom-0 px-4 py-3 text-sm font-medium text-[hsl(var(--mn-text))] bg-gradient-to-t from-[hsl(var(--mn-bg)/0.9)] to-transparent">
+              <img src={a.img} alt="" width={1024} height={768} loading="lazy" className="aspect-[16/10] w-full object-cover" />
+              <figcaption className="story-caption absolute inset-x-0 bottom-0 px-5 py-4 text-base font-medium text-[hsl(var(--mn-text))] bg-gradient-to-t from-[hsl(var(--mn-bg)/0.92)] to-transparent opacity-0 translate-y-2">
+                <span className="mr-2 tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1}</span>
                 {a.key}
               </figcaption>
             </figure>
@@ -191,16 +192,16 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* FOCUS — editorial detail */}
-      <section id="focus" className="relative scroll-mt-24 py-24 md:py-32 mn-focus-bg" aria-labelledby="focus-title">
+      {/* TECHNOLOGY */}
+      <section id="technology" className="relative scroll-mt-20 py-24 md:py-32 mn-section-tech" aria-labelledby="tech-title">
         <div className="container px-5">
-          <div className="max-w-3xl">
-            <div className="mn-eyebrow">Our Focus Areas</div>
-            <h2 id="focus-title" className="mt-5 font-semibold tracking-[-0.035em] leading-[1] text-[clamp(2.2rem,5vw,4rem)] text-[hsl(var(--mn-text))]">
-              Technology in <span className="mn-gradient-text">Motion</span>
+          <div className="max-w-3xl m-reveal">
+            <div className="mn-eyebrow">Technology</div>
+            <h2 id="tech-title" className="mt-5 mn-h2">
+              Technology in <span className="mn-gradient-text">Motion.</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[hsl(var(--mn-muted))]">
-              Four areas guide what we build today and what we're preparing for tomorrow.
+              Four areas guide what we build today and what we are preparing for tomorrow.
             </p>
           </div>
 
@@ -208,31 +209,18 @@ const Hero = () => {
             {areas.map((a, i) => (
               <article
                 key={a.key}
-                className={`focus-row grid items-center gap-8 md:gap-14 lg:grid-cols-2 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
+                className={`focus-row grid items-center gap-8 md:gap-14 lg:grid-cols-[1.15fr_1fr] ${i % 2 ? "lg:grid-cols-[1fr_1.15fr] lg:[&>*:first-child]:order-2" : ""}`}
               >
                 <div className="focus-media relative overflow-hidden rounded-[1.75rem] mn-frame">
-                  <img
-                    src={a.img}
-                    alt={`${a.title} visual`}
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full scale-[1.14] object-cover"
-                  />
+                  <img src={a.img} alt={`${a.title} visual`} width={1024} height={768} loading="lazy" className="aspect-[16/11] w-full scale-[1.14] object-cover" />
                 </div>
                 <div className="max-w-xl">
-                  <span className="text-sm font-medium tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1}</span>
+                  <span className="text-sm font-medium tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1} / 04</span>
                   <h3 className="mt-4 text-[clamp(1.8rem,3vw,2.6rem)] font-semibold tracking-tight leading-tight text-[hsl(var(--mn-text))]">
                     {a.title}
                   </h3>
                   <p className="mt-5 text-lg leading-relaxed text-[hsl(var(--mn-muted))]">{a.body}</p>
-                  <ul className="mt-8 border-t border-[hsl(var(--mn-text)/0.1)]">
-                    {a.points.map((p) => (
-                      <li key={p} className="border-b border-[hsl(var(--mn-text)/0.1)] py-3 text-[hsl(var(--mn-silver))]">
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-8 h-px w-24 bg-gradient-to-r from-[hsl(var(--mn-cyan))] to-transparent" aria-hidden="true" />
                 </div>
               </article>
             ))}
