@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div className="space-y-4">
-              <Logo />
+              <Logo size="h-7" />
               <p className="text-sm text-muted-foreground">
                 You get websites, business systems and mobile apps built in Durban for
                 businesses across KwaZulu-Natal and South Africa — scoped in writing, with
