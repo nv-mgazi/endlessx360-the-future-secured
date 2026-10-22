@@ -9,10 +9,10 @@ import imgSoftware from "@/assets/focus-software.jpg";
 import imgAi from "@/assets/focus-ai.jpg";
 import imgSecurity from "@/assets/focus-security.jpg";
 import imgEmerging from "@/assets/focus-emerging.jpg";
-import detailSoftware from "@/assets/technology-software-detail.webp.asset.json";
-import detailAi from "@/assets/technology-ai-detail.webp.asset.json";
-import detailSecurity from "@/assets/technology-security-detail.webp.asset.json";
-import detailEmerging from "@/assets/technology-emerging-detail.webp.asset.json";
+import detailSoftware from "@/assets/technology-software-detail.webp";
+import detailAi from "@/assets/technology-ai-detail.webp";
+import detailSecurity from "@/assets/technology-security-detail.webp";
+import detailEmerging from "@/assets/technology-emerging-detail.webp";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -21,7 +21,7 @@ const areas = [
     key: "Software",
     id: "technology-software",
     img: imgSoftware,
-    detail: detailSoftware.url,
+    detail: detailSoftware,
     alt: "Dual development displays showing application code, system architecture and mobile interface designs",
     title: "Software & Digital Development",
     body: "Applications, websites, digital platforms and systems designed around practical needs.",
@@ -30,7 +30,7 @@ const areas = [
     key: "Artificial Intelligence",
     id: "technology-ai",
     img: imgAi,
-    detail: detailAi.url,
+    detail: detailAi,
     alt: "AI computing hardware beside a transparent display visualising interconnected models and data structures",
     title: "Artificial Intelligence",
     body: "AI-assisted applications, intelligent systems and experiences that enhance productivity, interaction and decision-making.",
@@ -39,7 +39,7 @@ const areas = [
     key: "Security",
     id: "technology-security",
     img: imgSecurity,
-    detail: detailSecurity.url,
+    detail: detailSecurity,
     alt: "Illuminated shield and padlock in a security operations environment with network monitoring displays",
     title: "Security & Protection",
     body: "Security-focused software, digital protection and technologies supporting safer, more dependable systems.",
@@ -48,7 +48,7 @@ const areas = [
     key: "Emerging Technology",
     id: "technology-emerging",
     img: imgEmerging,
-    detail: detailEmerging.url,
+    detail: detailEmerging,
     alt: "Connected sensors, electronic prototypes and a robotic arm on a technology development workbench",
     title: "Emerging Technologies",
     body: "Exploration of connected systems, IoT, automation and other developing technological possibilities.",
@@ -274,7 +274,7 @@ const Hero = () => {
                 className={`focus-row scroll-mt-28 grid items-center gap-8 md:gap-14 lg:grid-cols-[1.15fr_1fr] ${i % 2 ? "lg:grid-cols-[1fr_1.15fr] lg:[&>*:first-child]:order-2" : ""}`}
               >
                 <div className="focus-media relative overflow-hidden rounded-[1.75rem] mn-frame">
-                  <img src={a.detail} alt={a.alt} width={1024} height={768} loading="lazy" decoding="async" className="aspect-[4/3] w-full scale-[1.08] object-cover" />
+                  <img src={a.detail} alt={a.alt} width={1448} height={1086} loading="lazy" decoding="async" className="aspect-[4/3] w-full scale-[1.08] object-cover" />
                 </div>
                 <div className="max-w-xl">
                   <span className="text-sm font-medium tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1} / 04</span>
