@@ -126,7 +126,7 @@ const Header = () => {
                   key={item.id}
                   href={`#${item.id}`}
                   tabIndex={open ? 0 : -1}
-                  onClick={item.id === "home" ? scrollToHome : () => setOpen(false)}
+                  onClick={(e) => { setOpen(false); if (item.id === "home") scrollToHome(e); }}
                   className={cn(
                     "block rounded-2xl px-4 py-3 text-base",
                     active === item.id ? "bg-[hsl(var(--mn-text)/0.08)] text-[hsl(var(--mn-text))]" : "text-[hsl(var(--mn-muted))]"
