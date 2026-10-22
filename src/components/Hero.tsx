@@ -212,7 +212,7 @@ const Hero = () => {
         </div>
 
         {/* four focus visuals — enlarged composition (desktop) */}
-        <div className="pointer-events-none absolute inset-0 hidden lg:block">
+        <div className="pointer-events-none absolute inset-0 z-30 hidden lg:block">
           {areas.map((a, i) => (
             <a
               key={a.key}
