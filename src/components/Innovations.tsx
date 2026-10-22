@@ -6,17 +6,6 @@ import imgRunners from "@/assets/innov-runners.jpg";
 
 const products = [
   {
-    name: "PAM",
-    full: "Personal AI Manager",
-    status: "In Development",
-    img: imgPam,
-    w: 1672,
-    h: 941,
-    alt: "Friendly blue-and-white robot assistant mascot pointing toward floating task, calendar and document panels (illustrative concept, not a product screenshot)",
-    body: "PAM is an AI-assisted personal management platform being developed to help users organise tasks, calendars, projects and everyday commitments through a more intelligent and connected experience.",
-    glow: "var(--mn-blue)",
-  },
-  {
     name: "Live Events & Digital Experiences",
     full: "Working description",
     status: "Concept / Exploration",
@@ -37,6 +26,17 @@ const products = [
     alt: "Customer browsing independent shopping runners on a mobile phone outside a shopping centre (illustrative)",
     body: "A proposed digital marketplace designed to connect customers with independent shopping runners who can assist with purchasing requested items from different shops and shopping areas, through a more structured and convenient online experience.",
     glow: "var(--mn-cyan)",
+  },
+  {
+    name: "PAM",
+    full: "Personal AI Manager",
+    status: "In Development",
+    img: imgPam,
+    w: 1672,
+    h: 941,
+    alt: "Friendly blue-and-white robot assistant mascot pointing toward floating task, calendar and document panels (illustrative concept, not a product screenshot)",
+    body: "PAM is an AI-assisted personal management platform being developed to help users organise tasks, calendars, projects and everyday commitments through a more intelligent and connected experience.",
+    glow: "var(--mn-blue)",
   },
 ];
 
