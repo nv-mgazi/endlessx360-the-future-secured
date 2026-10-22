@@ -140,7 +140,7 @@ const Hero = () => {
           .to(mark, { autoAlpha: 0, scale: 0.5, duration: 0.4 }, "<")
           .to(".hero-earth", { autoAlpha: 0.15, duration: 0.4 }, "<");
 
-        const imgs = element.querySelectorAll(".hero-stage img");
+        const imgs = element.querySelectorAll<HTMLImageElement>(".hero-stage img");
         const refresh = () => ScrollTrigger.refresh();
         imgs.forEach((i) => !i.complete && i.addEventListener("load", refresh, { once: true }));
         return () => imgs.forEach((i) => i.removeEventListener("load", refresh));
