@@ -227,7 +227,7 @@ const Innovations = () => {
                     <stop offset="0%" stopColor="hsl(var(--mn-cyan))" stopOpacity="0.55" />
                     <stop offset="100%" stopColor="hsl(var(--mn-cyan))" stopOpacity="0" />
                   </radialGradient>
-                  <radialGradient id="pm-ambient" cx="0.6" cy="0.5" r="0.6">
+                  <radialGradient id="pm-ambient" cx="0.5" cy="0.5" r="0.48">
                     <stop offset="0%" stopColor="hsl(var(--mn-blue))" stopOpacity="0.16" />
                     <stop offset="100%" stopColor="hsl(var(--mn-blue))" stopOpacity="0" />
                   </radialGradient>
