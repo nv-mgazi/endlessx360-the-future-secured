@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { scrollToHome } from "@/lib/scroll";
 import Logo from "@/components/Logo";
 
 export const NAV = [
@@ -57,7 +58,7 @@ const Header = () => {
             scrolled ? "py-1.5 shadow-[0_20px_50px_-25px_hsl(var(--mn-deep))] bg-[hsl(var(--mn-bg)/0.6)]" : "py-2.5 bg-[hsl(var(--mn-bg)/0.3)]"
           )}
         >
-          <a href="#home" aria-label="EndlessX360 home">
+          <a href="#home" aria-label="EndlessX360 home" onClick={scrollToHome}>
             <Logo size="h-6" />
           </a>
 
@@ -74,6 +75,7 @@ const Header = () => {
                 key={item.id}
                 data-id={item.id}
                 href={`#${item.id}`}
+                onClick={item.id === "home" ? scrollToHome : undefined}
                 aria-current={active === item.id ? "true" : undefined}
                 className={cn(
                   "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
@@ -124,7 +126,7 @@ const Header = () => {
                   key={item.id}
                   href={`#${item.id}`}
                   tabIndex={open ? 0 : -1}
-                  onClick={() => setOpen(false)}
+                  onClick={item.id === "home" ? scrollToHome : () => setOpen(false)}
                   className={cn(
                     "block rounded-2xl px-4 py-3 text-base",
                     active === item.id ? "bg-[hsl(var(--mn-text)/0.08)] text-[hsl(var(--mn-text))]" : "text-[hsl(var(--mn-muted))]"

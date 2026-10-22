@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUp, Mail, MessageCircle } from "lucide-react";
 import Logo from "@/components/Logo";
 import { NAV } from "@/components/Header";
+import { scrollToHome } from "@/lib/scroll";
 import { waLink, mailtoHref } from "@/lib/contact";
 
 const Footer = () => (
@@ -62,7 +63,7 @@ const Footer = () => (
           <Link to="/privacy" className="hover:text-[hsl(var(--mn-text))] transition-colors">
             Privacy Policy
           </Link>
-          <a href="#home" className="inline-flex items-center gap-2 hover:text-[hsl(var(--mn-text))] transition-colors">
+          <a href="#home" onClick={scrollToHome} className="inline-flex items-center gap-2 hover:text-[hsl(var(--mn-text))] transition-colors">
             Back to top
             <ArrowUp className="h-4 w-4" aria-hidden />
           </a>
