@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { HeroBrandMark } from "@/components/Logo";
 import earth from "@/assets/hero-earth.jpg";
@@ -13,7 +14,7 @@ import detailAi from "@/assets/technology-ai-detail.webp.asset.json";
 import detailSecurity from "@/assets/technology-security-detail.webp.asset.json";
 import detailEmerging from "@/assets/technology-emerging-detail.webp.asset.json";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const areas = [
   {
@@ -64,6 +65,23 @@ const panelPos: React.CSSProperties[] = [
 
 const Hero = () => {
   const root = useRef<HTMLDivElement>(null);
+  const navigation = useRef<gsap.core.Tween | null>(null);
+  const navigateToArea = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    navigation.current?.kill();
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    navigation.current = gsap.to(window, {
+      duration: reduce ? 0 : 0.9, ease: "power2.inOut",
+      scrollTo: { y: target, offsetY: 112, autoKill: false },
+      onComplete: () => {
+        history.replaceState(null, "", `#${id}`);
+        target.focus({ preventScroll: true });
+      },
+    });
+  };
 
   useLayoutEffect(() => {
     const element = root.current;
@@ -159,7 +177,7 @@ const Hero = () => {
         });
       });
     }, root);
-    return () => ctx.revert();
+    return () => { navigation.current?.kill(); ctx.revert(); };
   }, []);
 
   return (
@@ -198,7 +216,7 @@ const Hero = () => {
             </div>
             <nav aria-label="Technology focus areas" className="hero-focus-nav mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm text-muted-foreground lg:hidden">
               {areas.map((a) => (
-                <a key={a.id} href={`#${a.id}`} className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+                <a key={a.id} href={`#${a.id}`} onClick={(event) => navigateToArea(event, a.id)} className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
                   {a.key}<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </a>
               ))}
@@ -217,6 +235,7 @@ const Hero = () => {
             <a
               key={a.key}
               href={`#${a.id}`}
+              onClick={(event) => navigateToArea(event, a.id)}
               aria-label={`Explore ${a.title}`}
               className="story-panel group absolute overflow-hidden rounded-[1.5rem] mn-frame opacity-0"
               style={{ ...panelPos[i], width: "min(30vw, 58vh, 580px)" }}
@@ -250,6 +269,7 @@ const Hero = () => {
               <article
                 key={a.key}
                 id={a.id}
+                tabIndex={-1}
                 className={`focus-row scroll-mt-28 grid items-center gap-8 md:gap-14 lg:grid-cols-[1.15fr_1fr] ${i % 2 ? "lg:grid-cols-[1fr_1.15fr] lg:[&>*:first-child]:order-2" : ""}`}
               >
                 <div className="focus-media relative overflow-hidden rounded-[1.75rem] mn-frame">
