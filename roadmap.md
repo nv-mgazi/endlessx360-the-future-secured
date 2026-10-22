@@ -3,3 +3,9 @@
 - [x] Repair Innovations sticky reading phases and two-way activation.
 - [x] Refine Perspective storytelling and navbar Contact styling.
 - [x] Verify desktop, short desktop, mobile, reduced motion, and existing contact navigation.
+- [x] Shorten the hero pin so the scroll story ends without an empty pinned stretch.
+- [x] Fix Home / Back-to-top returning to a blank pinned hero state.
+- [x] Replace the three Innovations product images with the supplied artwork.
+- [x] Expand the Privacy Policy into a full POPIA notice.
+- [x] Remove the personal phone number from public metadata (index.html JSON-LD).
+- [x] Final desktop + mobile quality review (scroll, nav, images, overflow).

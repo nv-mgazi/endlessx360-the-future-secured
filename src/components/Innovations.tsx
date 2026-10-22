@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import pamAsset from "@/assets/innov-pam.jpg.asset.json";
-import eventsAsset from "@/assets/innov-events.jpg.asset.json";
-import runnersAsset from "@/assets/innov-runners.jpg.asset.json";
+import imgPam from "@/assets/innov-pam.jpg";
+import imgEvents from "@/assets/innov-events.jpg";
+import imgRunners from "@/assets/innov-runners.jpg";
 
 /* PAM's mascot artwork is portrait on a light studio backdrop: it is
    letterboxed (object-contain) onto a soft complementary gradient instead of
@@ -14,7 +14,7 @@ const products = [
     name: "PAM",
     full: "Personal AI Manager",
     status: "In Development",
-    img: pamAsset.url,
+    img: imgPam,
     w: 1122,
     h: 1402,
     fit: "contain" as const,
@@ -26,7 +26,7 @@ const products = [
     name: "Live Events & Digital Experiences",
     full: "Working description",
     status: "Concept / Exploration",
-    img: eventsAsset.url,
+    img: imgEvents,
     w: 1600,
     h: 876,
     fit: "cover" as const,
@@ -38,7 +38,7 @@ const products = [
     name: "Shopping & Runner Marketplace",
     full: "Working description",
     status: "Concept / Exploration",
-    img: runnersAsset.url,
+    img: imgRunners,
     w: 1600,
     h: 876,
     fit: "cover" as const,
