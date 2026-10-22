@@ -8,43 +8,47 @@ import imgSoftware from "@/assets/focus-software.jpg";
 import imgAi from "@/assets/focus-ai.jpg";
 import imgSecurity from "@/assets/focus-security.jpg";
 import imgEmerging from "@/assets/focus-emerging.jpg";
-import detailSoftware from "@/assets/technology-software-detail.jpg";
-import detailAi from "@/assets/technology-ai-detail.jpg";
-import detailSecurity from "@/assets/technology-security-detail.jpg";
-import detailEmerging from "@/assets/technology-emerging-detail.jpg";
+import detailSoftware from "@/assets/technology-software-detail.webp.asset.json";
+import detailAi from "@/assets/technology-ai-detail.webp.asset.json";
+import detailSecurity from "@/assets/technology-security-detail.webp.asset.json";
+import detailEmerging from "@/assets/technology-emerging-detail.webp.asset.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const areas = [
   {
     key: "Software",
+    id: "technology-software",
     img: imgSoftware,
-    detail: detailSoftware,
-    alt: "Software development workstation with code and application architecture displays",
+    detail: detailSoftware.url,
+    alt: "Dual development displays showing application code, system architecture and mobile interface designs",
     title: "Software & Digital Development",
     body: "Applications, websites, digital platforms and systems designed around practical needs.",
   },
   {
     key: "Artificial Intelligence",
+    id: "technology-ai",
     img: imgAi,
-    detail: detailAi,
-    alt: "AI accelerator and memory modules inside a high-performance computing server",
+    detail: detailAi.url,
+    alt: "AI computing hardware beside a transparent display visualising interconnected models and data structures",
     title: "Artificial Intelligence",
     body: "AI-assisted applications, intelligent systems and experiences that enhance productivity, interaction and decision-making.",
   },
   {
     key: "Security",
+    id: "technology-security",
     img: imgSecurity,
-    detail: detailSecurity,
-    alt: "Network security appliance with fibre connections and status indicators",
+    detail: detailSecurity.url,
+    alt: "Illuminated shield and padlock in a security operations environment with network monitoring displays",
     title: "Security & Protection",
     body: "Security-focused software, digital protection and technologies supporting safer, more dependable systems.",
   },
   {
     key: "Emerging Technology",
+    id: "technology-emerging",
     img: imgEmerging,
-    detail: detailEmerging,
-    alt: "Connected sensor and edge-computing prototypes on a research laboratory bench",
+    detail: detailEmerging.url,
+    alt: "Connected sensors, electronic prototypes and a robotic arm on a technology development workbench",
     title: "Emerging Technologies",
     body: "Exploration of connected systems, IoT, automation and other developing technological possibilities.",
   },
@@ -78,8 +82,18 @@ const Hero = () => {
         };
 
         gsap.set(".story-panel", { autoAlpha: 0, scale: 0.42 });
+        const panels = Array.from(element.querySelectorAll<HTMLAnchorElement>(".story-panel"));
+        const updateLinks = () => {
+          panels.forEach((panel) => {
+            const interactive = Number(gsap.getProperty(panel, "opacity")) > 0.9 && Number(gsap.getProperty(panel, "scaleX")) > 0.9;
+            panel.inert = !interactive;
+            panel.dataset.interactive = String(interactive);
+          });
+        };
+        updateLinks();
         const tl = gsap.timeline({
           defaults: { ease: "none" },
+          onUpdate: updateLinks,
           scrollTrigger: {
             trigger: ".hero-stage",
             start: "top top",
@@ -182,6 +196,13 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
+            <nav aria-label="Technology focus areas" className="hero-focus-nav mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm text-muted-foreground lg:hidden">
+              {areas.map((a) => (
+                <a key={a.id} href={`#${a.id}`} className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+                  {a.key}<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
           </div>
 
           <div className="hero-mark relative z-20 flex items-center justify-center order-first lg:order-none">
@@ -191,19 +212,22 @@ const Hero = () => {
         </div>
 
         {/* four focus visuals — enlarged composition (desktop) */}
-        <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
+        <div className="pointer-events-none absolute inset-0 hidden lg:block">
           {areas.map((a, i) => (
-            <figure
+            <a
               key={a.key}
-              className="story-panel absolute overflow-hidden rounded-[1.5rem] mn-frame opacity-0"
+              href={`#${a.id}`}
+              aria-label={`Explore ${a.title}`}
+              className="story-panel group absolute overflow-hidden rounded-[1.5rem] mn-frame opacity-0"
               style={{ ...panelPos[i], width: "min(30vw, 58vh, 580px)" }}
             >
-              <img src={a.img} alt="" width={1024} height={768} loading="lazy" className="aspect-[16/10] w-full object-cover" />
-              <figcaption className="story-caption absolute inset-x-0 bottom-0 px-5 py-4 text-base font-medium text-[hsl(var(--mn-text))] bg-gradient-to-t from-[hsl(var(--mn-bg)/0.92)] to-transparent opacity-0 translate-y-2">
+              <img src={a.img} alt="" width={1024} height={768} loading="lazy" className="story-link-image aspect-[16/10] w-full object-cover" />
+              <span className="story-caption absolute inset-x-0 bottom-0 flex items-center px-5 py-4 text-base font-medium text-[hsl(var(--mn-text))] bg-gradient-to-t from-[hsl(var(--mn-bg)/0.92)] to-transparent opacity-0 translate-y-2">
                 <span className="mr-2 tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1}</span>
                 {a.key}
-              </figcaption>
-            </figure>
+                <ArrowRight className="story-link-arrow ml-auto h-4 w-4 shrink-0" aria-hidden="true" />
+              </span>
+            </a>
           ))}
         </div>
       </section>
@@ -225,10 +249,11 @@ const Hero = () => {
             {areas.map((a, i) => (
               <article
                 key={a.key}
-                className={`focus-row grid items-center gap-8 md:gap-14 lg:grid-cols-[1.15fr_1fr] ${i % 2 ? "lg:grid-cols-[1fr_1.15fr] lg:[&>*:first-child]:order-2" : ""}`}
+                id={a.id}
+                className={`focus-row scroll-mt-28 grid items-center gap-8 md:gap-14 lg:grid-cols-[1.15fr_1fr] ${i % 2 ? "lg:grid-cols-[1fr_1.15fr] lg:[&>*:first-child]:order-2" : ""}`}
               >
                 <div className="focus-media relative overflow-hidden rounded-[1.75rem] mn-frame">
-                  <img src={a.detail} alt={a.alt} width={1344} height={1024} loading="lazy" decoding="async" className="aspect-[16/11] w-full scale-[1.14] object-cover" />
+                  <img src={a.detail} alt={a.alt} width={1024} height={768} loading="lazy" decoding="async" className="aspect-[4/3] w-full scale-[1.08] object-cover" />
                 </div>
                 <div className="max-w-xl">
                   <span className="text-sm font-medium tabular-nums text-[hsl(var(--mn-cyan))]">0{i + 1} / 04</span>
