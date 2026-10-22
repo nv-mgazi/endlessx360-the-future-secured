@@ -6,3 +6,4 @@
 - Hero quadrant imagery and Technology detail imagery are separate fields in the focus-area data. Why: each context needs distinct relevant visuals without changing focus copy.
 - Hero quadrant links are inert until the animated panels are readable; mobile and reduced-motion visitors use static focus-area links to the same detail anchors. Why: hidden animated controls must not receive focus or intercept navigation.
 - The contact form validates in `src/lib/enquiry.ts` and hands off to the visitor's email app (mailto); it never claims delivery. Why: no backend in V1, so no false success states.
+- App images must be real files in src/assets imported via Vite, never `.asset.json` / `/__l5e/` pointers. Why: production is self-hosted on Cloudflare Pages, where Lovable asset routes do not exist.
