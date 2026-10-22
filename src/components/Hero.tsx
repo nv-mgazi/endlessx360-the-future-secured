@@ -77,6 +77,7 @@ const Hero = () => {
       duration: reduce ? 0 : 0.9, ease: "power2.inOut",
       scrollTo: { y: target, offsetY: 112, autoKill: false },
       onComplete: () => {
+        window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - 112, behavior: "instant" });
         history.replaceState(null, "", `#${id}`);
         target.focus({ preventScroll: true });
       },
@@ -139,7 +140,7 @@ const Hero = () => {
           .to(mark, { autoAlpha: 0, scale: 0.5, duration: 0.4 }, "<")
           .to(".hero-earth", { autoAlpha: 0.15, duration: 0.4 }, "<");
 
-        const imgs = element.querySelectorAll("img");
+        const imgs = element.querySelectorAll(".hero-stage img");
         const refresh = () => ScrollTrigger.refresh();
         imgs.forEach((i) => !i.complete && i.addEventListener("load", refresh, { once: true }));
         return () => imgs.forEach((i) => i.removeEventListener("load", refresh));
