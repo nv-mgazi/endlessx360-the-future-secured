@@ -55,9 +55,22 @@ const Innovations = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.from(".possibility-form", {
-          opacity: 0, x: -12, duration: 0.75, stagger: 0.16, ease: "power2.out",
-          scrollTrigger: { trigger: element, start: "top 88%", once: true },
+        const lits = gsap.utils.toArray<SVGElement>(".pm-lit");
+        const shifts = gsap.utils.toArray<SVGElement>(".pm-shift");
+        const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+        tl.fromTo(".pm-pulse", { attr: { cx: 40 }, opacity: 0 }, { attr: { cx: 560 }, duration: 3.6, ease: "sine.inOut" }, 0)
+          .to(".pm-pulse", { opacity: 1, duration: 0.6, ease: "sine.out" }, 0)
+          .to(".pm-pulse", { opacity: 0, duration: 0.8, ease: "sine.in" }, 2.8);
+        lits.forEach((lit, i) => {
+          const t = 0.25 + i * 0.8;
+          tl.to(lit, { opacity: 1, duration: 0.55, ease: "sine.out" }, t)
+            .to(shifts[i], { x: 10, duration: 0.55, ease: "sine.out" }, t)
+            .to(lit, { opacity: 0, duration: 1.1, ease: "sine.inOut" }, t + 0.7)
+            .to(shifts[i], { x: 0, duration: 1.1, ease: "sine.inOut" }, t + 0.7);
+        });
+        ScrollTrigger.create({
+          trigger: element, start: "top bottom", end: "bottom top",
+          onToggle: (self) => (self.isActive ? tl.play() : tl.pause()),
         });
       });
     }, element);
@@ -186,20 +199,54 @@ const Innovations = () => {
           </div>
         </div>
 
-        <div ref={closing} className="possibilities-closing mt-8 md:mt-12 py-8 md:py-10">
-          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
-            <svg className="possibility-motif h-14 w-36 shrink-0" viewBox="0 0 144 56" fill="none" aria-hidden="true">
-              {[0, 1, 2].map((i) => (
-                <path key={i} className={`possibility-form possibility-form-${i}`} transform={`translate(${i * 38} 0)`} d="M8 7 Q8 3 12 5 L45 24 Q51 28 45 32 L12 51 Q8 53 8 49 L8 40 L28 28 L8 16 Z" strokeWidth="1.2" strokeLinejoin="round" />
-              ))}
-            </svg>
-            <p className="text-center text-xl md:text-2xl font-medium text-[hsl(var(--mn-silver))]">
-              More possibilities ahead.
-            </p>
+        <div ref={closing} className="possibilities-closing relative mt-12 md:mt-16 py-12 md:py-16">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-12">
+            <div className="text-center lg:text-left">
+              <p className="font-semibold tracking-[-0.035em] leading-[1.02] text-[clamp(2.4rem,5.5vw,4.5rem)] text-[hsl(var(--mn-text))]">
+                More possibilities<br />
+                <span className="mn-gradient-text">ahead.</span>
+              </p>
+              <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
+                Visuals are illustrative concepts, not screenshots of released products.
+              </p>
+            </div>
+            <div className="relative mx-auto w-full max-w-[420px] lg:max-w-[580px]">
+              <svg className="possibility-motif block h-auto w-full" viewBox="0 0 600 400" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="pm-fill" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="hsl(var(--mn-text))" stopOpacity="0.14" />
+                    <stop offset="55%" stopColor="hsl(var(--mn-blue))" stopOpacity="0.08" />
+                    <stop offset="100%" stopColor="hsl(var(--mn-violet))" stopOpacity="0.06" />
+                  </linearGradient>
+                  <linearGradient id="pm-lit" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="hsl(var(--mn-cyan))" stopOpacity="0.55" />
+                    <stop offset="60%" stopColor="hsl(var(--mn-blue))" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="hsl(var(--mn-violet))" stopOpacity="0.3" />
+                  </linearGradient>
+                  <radialGradient id="pm-pulse">
+                    <stop offset="0%" stopColor="hsl(var(--mn-cyan))" stopOpacity="0.55" />
+                    <stop offset="100%" stopColor="hsl(var(--mn-cyan))" stopOpacity="0" />
+                  </radialGradient>
+                  <radialGradient id="pm-ambient" cx="0.5" cy="0.5" r="0.48">
+                    <stop offset="0%" stopColor="hsl(var(--mn-blue))" stopOpacity="0.16" />
+                    <stop offset="100%" stopColor="hsl(var(--mn-blue))" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect width="600" height="400" fill="url(#pm-ambient)" />
+                <line x1="20" y1="200" x2="580" y2="200" stroke="hsl(var(--mn-cyan))" strokeOpacity="0.12" strokeWidth="1" />
+                {[0, 1, 2, 3].map((i) => (
+                  <g key={i} className="pm-form" transform={`translate(${40 + i * 118} 50)`} style={{ opacity: 0.4 + i * 0.15 }}>
+                    <g className="pm-shift">
+                      <path d="M0 0 L90 150 L0 300 L62 300 L152 150 L62 0 Z" fill="url(#pm-fill)" stroke="hsl(var(--mn-text))" strokeOpacity="0.22" strokeWidth="1.2" strokeLinejoin="round" />
+                      <path className="pm-lit" d="M0 0 L90 150 L0 300 L62 300 L152 150 L62 0 Z" fill="url(#pm-lit)" stroke="hsl(var(--mn-cyan))" strokeOpacity="0.9" strokeWidth="1.4" strokeLinejoin="round" opacity="0" />
+                      <path d="M10 8 L66 8 L148 146" stroke="hsl(var(--mn-text))" strokeOpacity="0.35" strokeWidth="1" strokeLinecap="round" />
+                    </g>
+                  </g>
+                ))}
+                <ellipse className="pm-pulse" cx="60" cy="200" rx="70" ry="44" fill="url(#pm-pulse)" opacity="0" />
+              </svg>
+            </div>
           </div>
-          <p className="mt-5 text-center text-xs leading-relaxed text-muted-foreground">
-            Visuals are illustrative concepts, not screenshots of released products.
-          </p>
         </div>
       </div>
     </section>
