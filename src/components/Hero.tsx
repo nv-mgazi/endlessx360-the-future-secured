@@ -83,7 +83,7 @@ const Hero = () => {
           scrollTrigger: {
             trigger: ".hero-stage",
             start: "top top",
-            end: "+=280%",
+            end: "+=230%",
             scrub: 0.8,
             pin: true,
             anticipatePin: 1,
@@ -101,11 +101,11 @@ const Hero = () => {
           .to(".story-panel", { scale: 1, duration: 0.9, stagger: 0.08, ease: "power1.out" }, 0.9)
           .to(".story-caption", { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.08 }, 1.6)
           // Stage D — hold the composition
-          .to({}, { duration: 0.6 })
-          // Stage E — hand over to Technology
-          .to(".story-panel", { autoAlpha: 0, y: -40, duration: 0.5, stagger: 0.04 }, ">")
-          .to(mark, { autoAlpha: 0, scale: 0.5, duration: 0.5 }, "<")
-          .to(".hero-earth", { autoAlpha: 0.15, duration: 0.5 }, "<");
+          .to({}, { duration: 0.4 })
+          // Stage E — hand over to Technology (short tail: no empty pinned space)
+          .to(".story-panel", { autoAlpha: 0, y: -40, duration: 0.4, stagger: 0.04 }, ">")
+          .to(mark, { autoAlpha: 0, scale: 0.5, duration: 0.4 }, "<")
+          .to(".hero-earth", { autoAlpha: 0.15, duration: 0.4 }, "<");
 
         const imgs = element.querySelectorAll("img");
         const refresh = () => ScrollTrigger.refresh();
