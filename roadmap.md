@@ -9,3 +9,8 @@
 - [x] Expand the Privacy Policy into a full POPIA notice.
 - [x] Remove the personal phone number from public metadata (index.html JSON-LD).
 - [x] Final desktop + mobile quality review (scroll, nav, images, overflow).
+- [x] Make animated hero images accessible links to their Technology details.
+- [x] Assign the four supplied detail images without changing hero artwork.
+- [x] Refine the Innovations closing motif and spacing; preserve PAM reading time.
+- [x] Verify local navigation, contact, responsive layouts and reduced motion; no deployment settings changed.
+- [ ] Confirm external GitHub sync and live Cloudflare state (not accessible from this checkout).

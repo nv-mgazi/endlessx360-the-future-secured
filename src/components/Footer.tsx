@@ -48,7 +48,7 @@ const Footer = () => (
           <ul className="mt-4 space-y-2 text-sm text-[hsl(var(--mn-muted))]">
             {[...NAV, { id: "contact", name: "Contact" }].map((n) => (
               <li key={n.id}>
-                <a href={`/#${n.id}`} className="hover:text-[hsl(var(--mn-text))] transition-colors">
+                <a href={`/#${n.id}`} onClick={n.id === "home" ? scrollToHome : undefined} className="hover:text-[hsl(var(--mn-text))] transition-colors">
                   {n.name}
                 </a>
               </li>

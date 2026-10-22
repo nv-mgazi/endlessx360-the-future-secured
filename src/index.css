@@ -121,6 +121,17 @@
   }
   .innovation-step { background: hsl(var(--mn-text) / 0.3); }
   .innovation-step.is-active { background: hsl(var(--mn-cyan)); }
+  .story-panel { pointer-events: none; }
+  .story-panel[data-interactive="true"] { pointer-events: auto; cursor: pointer; }
+  .story-panel:hover, .story-panel:focus-visible { border-color: hsl(var(--mn-cyan) / 0.65); }
+  .story-link-image { transition: transform 300ms ease; }
+  .story-panel:hover .story-link-image { transform: scale(1.025); }
+  .story-link-arrow { color: hsl(var(--mn-cyan)); transition: transform 250ms ease; }
+  .story-panel:hover .story-link-arrow, .story-panel:focus-visible .story-link-arrow { transform: translateX(3px); }
+  .possibilities-closing { background: linear-gradient(90deg, transparent, hsl(var(--mn-blue) / 0.035), transparent); }
+  .possibility-form:nth-child(1) { stroke: hsl(var(--mn-blue) / 0.65); fill: hsl(var(--mn-blue) / 0.05); }
+  .possibility-form:nth-child(2) { stroke: hsl(var(--mn-cyan) / 0.8); fill: hsl(var(--mn-cyan) / 0.07); }
+  .possibility-form:nth-child(3) { stroke: hsl(var(--mn-violet) / 0.55); fill: hsl(var(--mn-violet) / 0.04); }
   @media (min-width: 1024px) and (max-height: 800px) {
     .innovation-track .innovation-visual { height: calc(100svh - 14rem); }
   }
@@ -163,5 +174,8 @@
     html { scroll-behavior: auto; }
     .animate-rise { animation: none !important; }
     .pv-light-sweep { display: none; }
+    .hero-focus-nav { display: flex !important; }
+    .story-link-image, .story-link-arrow { transition: none; }
+    .story-panel:hover .story-link-image, .story-panel:hover .story-link-arrow { transform: none; }
   }
 }
