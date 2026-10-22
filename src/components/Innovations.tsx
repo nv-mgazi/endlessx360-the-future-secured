@@ -1,8 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
 import imgPam from "@/assets/innov-pam.jpg";
 import imgEvents from "@/assets/innov-events.jpg";
 import imgRunners from "@/assets/innov-runners.jpg";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const products = [
   {
@@ -43,6 +47,22 @@ const products = [
 const Innovations = () => {
   const [active, setActive] = useState(0);
   const refs = useRef<(HTMLElement | null)[]>([]);
+  const closing = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const element = closing.current;
+    if (!element) return;
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from(".possibility-form", {
+          opacity: 0, x: -12, duration: 0.75, stagger: 0.16, ease: "power2.out",
+          scrollTrigger: { trigger: element, start: "top 88%", once: true },
+        });
+      });
+    }, element);
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     // Select the narrative nearest the reading line, independent of observer
@@ -129,7 +149,7 @@ const Innovations = () => {
           </div>
 
           {/* product narratives */}
-          <div className="lg:pb-[max(35svh,240px)]">
+          <div className="lg:pb-[max(16svh,120px)]">
             {products.map((p, i) => (
               <article
                 key={p.name}
@@ -166,16 +186,21 @@ const Innovations = () => {
           </div>
         </div>
 
-        <div className="mt-20 md:mt-28 flex items-center gap-6">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[hsl(var(--mn-text)/0.2)] to-transparent" aria-hidden="true" />
-          <p className="text-xl md:text-2xl font-medium tracking-tight text-[hsl(var(--mn-silver))]">
-            More possibilities ahead.
+        <div ref={closing} className="possibilities-closing mt-8 md:mt-12 py-8 md:py-10">
+          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
+            <svg className="possibility-motif h-14 w-36 shrink-0" viewBox="0 0 144 56" fill="none" aria-hidden="true">
+              {[0, 1, 2].map((i) => (
+                <path key={i} className={`possibility-form possibility-form-${i}`} transform={`translate(${i * 38} 0)`} d="M8 7 Q8 3 12 5 L45 24 Q51 28 45 32 L12 51 Q8 53 8 49 L8 40 L28 28 L8 16 Z" strokeWidth="1.2" strokeLinejoin="round" />
+              ))}
+            </svg>
+            <p className="text-center text-xl md:text-2xl font-medium text-[hsl(var(--mn-silver))]">
+              More possibilities ahead.
+            </p>
+          </div>
+          <p className="mt-5 text-center text-xs leading-relaxed text-muted-foreground">
+            Visuals are illustrative concepts, not screenshots of released products.
           </p>
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[hsl(var(--mn-text)/0.2)] to-transparent" aria-hidden="true" />
         </div>
-        <p className="mt-6 text-center text-xs text-[hsl(var(--mn-muted)/0.7)]">
-          Visuals are illustrative concepts, not screenshots of released products.
-        </p>
       </div>
     </section>
   );
