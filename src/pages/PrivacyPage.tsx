@@ -17,8 +17,8 @@ const sections = [
         </p>
         <p>
           Personal information reaches us only when you choose to contact us. If you use the
-          enquiry form, the details you enter — typically your name, email address and message
-          — are used to prepare a draft email in your own email application. The message is
+          enquiry form, the details you enter, typically your name, email address and message,
+          are used to prepare a draft email in your own email application. The message is
           sent by you, from your own email account, and reaches us as ordinary email. If you
           contact us on WhatsApp, by telephone, or by email directly, we receive the
           information you share in that conversation, such as your name, contact details and
@@ -69,8 +69,8 @@ const sections = [
         <p>
           This website is hosted by a third-party hosting platform. Like most websites, the
           hosting platform may automatically process standard technical information when the
-          site is delivered — for example your IP address, browser type and the pages you
-          request — for purposes such as delivering the site, load balancing, security and
+          site is delivered, for example your IP address, browser type and the pages you
+          request. This is used for purposes such as delivering the site, load balancing, security and
           preventing abuse.
         </p>
         <p>

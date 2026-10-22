@@ -24,8 +24,8 @@ const Contact = () => {
       document.getElementById(`f-${Object.keys(errs)[0]}`)?.focus();
       return;
     }
-    const body = `${values.message.trim()}\n\n— ${values.name.trim()}\n${values.email.trim()}`;
-    window.location.href = mailtoHref(`${values.topic} — ${values.name.trim()}`, body);
+    const body = `${values.message.trim()}\n\nFrom: ${values.name.trim()}\n${values.email.trim()}`;
+    window.location.href = mailtoHref(`${values.topic}: ${values.name.trim()}`, body);
     setOpened(true);
   };
 
