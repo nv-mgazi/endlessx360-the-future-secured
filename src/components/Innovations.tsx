@@ -23,7 +23,6 @@ const products = [
     img: imgEvents,
     w: 1600,
     h: 876,
-    fit: "cover" as const,
     alt: "Outdoor South African music festival at sunset with a stage, performers, audience and broadcast camera equipment (illustrative)",
     body: "A developing concept for facilitating live event streaming and digital access to events, with potential opportunities for organisers and remote audiences.",
     glow: "var(--mn-violet)",
@@ -35,7 +34,6 @@ const products = [
     img: imgRunners,
     w: 1600,
     h: 876,
-    fit: "cover" as const,
     alt: "Customer browsing independent shopping runners on a mobile phone outside a shopping centre (illustrative)",
     body: "A proposed digital marketplace designed to connect customers with independent shopping runners who can assist with purchasing requested items from different shops and shopping areas, through a more structured and convenient online experience.",
     glow: "var(--mn-cyan)",
@@ -107,10 +105,9 @@ const Innovations = () => {
                     decoding="async"
                     aria-hidden={i !== active}
                     data-product-image={i}
-                    style={p.fit === "contain" ? PAM_BG : undefined}
                     className={cn(
                       "innovation-image absolute inset-0 h-full w-full transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:transform-none",
-                      p.fit === "contain" ? "object-contain" : "object-cover",
+                      "object-cover",
                       i === active ? "opacity-100 scale-100" : "opacity-0 scale-[1.06]"
                     )}
                   />
@@ -145,7 +142,6 @@ const Innovations = () => {
               >
                 <div
                   className="lg:hidden overflow-hidden rounded-[1.5rem] mn-frame mb-8"
-                  style={p.fit === "contain" ? PAM_BG : undefined}
                 >
                   <img
                     src={p.img}
@@ -153,7 +149,7 @@ const Innovations = () => {
                     width={p.w}
                     height={p.h}
                     loading="lazy"
-                    className={cn("aspect-[3/2] w-full", p.fit === "contain" ? "object-contain" : "object-cover")}
+                    className="aspect-[3/2] w-full object-cover"
                   />
                 </div>
                 <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[hsl(var(--mn-text)/0.14)] px-3.5 py-1 text-xs font-medium text-[hsl(var(--mn-cyan))]">
