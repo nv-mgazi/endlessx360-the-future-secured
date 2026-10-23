@@ -6,7 +6,7 @@ describe("official social account availability", () => {
   test("WhatsApp retains the existing conversation destination", () => {
     expect(socialHref(SOCIAL_ACCOUNTS.find((account) => account.id === "whatsapp")?.url ?? null)).toBe(waLink());
   });
-  for (const id of ["facebook", "instagram", "tiktok"] as const) {
+  for (const id of ["facebook", "instagram", "tiktok"]) {
     test(`${id} has no invented account or platform homepage link`, () => {
       const account = SOCIAL_ACCOUNTS.find((entry) => entry.id === id);
       expect(account?.url).toBe(null);
