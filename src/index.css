@@ -17,6 +17,18 @@
     --mn-text: 217 50% 97%;     /* #F3F6FB */
     --mn-muted: 215 20% 74%;
 
+    /* Official social brand colours, limited to their logo artwork. */
+    --social-whatsapp: #25d366;
+    --social-facebook: #0866ff;
+    --social-instagram-yellow: #ffdc80;
+    --social-instagram-orange: #f77737;
+    --social-instagram-red: #e1306c;
+    --social-instagram-violet: #833ab4;
+    --social-tiktok-red: #ff004f;
+    --social-tiktok-cyan: #00f2ea;
+    --social-logo-white: #ffffff;
+    --social-logo-black: #000000;
+
     /* shadcn semantic tokens mapped to the palette */
     --background: var(--mn-bg);
     --foreground: var(--mn-text);
@@ -151,6 +163,20 @@
   .mn-input option { background: hsl(var(--mn-deep)); }
   .midnight a:focus-visible, .midnight button:focus-visible {
     outline: 2px solid hsl(var(--mn-cyan)); outline-offset: 3px;
+  }
+  .social-icon { width: 24px; height: 24px; flex-shrink: 0; }
+  .social-icon-whatsapp { fill: var(--social-whatsapp); }
+  .social-icon-facebook { fill: var(--social-facebook); }
+  .social-surface {
+    border: 1px solid hsl(var(--mn-text) / 0.12);
+    background: hsl(var(--mn-text) / 0.04);
+    color: hsl(var(--mn-text));
+  }
+  a.social-surface { cursor: pointer; transition: background 180ms, border-color 180ms; }
+  a.social-surface:hover { background: hsl(var(--mn-text) / 0.08); border-color: hsl(var(--mn-cyan) / 0.5); }
+  a.social-surface:active { background: hsl(var(--mn-cyan) / 0.12); }
+  @media (prefers-reduced-motion: reduce) {
+    a.social-surface { transition: none; }
   }
 }
 
