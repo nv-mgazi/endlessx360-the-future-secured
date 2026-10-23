@@ -21,9 +21,19 @@ const swap = (html: string, pattern: RegExp, replacement: string, label: string)
  * that do not run JavaScript still receive route-appropriate metadata.
  */
 function routeMetadata() {
+  // Hashed URL of the hero brand mark (the LCP image), captured during bundling
+  // so the built HTML can preload it before the JavaScript bundle executes.
+  let heroMarkUrl: string | null = null;
   return {
     name: "route-metadata",
     apply: "build" as const,
+    generateBundle(_options: unknown, bundle: Record<string, { type: string; fileName: string }>) {
+      for (const file of Object.values(bundle)) {
+        if (file.type === "asset" && /logo-color-mark-[\w-]+\.webp$/.test(file.fileName)) {
+          heroMarkUrl = `/${file.fileName}`;
+        }
+      }
+    },
     closeBundle() {
       const out = path.resolve(here, "dist");
       let html: string;
@@ -31,6 +41,11 @@ function routeMetadata() {
         html = readFileSync(path.resolve(out, "index.html"), "utf8");
       } catch {
         return;
+      }
+      if (heroMarkUrl) {
+        const preload = `<link rel="preload" as="image" href="${heroMarkUrl}" fetchpriority="high" />`;
+        html = html.replace("</head>", `    ${preload}\n  </head>`);
+        writeFileSync(path.resolve(out, "index.html"), html);
       }
       for (const meta of STATIC_ROUTES) {
         const url = `${SITE_URL}${meta.path}`;
