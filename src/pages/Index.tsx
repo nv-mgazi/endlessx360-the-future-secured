@@ -1,3 +1,5 @@
+import PageMeta from "@/components/PageMeta";
+import { HOME_META } from "@/lib/site";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Innovations from "@/components/Innovations";
@@ -7,6 +9,11 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="midnight min-h-screen overflow-x-clip">
+    <PageMeta
+      title={HOME_META.title}
+      description={HOME_META.description}
+      path={HOME_META.path}
+    />
     <a href="#technology" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-20 focus:z-[60] focus:rounded-full focus:bg-[hsl(var(--mn-blue))] focus:px-4 focus:py-2">
       Skip to content
     </a>

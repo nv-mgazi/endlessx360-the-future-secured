@@ -16,3 +16,8 @@
 - [ ] Confirm external GitHub sync and live Cloudflare state (not accessible from this checkout).
 - [x] Integrate official footer social icons and unavailable-account states; preserve email and existing destinations.
 - [x] Verify social links, keyboard labels, desktop/mobile layout and preview health.
+- [x] Point public metadata at https://endlessx360.co.za and refresh title, description and structured data.
+- [x] Add complete Open Graph / Twitter metadata and a 1200x630 share image built from approved artwork.
+- [x] Deliver route-appropriate Privacy Policy metadata in the served HTML and noindex the 404 view.
+- [x] Verify metadata, share image, robots, favicon, build health and that the WhatsApp card opens the official chat.
+- [ ] Google Search Console verification and sitemap submission (separate phase, after this review).
