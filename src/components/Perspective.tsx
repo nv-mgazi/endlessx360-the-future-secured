@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import earth from "@/assets/hero-earth.jpg";
+import earth from "@/assets/hero-earth.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import iconColor from "@/assets/brand/EndlessX360_icon_full_color.svg";
 import iconWhite from "@/assets/brand/EndlessX360_icon_white.svg";
-import heroMark from "@/assets/brand/logo-color-mark.png";
-import colorFull from "@/assets/brand/logo-color-full.png";
-import whiteFull from "@/assets/brand/logo-white-full.png";
+import heroMark from "@/assets/brand/logo-color-mark.webp";
+import colorFull from "@/assets/brand/logo-color-full.webp";
+import whiteFull from "@/assets/brand/logo-white-full.webp";
 
 /** Approved EndlessX360 logo files — used as supplied, never redrawn. */
 export const LOGO = { iconColor, iconWhite, colorFull, whiteFull };
@@ -13,9 +13,10 @@ export const BrandMark = ({ className }: { className?: string }) => (
   <img src={LOGO.iconColor} alt="EndlessX360" width={1254} height={725} className={className} decoding="async" />
 );
 
-/** Original processed hero artwork — keep its pixels and proportions unchanged. */
+/** Original processed hero artwork — keep its pixels and proportions unchanged.
+ *  This is the LCP element: request it at high priority as early as possible. */
 export const HeroBrandMark = ({ className }: { className?: string }) => (
-  <img src={heroMark} alt="EndlessX360" width={1200} height={346} className={className} decoding="async" />
+  <img src={heroMark} alt="EndlessX360" width={1200} height={346} className={className} decoding="async" {...{ fetchpriority: "high" }} />
 );
 
 interface LogoProps {
