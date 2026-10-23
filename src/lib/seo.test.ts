@@ -2,6 +2,7 @@ import { test, expect } from "bun:test";
 import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { PRIVACY_META, SITE_URL, STATIC_ROUTES } from "./site";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const html = readFileSync(join(root, "index.html"), "utf8");
@@ -64,4 +65,11 @@ test("the share image exists at the referenced link-preview size", () => {
 test("crawlers are not blocked from the public site", () => {
   expect(robots).not.toMatch(/Disallow:\s*\/\s*$/m);
   expect(robots).toContain("Allow: /");
+});
+
+test("the privacy route carries its own approved metadata", () => {
+  expect(SITE_URL).toBe("https://endlessx360.co.za");
+  expect(STATIC_ROUTES.map((r) => r.path)).toContain("/privacy");
+  expect(PRIVACY_META.title).toBe("Privacy Policy | EndlessX360");
+  expect(PRIVACY_META.description).toContain("privacy notice");
 });
