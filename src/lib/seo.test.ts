@@ -62,9 +62,30 @@ test("the share image exists at the referenced link-preview size", () => {
   expect(html).toContain('content="https://endlessx360.co.za/og-endlessx360.jpg"');
 });
 
-test("crawlers are not blocked from the public site", () => {
+test("crawlers are not blocked and the sitemap is declared", () => {
   expect(robots).not.toMatch(/Disallow:\s*\/\s*$/m);
   expect(robots).toContain("Allow: /");
+  expect(robots).toContain("Sitemap: https://endlessx360.co.za/sitemap.xml");
+});
+
+test("the homepage carries a self-referencing canonical in its initial HTML", () => {
+  const canonicals = html.match(/<link rel="canonical"[^>]*>/g) ?? [];
+  expect(canonicals).toEqual(['<link rel="canonical" href="https://endlessx360.co.za/" />']);
+});
+
+test("the sitemap lists exactly the two public pages with absolute HTTPS URLs", () => {
+  const path = join(root, "public", "sitemap.xml");
+  expect(existsSync(path)).toBe(true);
+  const xml = readFileSync(path, "utf8");
+  expect(xml).toContain('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"');
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  expect(urls).toEqual([
+    "https://endlessx360.co.za/",
+    "https://endlessx360.co.za/privacy",
+  ]);
+  expect(xml).not.toContain("lovable.app");
+  expect(xml).not.toContain("<lastmod>");
+  expect(xml).not.toContain("#");
 });
 
 test("the privacy route carries its own approved metadata", () => {
