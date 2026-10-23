@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import Logo from "@/components/Logo";
 import PageMeta from "@/components/PageMeta";
+import { PRIVACY_META } from "@/lib/site";
 import { mailtoHref, waLink } from "@/lib/contact";
 
 const LAST_UPDATED = "22 October 2026";
@@ -150,9 +151,9 @@ const sections = [
 const PrivacyPage = () => (
   <div className="midnight min-h-screen">
     <PageMeta
-      title="Privacy Policy | EndlessX360"
-      description="Learn how EndlessX360 handles website information, enquiries and personal information in accordance with its privacy notice."
-      path="/privacy"
+      title={PRIVACY_META.title}
+      description={PRIVACY_META.description}
+      path={PRIVACY_META.path}
     />
     <div className="container max-w-3xl px-5 py-12">
       <Link to="/" aria-label="Back to EndlessX360 home"><Logo size="h-7" /></Link>

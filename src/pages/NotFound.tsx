@@ -6,7 +6,6 @@ const NotFound = () => (
     <PageMeta
       title="Page not found | EndlessX360"
       description="The page you were looking for is not available on endlessx360.co.za."
-      path="/404"
       noindex
     />
     <div className="max-w-md text-center">
