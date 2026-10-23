@@ -74,9 +74,9 @@ function routeMetadata() {
         );
         page = swap(
           page,
-          /<link rel="icon"[^>]*>/,
-          `<link rel="icon" href="/favicon.svg" type="image/svg+xml" />\n    <link rel="canonical" href="${url}" />`,
-          "icon link"
+          /<link rel="canonical" href="[^"]*" \/>/,
+          `<link rel="canonical" href="${url}" />`,
+          "canonical link"
         );
         const dir = path.resolve(out, meta.path.replace(/^\/+|\/+$/g, ""));
         mkdirSync(dir, { recursive: true });
