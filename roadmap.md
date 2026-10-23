@@ -21,3 +21,7 @@
 - [x] Deliver route-appropriate Privacy Policy metadata in the served HTML and noindex the 404 view.
 - [x] Verify metadata, share image, robots, favicon, build health and that the WhatsApp card opens the official chat.
 - [ ] Google Search Console verification and sitemap submission (separate phase, after this review).
+- [x] Convert site imagery to high-quality WebP, keeping original masters for rollback.
+- [x] Prioritise the hero logo (LCP): fetchpriority + build-time preload of the hashed asset.
+- [x] Split vendor JS chunks (React/GSAP) and add Cloudflare Pages security headers (report-only CSP).
+- [ ] Re-run PageSpeed Insights after the next Cloudflare deploy to compare against the 23 Oct baseline.

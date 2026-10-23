@@ -2,9 +2,9 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
-import imgPam from "@/assets/innov-pam.jpg";
-import imgEvents from "@/assets/innov-events.jpg";
-import imgRunners from "@/assets/innov-runners.jpg";
+import imgPam from "@/assets/innov-pam.webp";
+import imgEvents from "@/assets/innov-events.webp";
+import imgRunners from "@/assets/innov-runners.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
