@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { ArrowUp, Mail, MessageCircle } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
 import Logo from "@/components/Logo";
 import { NAV } from "@/components/Header";
 import { scrollToHome } from "@/lib/scroll";
-import { waLink, mailtoHref } from "@/lib/contact";
+import { mailtoHref } from "@/lib/contact";
+import SocialLinks from "@/components/SocialLinks";
 
 const Footer = () => (
   <footer className="midnight relative overflow-hidden border-t border-[hsl(var(--mn-text)/0.08)]">
@@ -22,16 +23,8 @@ const Footer = () => (
 
           <div className="mt-8">
             <h3 className="text-sm font-semibold">Let's connect</h3>
+            <SocialLinks />
             <div className="mt-4 flex flex-wrap gap-3">
-              <a
-                href={waLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 items-center gap-2 rounded-full border mn-glass px-4 text-sm font-medium transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]"
-              >
-                <MessageCircle className="h-4 w-4 text-[hsl(var(--mn-cyan))]" />
-                WhatsApp
-              </a>
               <a
                 href={mailtoHref("Enquiry")}
                 className="inline-flex h-10 items-center gap-2 rounded-full border mn-glass px-4 text-sm font-medium transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]"
