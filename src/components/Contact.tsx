@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
+import { BrandIcon } from "@/components/SocialLinks";
 import { CONTACT, mailtoHref, waLink } from "@/lib/contact";
 import { validateEnquiry, type Enquiry, type EnquiryErrors } from "@/lib/enquiry";
 
@@ -52,8 +53,14 @@ const Contact = () => {
 
             <ul className="mt-12 space-y-3 max-w-md">
               <li>
-                <a href={waLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]">
-                  <MessageCircle className="h-5 w-5 text-[hsl(var(--mn-cyan))]" />
+                <a
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open WhatsApp in a new tab"
+                  className="flex items-center gap-4 rounded-2xl border mn-glass p-4 transition-smooth hover:border-[hsl(var(--mn-cyan)/0.4)]"
+                >
+                  <BrandIcon platform="whatsapp" className="social-icon social-icon-whatsapp h-5 w-5" />
                   <span><span className="block font-medium">WhatsApp</span><span className="text-sm text-[hsl(var(--mn-muted))]">Open WhatsApp</span></span>
                 </a>
               </li>
