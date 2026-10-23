@@ -117,4 +117,16 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split heavy vendors into parallel-cacheable chunks; same code, same
+        // behaviour, but the browser downloads and parses them concurrently.
+        manualChunks: {
+          "vendor-react": ["react", "react-dom", "react-router-dom", "react-helmet-async"],
+          "vendor-gsap": ["gsap"],
+        },
+      },
+    },
+  },
 }));
