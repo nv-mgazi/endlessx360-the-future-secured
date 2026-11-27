@@ -9,9 +9,6 @@ export const SOCIAL_ACCOUNTS: ReadonlyArray<{
   url: string | null;
 }> = [
   { id: "whatsapp", name: "WhatsApp", url: waLink() },
-  { id: "facebook", name: "Facebook", url: null },
-  { id: "instagram", name: "Instagram", url: null },
-  { id: "tiktok", name: "TikTok", url: null },
 ];
 
 export const socialHref = (url: string | null): string | undefined => {
