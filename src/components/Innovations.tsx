@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const products = [
   {
     name: "Live Events & Digital Experiences",
-    full: "Working description",
+    full: "Digital event experiences",
     status: "Concept / Exploration",
     img: imgEvents,
     w: 1600,
@@ -22,7 +22,7 @@ const products = [
   },
   {
     name: "Shopping & Runner Marketplace",
-    full: "Working description",
+    full: "On-demand shopping support",
     status: "Concept / Exploration",
     img: imgRunners,
     w: 1600,
@@ -146,10 +146,7 @@ const Innovations = () => {
                   />
                 ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--mn-bg)/0.75)] via-transparent to-transparent" aria-hidden="true" />
-                <div className="absolute left-6 bottom-6 right-6 flex items-end justify-between">
-                  <span className="rounded-full border mn-glass px-4 py-1.5 text-xs font-medium text-[hsl(var(--mn-text))]">
-                    {products[active].status}
-                  </span>
+                <div className="absolute right-6 bottom-6">
                   <span className="text-sm tabular-nums text-[hsl(var(--mn-silver))]">
                     0{active + 1} / 0{products.length}
                   </span>
