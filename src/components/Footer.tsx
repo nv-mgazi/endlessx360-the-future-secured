@@ -3,7 +3,7 @@ import { ArrowUp, Mail } from "lucide-react";
 import Logo from "@/components/Logo";
 import { NAV } from "@/components/Header";
 import { scrollToHome } from "@/lib/scroll";
-import { mailtoHref } from "@/lib/contact";
+import { CONTACT, mailtoHref } from "@/lib/contact";
 import SocialLinks from "@/components/SocialLinks";
 
 const Footer = () => (
@@ -20,7 +20,9 @@ const Footer = () => (
             A technology development and innovation company creating software, digital
             platforms and intelligent systems for a changing world.
           </p>
-
+          <p className="mt-4 text-xs font-medium tracking-wide text-[hsl(var(--mn-silver))]">
+            {CONTACT.location}
+          </p>
         </div>
 
         <nav aria-label="Footer">
