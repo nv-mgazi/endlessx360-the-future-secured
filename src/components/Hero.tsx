@@ -192,11 +192,11 @@ const Hero = () => {
         <div className="hero-vignette pointer-events-none absolute inset-0 mn-hero-vignette opacity-0" aria-hidden="true" />
 
         <div className="container relative z-10 px-5 min-h-[100svh] grid lg:grid-cols-[1.05fr_1fr] items-center gap-6 pt-32 pb-16 lg:py-0">
-          <div className="hero-copy max-w-2xl">
+          <div className="hero-copy max-w-2xl lg:max-w-[760px]">
             <div className="mn-eyebrow animate-rise">Technology · Intelligence · Innovation</div>
             <h1
               id="hero-title"
-              className="mt-6 font-semibold tracking-[-0.04em] leading-[0.98] text-[clamp(2.6rem,6.6vw,5.6rem)] text-[hsl(var(--mn-text))] animate-rise"
+              className="mt-6 max-w-[13ch] lg:max-w-none font-semibold tracking-[-0.04em] leading-[0.98] text-balance text-[clamp(2.6rem,5.8vw,5.1rem)] text-[hsl(var(--mn-text))] animate-rise"
               style={{ animationDelay: "80ms" }}
             >
               Building Technology for <span className="mn-gradient-text">What's Next.</span>
@@ -224,9 +224,9 @@ const Hero = () => {
             </nav>
           </div>
 
-          <div className="hero-mark relative z-20 flex items-center justify-center order-first lg:order-none">
+          <div className="hero-mark relative z-20 flex items-center justify-center order-first lg:order-none opacity-35">
             <div className="absolute inset-0 m-auto h-1/2 w-2/3 rounded-full bg-[hsl(var(--mn-blue)/0.18)] blur-[90px]" aria-hidden="true" />
-            <HeroBrandMark className="relative w-[85%] max-w-[380px] lg:w-full lg:max-w-[560px] h-auto drop-shadow-[0_24px_50px_hsl(var(--mn-deep)/0.9)] lg:py-10 lg:px-6" />
+            <HeroBrandMark className="relative w-[78%] max-w-[340px] lg:w-full lg:max-w-[470px] h-auto drop-shadow-[0_24px_50px_hsl(var(--mn-deep)/0.9)] lg:py-10 lg:px-6" />
           </div>
         </div>
 
